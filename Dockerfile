@@ -1,5 +1,5 @@
 # Builder stage
-FROM rust:1.80-slim as builder
+FROM rust:1.85-slim as builder
 
 WORKDIR /app
 # Install dependencies required by some crates
