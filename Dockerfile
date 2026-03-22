@@ -1,5 +1,5 @@
 # Builder stage
-FROM rust:bookworm-slim as builder
+FROM rust:1-slim-bookworm as builder
 
 WORKDIR /app
 # Install dependencies required by some crates
