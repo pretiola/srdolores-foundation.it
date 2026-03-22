@@ -1,0 +1,25 @@
+/* vim: set tabstop=2: */
+@import 'navbar.css';
+@import 'footer.css';
+
+body {
+	max-width: 1000px;
+	background-color: rgba(252, 243, 207, 1);
+}
+
+main {
+	background-color: rgba(252, 243, 207, 1);
+}
+
+p {
+	max-width: 700px;
+	margin: auto;
+	margin-bottom: 50px;
+}
+
+img {
+	border: solid;
+	object-fit: cover;
+	max-width: 100%;
+	max-height: 85vh;
+}

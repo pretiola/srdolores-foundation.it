@@ -1,0 +1,87 @@
+<!-- vim: set tabstop=2: -->
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<title>Piglet Project</title>
+		<link href="common.css" rel="stylesheet">
+		<link href="home.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		{% include "navbar.html" %}
+
+		<main>
+
+			<!-- Welcome Banner -->
+			<div id=welcome>
+
+				<img id=home-img-2 src='pictures/flyer.jpg'/>
+				<img id=home-img-3 src='pictures/piglets.jpg'/>
+
+				<div id=home-text>
+					<h1>Sr. Dolores foundation for children in poor families</h1>
+					<h3>
+						Reaching out to the poor families and children through productive
+						and educative farming. Be part of this wonderful project by buying
+						one piglet.
+					</h3>
+				</div>
+			</div>
+
+				<!-- The Piglet Project -->
+				<div>
+					<h1> The piglet project </h1>
+					<p align=left>
+						The priglet project is a kickstarter for the poor and hopeless
+						families in the village of BINZI to become economically self-reliant,
+						by providing them with the required material and trainig for engaging
+						in piggery farming.
+					</p>
+
+					<p align=left>
+						This project is very easy to manage especially to families that have
+						less, in a few months they will be ready for sale.  There is nothing
+						as gratifying as being able to provide for your family. Find more
+						information on the following pages:
+					</p>
+				</div>
+
+			<!-- More information -->
+			<div>
+				<ul style="display: inline-block; text-align: left;">
+					<li><a href="benificiaries.html">Benificiaries of the project</a></li>
+					<li><a href="challenges.html">Challenges of the families</a></li>
+					<li><a href="goals.html">Goals of the project</a></li>
+				</ul>
+			</div>
+
+			<!-- Vision and Mission -->
+			<div id="vision-mission-container">
+				<img id="home-img-4" src='pictures/emmanuel_with_kids_selfie.jpeg'/>
+				<div id="vision">
+					<h2> Our vision </h2>
+					<p>
+					To see people of Binzi attaining holistic development and enjoying a
+					decent livehood through piggery farming.
+					</p>
+				</div>
+				<div id="mission">
+					<h2> Our mission </h2>
+					<p>
+					To help people see their potential and value of their surroundings,
+					fostering on food security, income and sustainable agricultural.
+					</p>
+				</div>
+			</div>
+
+		</main>
+	</body>
+
+{% include "footer.html" %}
+
+</html>
