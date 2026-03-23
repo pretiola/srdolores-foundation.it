@@ -20,9 +20,17 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
             // Additionally map /pictures directly for old HTML references
             .service(actix_files::Files::new("/pictures", "./static/pictures"))
             // Handle main index route
-            .route("/", web::get().to(index))
+            .service(
+                web::resource("/")
+                    .route(web::get().to(index))
+                    .route(web::head().to(index))
+            )
             // Handle dynamic page routes
-            .route("/{page}.html", web::get().to(dynamic_page))
+            .service(
+                web::resource("/{page}.html")
+                    .route(web::get().to(dynamic_page))
+                    .route(web::head().to(dynamic_page))
+            )
             // Fallback for static items at root level (e.g. /common.css referenced in HTML)
             .service(actix_files::Files::new("/", "./static"))
     })
