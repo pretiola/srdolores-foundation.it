@@ -3,37 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Who we are - Friends and family of Sr. Dolores">
-  <title>Who we are | Piglet Project</title>
+  <meta name="description" content="Learn about the friends and family of Sr. Dolores and their mission to help the suffering people in Africa through the Piglet Project.">
+  <meta name="keywords" content="Sr. Dolores, Foundation, Mission, Catholic Nun, Oberzell, Africa, Charity, Piglet Project">
+  <meta property="og:title" content="Who We Are | Sr. Dolores Foundation">
+  <meta property="og:description" content="Learn about the friends and family of Sr. Dolores and their mission to help the suffering people in Africa through the Piglet Project.">
+  <meta property="og:type" content="website">
+  <title>Who we are | Piglet Project - Sr. Dolores Foundation</title>
   <link href="/css/tailwind.css" rel="stylesheet">
 </head>
 <body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden text-center">
   <header>
     {% include "navbar.html" %}
   </header>
-  <main class="container mx-auto px-4 py-8 max-w-4xl">
-    <section class="flex flex-col md:flex-row items-center justify-center gap-8">
-      <div class="text-center md:flex-shrink-0">
+  <main class="container mx-auto px-4 py-8 max-w-5xl">
+    
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-900">Who we are</h1>
+    
+    <section class="flex flex-col lg:flex-row items-center justify-center gap-8 bg-white rounded-lg shadow-md p-6 md:p-8">
+      <div class="text-center shrink-0">
         <picture>
-          <img class="w-[300px] h-auto border border-black inline-block" src="/pictures/sr_dolores_and_emmanuel.jpeg" alt="Sr. Dolores and Emmanuel" loading="lazy" />
+          <img class="w-full max-w-[300px] h-auto border border-black inline-block rounded" src="/pictures/sr_dolores_and_emmanuel.jpeg" alt="Sr. Dolores and Emmanuel" loading="eager" />
         </picture>
       </div>
-      <article class="text-left max-w-[700px]">
-        <h1 class="text-3xl font-bold text-center mb-6">Who we are</h1>
+      
+      <article class="text-left text-gray-800 leading-relaxed max-w-[700px]">
         <p class="mb-4">
           We are friends and family of Sr. Dolores who has inspired us by her
           spirit of serving those in need. She helped me become a Catholic
           priest and many other people. Let us make her spirit alive among the
-          suffering people in the society. Who is Sr. Dolores? She was born in
+          suffering people in the society. 
+        </p>
+        <p>
+          Who is Sr. Dolores? She was born in
           Forst, that is Germany, and she became a catholic Nun in the
           congregation of the Holy Childhood in Oberzell. In 1955 she left
           Germany for a missionary assignment in Africa, where she worked for
           60 years. She returned to eternity on the 25th of February 2022.
         </p>
       </article>
-      <div class="text-center md:flex-shrink-0">
+      
+      <div class="text-center shrink-0">
         <picture>
-          <img class="max-w-[300px] h-auto border border-black inline-block" src="/pictures/emmanuel_with_kids_3.jpeg" alt="Emmanuel with children" loading="lazy" />
+          <img class="w-full max-w-[300px] h-auto border border-black inline-block rounded" src="/pictures/emmanuel_with_kids_3.jpeg" alt="Emmanuel with children" loading="lazy" />
         </picture>
       </div>
     </section>
