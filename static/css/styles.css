@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@source "../../templates";
+
+/* Base semantic resets for universal access */
+@layer base {
+  body {
+    background-color: #f9fafb;
+    color: #111827;
+  }
+}

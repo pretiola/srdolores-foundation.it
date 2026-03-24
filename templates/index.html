@@ -2,86 +2,89 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<title>Piglet Project</title>
-		<link href="common.css" rel="stylesheet">
-		<link href="home.css" rel="stylesheet">
-	</head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sr. Dolores foundation for children in poor families. Reaching out through productive farming.">
+  <title>Piglet Project - Sr. Dolores Foundation</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
 
-	<body>
+<body class="bg-gray-50 text-gray-900 font-sans leading-normal tracking-normal overflow-x-hidden">
 
-		{% include "navbar.html" %}
+  <header>
+    {% include "navbar.html" %}
+  </header>
 
-		<main>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Welcome Banner / Hero -->
+    <section id="welcome" class="mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg overflow-hidden shadow-sm mb-6">
+        <picture>
+          <img class="w-full h-auto object-cover" src="/pictures/flyer.jpg" alt="Informational flyer for the Sr. Dolores Foundation" loading="eager" />
+        </picture>
+        <picture>
+          <img class="w-full h-auto object-cover" src="/pictures/piglets.jpg" alt="A healthy group of piglets feeding together" loading="lazy" />
+        </picture>
+      </div>
 
-			<!-- Welcome Banner -->
-			<div id=welcome>
+      <article id="home-text" class="text-center md:text-left">
+        <h1 class="text-3xl md:text-5xl font-bold text-green-800 mb-4">Sr. Dolores foundation for children in poor families</h1>
+        <h2 class="text-xl md:text-2xl text-gray-700 font-light">
+          Reaching out to the poor families and children through productive and educative farming. Be part of this wonderful project by buying one piglet.
+        </h2>
+      </article>
+    </section>
 
-				<img id=home-img-2 src='pictures/flyer.jpg'/>
-				<img id=home-img-3 src='pictures/piglets.jpg'/>
+    <!-- The Piglet Project Details -->
+    <section class="mb-12 bg-white rounded-lg shadow-md p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">The Piglet Project</h2>
+      <p class="mb-4 text-gray-700 leading-relaxed">
+        The piglet project is a kickstarter for the poor and hopeless families in the village of BINZI to become economically self-reliant, by providing them with the required material and training for engaging in piggery farming.
+      </p>
+      <p class="mb-6 text-gray-700 leading-relaxed">
+        This project is very easy to manage especially to families that have less; in a few months they will be ready for sale. There is nothing as gratifying as being able to provide for your family. Find more information on the following pages:
+      </p>
 
-				<div id=home-text>
-					<h1>Sr. Dolores foundation for children in poor families</h1>
-					<h3>
-						Reaching out to the poor families and children through productive
-						and educative farming. Be part of this wonderful project by buying
-						one piglet.
-					</h3>
-				</div>
-			</div>
+      <nav aria-label="Project Information Navigation">
+        <ul class="flex flex-col sm:flex-row gap-4 sm:gap-8 list-none pl-0">
+          <li><a class="text-green-700 hover:text-green-900 font-medium underline underline-offset-4" href="/benificiaries.html">Beneficiaries of the project</a></li>
+          <li><a class="text-green-700 hover:text-green-900 font-medium underline underline-offset-4" href="/challenges.html">Challenges of the families</a></li>
+          <li><a class="text-green-700 hover:text-green-900 font-medium underline underline-offset-4" href="/goals.html">Goals of the project</a></li>
+        </ul>
+      </nav>
+    </section>
 
-				<!-- The Piglet Project -->
-				<div>
-					<h1> The piglet project </h1>
-					<p align=left>
-						The priglet project is a kickstarter for the poor and hopeless
-						families in the village of BINZI to become economically self-reliant,
-						by providing them with the required material and trainig for engaging
-						in piggery farming.
-					</p>
+    <!-- Vision and Mission -->
+    <section id="vision-mission-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-green-50 rounded-lg p-6 md:p-8">
+      <div class="order-last md:order-first">
+        <picture>
+          <img class="w-full h-auto rounded shadow-sm" src="/pictures/emmanuel_with_kids_selfie.jpeg" alt="Emmanuel taking a selfie with the children in the village of Binzi" loading="lazy" />
+        </picture>
+      </div>
+      
+      <div class="space-y-8">
+        <article id="vision">
+          <h2 class="text-2xl font-bold text-green-900 mb-2">Our vision</h2>
+          <p class="text-gray-800 leading-relaxed">
+            To see people of Binzi attaining holistic development and enjoying a decent livelihood through piggery farming.
+          </p>
+        </article>
+        
+        <article id="mission">
+          <h2 class="text-2xl font-bold text-green-900 mb-2">Our mission</h2>
+          <p class="text-gray-800 leading-relaxed">
+            To help people see their potential and value of their surroundings, fostering food security, income, and sustainable agriculture.
+          </p>
+        </article>
+      </div>
+    </section>
 
-					<p align=left>
-						This project is very easy to manage especially to families that have
-						less, in a few months they will be ready for sale.  There is nothing
-						as gratifying as being able to provide for your family. Find more
-						information on the following pages:
-					</p>
-				</div>
+  </main>
 
-			<!-- More information -->
-			<div>
-				<ul style="display: inline-block; text-align: left;">
-					<li><a href="benificiaries.html">Benificiaries of the project</a></li>
-					<li><a href="challenges.html">Challenges of the families</a></li>
-					<li><a href="goals.html">Goals of the project</a></li>
-				</ul>
-			</div>
+  <footer>
+    {% include "footer.html" %}
+  </footer>
 
-			<!-- Vision and Mission -->
-			<div id="vision-mission-container">
-				<img id="home-img-4" src='pictures/emmanuel_with_kids_selfie.jpeg'/>
-				<div id="vision">
-					<h2> Our vision </h2>
-					<p>
-					To see people of Binzi attaining holistic development and enjoying a
-					decent livehood through piggery farming.
-					</p>
-				</div>
-				<div id="mission">
-					<h2> Our mission </h2>
-					<p>
-					To help people see their potential and value of their surroundings,
-					fostering on food security, income and sustainable agricultural.
-					</p>
-				</div>
-			</div>
-
-		</main>
-	</body>
-
-{% include "footer.html" %}
-
+</body>
 </html>
