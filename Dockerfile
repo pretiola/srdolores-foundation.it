@@ -19,6 +19,14 @@ COPY . .
 # Build for release
 RUN touch src/main.rs && cargo build --release
 
+# CSS build stage
+FROM node:20-slim as css-builder
+WORKDIR /app
+COPY templates templates
+COPY static static
+RUN npm install tailwindcss @tailwindcss/cli
+RUN npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/tailwind.css --minify
+
 # Runtime stage
 FROM debian:bookworm-slim
 
@@ -30,9 +38,11 @@ WORKDIR /app
 # Copy binary from builder
 COPY --from=builder /app/target/release/petriola /usr/local/bin/
 
-# Copy static files and templates
+# Copy standard setup
 COPY static /app/static
 COPY templates /app/templates
+# Override cleanly compiled css from node stage
+COPY --from=css-builder /app/static/css/tailwind.css /app/static/css/tailwind.css
 
 ENV RUST_LOG="info"
 EXPOSE 8080

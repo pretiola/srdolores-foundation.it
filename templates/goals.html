@@ -1,54 +1,43 @@
-<!-- vim: set tabstop=2: -->
 <!doctype html>
 <html lang="en">
-
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<title>Piglet Project</title>
-		<link href="common.css" rel="stylesheet">
-	</head>
-
-<style>
-	div {
-		text-align: center;
-	}
-	img {
-		max-width: 80%;
-	}
-</style>
-
-	<body>
-
-		{% include "navbar.html" %}
-
-		<main>
-
-			<div>
-				<img src='pictures/efp1.jpg'/>
-			</div>
-
-			<h1 align=center>What are the goals of this project</h1>
-			<p>
-				To solve both nutrition and financial problems over 60 poor families in
-				the village of BINZI community for their sustainability. To improve the
-				living standard for the poor families in all spheres of life.
-				In summary this project will provide a start-up piglets (LOCAL BREED) to
-				poor families without any financial means. Local breed is manageable
-				especially to the weather climate which is tropical climate. This
-				project of piggery is very friendly to our climate. It is also very
-				friendly animal based.
-			</p>
-
-			<div>
-				<img src='pictures/water-system-1.jpg'/>
-			</div>
-
-	</main>
-	</body>
-
-{% include "footer.html" %}
-
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Goals of the Piglet Project">
+  <title>Goals - Piglet Project</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+  <header>
+    {% include "navbar.html" %}
+  </header>
+  <main class="container mx-auto px-4 py-8 max-w-4xl text-center">
+    <section class="mb-12">
+      <picture>
+        <img class="max-w-[80%] inline-block border border-black" src="/pictures/efp1.jpg" alt="Children involved in the project" loading="lazy" />
+      </picture>
+    </section>
+    <article class="max-w-[700px] mx-auto mb-12">
+      <h1 class="text-3xl font-bold mb-6">What are the goals of this project</h1>
+      <p class="text-left mb-4">
+        To solve both nutrition and financial problems over 60 poor families in
+        the village of BINZI community for their sustainability. To improve the
+        living standard for the poor families in all spheres of life.
+        In summary this project will provide a start-up piglets (LOCAL BREED) to
+        poor families without any financial means. Local breed is manageable
+        especially to the weather climate which is tropical climate. This
+        project of piggery is very friendly to our climate. It is also very
+        friendly animal based.
+      </p>
+    </article>
+    <section class="mb-12">
+      <picture>
+        <img class="max-w-[80%] inline-block border border-black" src="/pictures/water-system-1.jpg" alt="Water system construction" loading="lazy" />
+      </picture>
+    </section>
+  </main>
+  <footer>
+    {% include "footer.html" %}
+  </footer>
+</body>
 </html>

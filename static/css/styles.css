@@ -1,10 +1,11 @@
 @import "tailwindcss";
 @source "../../templates";
 
-/* Base semantic resets for universal access */
+/* Base semantic resets for universal access mapped EXACTLY to original aesthetics */
 @layer base {
   body {
-    background-color: #f9fafb;
-    color: #111827;
+    background-color: #fcf3cf;
+    color: #000000;
+    @apply font-serif antialiased;
   }
 }

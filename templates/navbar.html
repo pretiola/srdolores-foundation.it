@@ -1,16 +1,50 @@
-<!-- vim: set tabstop=2: -->
-		<nav id=navbar>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="who_we_are.html">Who we are</a>
-				<li><a href="#">What we do</a>
-					<ul class="submenu">
-						<li><a href="benificiaries.html">Benificiaries</a></li>
-						<li><a href="challenges.html">Challenges</a></li>
-						<li><a href="goals.html">Goals</a></li>
-					</ul>
-				</li>
-				<li><a href="holy_mass.html">Holy Mass</a></li>
-				<li><a href="get_involved.html">Get involved</a></li>
-			</ul>
-		</nav>
+<nav id="navbar" aria-label="Main Navigation">
+  <div class="sm:hidden">
+    <!-- CSS-only hamburger menu using the standard HTML <details> tag -->
+    <details class="group bg-[darkred] border border-black p-2 cursor-pointer text-[gold]">
+      <summary class="list-none text-center font-bold text-lg select-none">
+        ☰ Menu
+      </summary>
+      <ul class="flex flex-col mt-2">
+        <!-- Main Pages -->
+        <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/">Home</a></li>
+        <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/who_we_are.html">Who we are</a></li>
+        <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/what_we_do.html">What we do</a></li>
+        
+        <!-- Piglet Project nested links represented flatly in mobile -->
+        <li><a class="block border border-black p-2 pl-6 text-center font-bold bg-[#8b0000] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/benificiaries.html">↳ Beneficiaries</a></li>
+        <li><a class="block border border-black p-2 pl-6 text-center font-bold bg-[#8b0000] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/challenges.html">↳ Challenges</a></li>
+        <li><a class="block border border-black p-2 pl-6 text-center font-bold bg-[#8b0000] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/goals.html">↳ Goals</a></li>
+        
+        <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/holy_mass.html">Holy Mass</a></li>
+        <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/get_involved.html">Get involved</a></li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="hidden sm:block">
+    <ul class="flex flex-row w-full">
+      <li class="flex-1 group relative">
+        <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/">Home</a>
+      </li>
+      <li class="flex-1 group relative">
+        <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/who_we_are.html">Who we are</a>
+      </li>
+      <li class="flex-1 group relative">
+        <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/what_we_do.html">What we do</a>
+        <!-- Submenu standard CSS hover -->
+        <ul class="submenu absolute left-0 top-full w-full hidden group-hover:block group-focus-within:block z-10 shadow-lg">
+          <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/benificiaries.html">Beneficiaries</a></li>
+          <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/challenges.html">Challenges</a></li>
+          <li><a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/goals.html">Goals</a></li>
+        </ul>
+      </li>
+      <li class="flex-1 group relative">
+        <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/holy_mass.html">Holy Mass</a>
+      </li>
+      <li class="flex-1 group relative">
+        <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/get_involved.html">Get involved</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,57 +1,45 @@
-<!-- vim: set tabstop=2: -->
 <!doctype html>
 <html lang="en">
-
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<title>Who we are | Piglet Project</title>
-		<link href="common.css" rel="stylesheet">
-	</head>
-
-	<style>
-     img {
-				max-width=100%;
-      }
-	</style>
-
-	<body class="background-color text-center">
-
-		{% include "navbar.html" %}
-
-		<main>
-			<div class="d-flex flex-column flex-md-row text-center">
-
-				<div style="text-align: center">
-					<img style="width: 300px" src='pictures/sr_dolores_and_emmanuel.jpeg'/>
-				</div>
-
-				<div>
-					<h1 align=center> Who we are </h1>
-
-					<p align=left>
-					We are friends and family of Sr. Dolores who has inspired us by her
-					spirit of serving those in need.  She helped me become a Catholic
-					priest and many other people. Let us make her spirit alive among the
-					suffering people in the society. Who is Sr. Dolores? She was born in
-					Forst, that is Germany, and she became a catholic Nun in the
-					congregation of the Holy Childhood in Oberzell. In 1955 she left
-					Germany for a missionary assignment in Africa, where she worked for
-					60 years. She returned to eternity on the 25th of February 2022.
-					</p>
-				</div>
-
-				<div style="text-align: center">
-					<img src='pictures/emmanuel_with_kids_3.jpeg'/>
-				</div>
-
-			</div>
-
-		</main>
-
-	</body>
-
-{% include "footer.html" %}
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Who we are - Friends and family of Sr. Dolores">
+  <title>Who we are | Piglet Project</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden text-center">
+  <header>
+    {% include "navbar.html" %}
+  </header>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <section class="flex flex-col md:flex-row items-center justify-center gap-8">
+      <div class="text-center md:flex-shrink-0">
+        <picture>
+          <img class="w-[300px] h-auto border border-black inline-block" src="/pictures/sr_dolores_and_emmanuel.jpeg" alt="Sr. Dolores and Emmanuel" loading="lazy" />
+        </picture>
+      </div>
+      <article class="text-left max-w-[700px]">
+        <h1 class="text-3xl font-bold text-center mb-6">Who we are</h1>
+        <p class="mb-4">
+          We are friends and family of Sr. Dolores who has inspired us by her
+          spirit of serving those in need. She helped me become a Catholic
+          priest and many other people. Let us make her spirit alive among the
+          suffering people in the society. Who is Sr. Dolores? She was born in
+          Forst, that is Germany, and she became a catholic Nun in the
+          congregation of the Holy Childhood in Oberzell. In 1955 she left
+          Germany for a missionary assignment in Africa, where she worked for
+          60 years. She returned to eternity on the 25th of February 2022.
+        </p>
+      </article>
+      <div class="text-center md:flex-shrink-0">
+        <picture>
+          <img class="max-w-[300px] h-auto border border-black inline-block" src="/pictures/emmanuel_with_kids_3.jpeg" alt="Emmanuel with children" loading="lazy" />
+        </picture>
+      </div>
+    </section>
+  </main>
+  <footer>
+    {% include "footer.html" %}
+  </footer>
+</body>
 </html>
