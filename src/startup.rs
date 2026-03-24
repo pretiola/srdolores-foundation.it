@@ -1,4 +1,4 @@
-use crate::routes::{dynamic_page, index};
+use crate::routes::{dynamic_page, index, sitemap};
 use actix_web::dev::Server;
 use actix_web::{App, HttpServer, web};
 use std::net::TcpListener;
@@ -24,6 +24,12 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
                 web::resource("/")
                     .route(web::get().to(index))
                     .route(web::head().to(index))
+            )
+            // Sitemap XML route
+            .service(
+                web::resource("/sitemap.xml")
+                    .route(web::get().to(sitemap))
+                    .route(web::head().to(sitemap))
             )
             // Handle dynamic page routes
             .service(
