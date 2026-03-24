@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --minify"
+    "build:css": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/tailwind.css --minify",
+    "build:images": "mkdir -p static/pictures/optimized && npx sharp-cli -i static/pictures/sr_dolores_and_emmanuel_sharpen.png -o static/pictures/optimized/sr_dolores_1200w.webp resize 1200 && npx sharp-cli -i static/pictures/sr_dolores_and_emmanuel_sharpen.png -o static/pictures/optimized/sr_dolores_800w.webp resize 800 && npx sharp-cli -i static/pictures/sr_dolores_and_emmanuel_sharpen.png -o static/pictures/optimized/sr_dolores_400w.webp resize 400 && npx sharp-cli -i static/pictures/sr_dolores_and_emmanuel_sharpen.png -o static/pictures/optimized/sr_dolores_1200w.jpg resize 1200 && npx sharp-cli -i static/pictures/sr_dolores_and_emmanuel_sharpen.png -o static/pictures/optimized/sr_dolores_800w.jpg resize 800 && npx sharp-cli -i static/pictures/sr_dolores_and_emmanuel_sharpen.png -o static/pictures/optimized/sr_dolores_400w.jpg resize 400"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "@tailwindcss/cli": "^4.2.2",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
+    "sharp-cli": "^5.0.0",
     "tailwindcss": "^4.2.2"
   }
 }
