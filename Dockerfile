@@ -23,7 +23,7 @@ RUN touch src/main.rs && cargo build --release
 FROM node:20-slim as css-builder
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 COPY templates templates
 COPY static static
 RUN npm run build:css
