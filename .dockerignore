@@ -3,6 +3,5 @@ target
 .git
 *.md
 .github
-static/pictures/*_sharpen.*
 static/pictures/*.orig.*
 static/pictures/*~
