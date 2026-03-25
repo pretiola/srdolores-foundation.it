@@ -1,75 +1,71 @@
-<!-- vim: set tabstop=2: -->
 <!doctype html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Request a Mass intention to be offered by Fr. Emmanuel Kasibante during the celebration of the Holy Mass.">
+  <meta name="keywords" content="Mass Intentions, Catholic Mass, Fr. Emmanuel Kasibante, Prayers, Liturgy, Rome">
+  <meta property="og:title" content="Mass Intentions | Sr. Dolores Foundation">
+  <meta property="og:description" content="Request a Mass intention to be offered by Fr. Emmanuel Kasibante during the celebration of the Holy Mass.">
+  <meta property="og:type" content="website">
+  <title>Mass intentions | Sr. Dolores Foundation</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+  <header>
+    {% include "navbar.html" %}
+  </header>
+  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+    
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Mass Intentions</h1>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<title> Mass intentions</title>
-		<link href="common.css" rel="stylesheet">
-	</head>
+    <div class="text-center mb-8">
+      <picture class="block w-full md:max-w-[800px] mx-auto">
+        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/emmanuel_mass.jpg" alt="Fr. Emmanuel Kasibante celebrating Mass" loading="eager" />
+      </picture>
+    </div>
 
-	<style>
-		h1 {
-			text-align:center;
-		}
-
-		h2 {
-			text-align:center;
-		}
-	</style>
-
-	<body>
-
-		{% include "navbar.html" %}
-
-		<main>
-			<h1>Mass Intentions</h1>
-
-			<p>
-			I am Fr. Emmanuel Kasibante, a Catholic Priest of the Catholic Diocese of
-			Eshowe, South Africa. Currently I am here in Rome doing studies in Sacred
-			Liturgy.
-			</p>
-
-			<div style="text-align: center">
-				<img align=middle src='pictures/emmanuel_mass.jpg'/>
-			</div>
-
-			<h2>What are Mass Intentions?</h2>
-
-			<p>
-			These are special intentions or
-			requests that the faithful ask their priests to offer them during the
-			celebration of the  Holy Mass.  This custom, well understood in former
-			generations past, is perhaps not so widely understood today. Any
-			individual may ask a priest to offer a Mass for several reasons: for
-			example, 
-
-			(i) In thanksgiving for the graces received
-			(ii) For the sick person 
-			(iii) For the intentions of another person (such as on a birthday)
-			(iv) For the repose of the soul of someone who has died.
-			(v) For the souls in Purgatory  
-
-			One must never forget the infinite graces that flow from the Sacrifice of
-			the Mass which benefit one’s soul. In the celebration of the Eucharistic
-			Sacrifice, the Church prays that God, the Father of mercies, will grant
-			His children the fullness of the Holy Spirit so that they may become one
-			body and one spirit in Christ. For many years priests have also depended
-			on the offerings of the Mass Intentions for their survival and the
-			continuation of pastoral work.
-			</p>
-
-			<p>
-			<b>You are free to ask a Mass intention offered for you.</b>
-			</p>
-
-
-		</main>
-	</body>
-
-{% include "footer.html" %}
-
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
+      <p class="mb-8">
+        I am Fr. Emmanuel Kasibante, a Catholic Priest of the Catholic Diocese of
+        Eshowe, South Africa. Currently I am here in Rome doing studies in Sacred
+        Liturgy.
+      </p>
+      
+      <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-green-800">What are Mass Intentions?</h2>
+      <p class="mb-4">
+        These are special intentions or requests that the faithful ask their priests to offer them during the
+        celebration of the Holy Mass. This custom, well understood in former
+        generations past, is perhaps not so widely understood today. Any
+        individual may ask a priest to offer a Mass for several reasons: for
+        example,
+      </p>
+      
+      <ul class="list-disc list-inside mb-6 pl-4 space-y-2">
+        <li>In thanksgiving for the graces received</li>
+        <li>For the sick person</li>
+        <li>For the intentions of another person (such as on a birthday)</li>
+        <li>For the repose of the soul of someone who has died</li>
+        <li>For the souls in Purgatory</li>
+      </ul>
+      
+      <p class="mb-8">
+        One must never forget the infinite graces that flow from the Sacrifice of
+        the Mass which benefit one’s soul. In the celebration of the Eucharistic
+        Sacrifice, the Church prays that God, the Father of mercies, will grant
+        His children the fullness of the Holy Spirit so that they may become one
+        body and one spirit in Christ. For many years priests have also depended
+        on the offerings of the Mass Intentions for their survival and the
+        continuation of pastoral work.
+      </p>
+      
+      <p class="font-bold text-center text-xl text-green-900 bg-green-50 p-4 rounded border border-green-200">
+        You are free to ask a Mass intention offered for you.
+      </p>
+    </article>
+  </main>
+  <footer>
+    {% include "footer.html" %}
+  </footer>
+</body>
 </html>

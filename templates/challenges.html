@@ -1,100 +1,87 @@
-<!-- vim: set tabstop=2: -->
 <!doctype html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the challenges faced by poor families in Binzi, and how the Piglet Project is providing long-term sustaining solutions.">
+  <meta name="keywords" content="Challenges, Poverty, Piglet Project, Farming, Sustainable Development, Africa, Charity">
+  <meta property="og:title" content="Challenges & Solutions | Sr. Dolores Foundation">
+  <meta property="og:description" content="Explore the challenges faced by poor families in Binzi, and how the Piglet Project is providing long-term sustaining solutions.">
+  <meta property="og:type" content="website">
+  <title>Challenges - Piglet Project | Sr. Dolores Foundation</title>
+  <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+  <header>
+    {% include "navbar.html" %}
+  </header>
+  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+    
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Challenges and Solutions</h1>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<title>Piglet Project</title>
-		<link href="common.css" rel="stylesheet">
-	</head>
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
+      <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-green-800">Challenges that poor families face</h2>
+      <p class="mb-6">
+        Most of the rural poor families do not have money and material resources
+        that they could use to support their households by providing nutritive
+        food, medication, and proper clothing for themselves and also providing
+        essential necessities to their own children in time of need.
+      </p>
+      
+      <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-green-800">The Solution</h2>
+      <p class="mb-4">
+        By providing pig farming, the poor families will be able to benefit
+        financial gains and profits to cater for the needs of their families.
+        They will also improve their farming skills by using the pig wastes as
+        manure for their gardens. Source of compost for their gardens and in
+        the end, they will have vegetables and other foods. On this point, each
+        family that is going to benefit from this project will have at least 30
+        banana stem plantations whereby they will be putting the wastes of the
+        pigs.
+      </p>
+    </article>
 
-	<style>
-		#challenges-pictures {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-		}
-
-		#challenges-pic-1 {
-			grid-row: 1/2;
-			grid-column: 1/2;
-		}
-
-		#challenges-pic-2 {
-			grid-row: 1/2;
-			grid-column: 2/3;
-		}
-
-		#challenges-pic-small-3 {
-			grid-row: 2/3;
-			grid-column: 1/2;
-		}
-
-		#challenges-pic-small-4 {
-			grid-row: 2/3;
-			grid-column: 2/3;
-		}
-	</style>
-
-	<body>
-
-		{% include "navbar.html" %}
-
-		<main>
-			<h1 align=center>Challenges that poor families face</h1>
-			<p>
-				Most of the rural poor families do not have money and material resources
-				that they could use to support their households by providing nutritive
-				food, medication, and proper clothing for themselves and also providing
-				essential necessities to their own children in time of need.
-			</p>
-
-			<h1 align=center>Solution</h1>
-			<p>
-				By providing pig farming, the poor families will be able to benefit
-				financial gains and profits to cater for the needs of their families.
-				They will also improve their farming skills by using the pig wastes as
-				manual for their gardens. Source of compost for their gardens and in
-				the end, they will have vegetables and other foods. On this point, each
-				family that is going to benefit from this project will have at least 30
-				banana stem plantations whereby they will be putting the wastes of the
-				pigs.
-			</p>
-
-			<div id=challenges-pictures>
-				<img id=challenges-pic-1 src='pictures/efp2.jpg'/>
-				<img id=challenges-pic-2 src='pictures/sau-mit-ferkeln.jpg'/>
-				<img id=challenges-pic-3 src='pictures/working-with-banana-plants.jpg'/>
-				<img id=challenges-pic-4 src='pictures/kids_infrontof_house_2.jpeg'/>
-			</div>
-
-			<h1 align=center>Long-term impact</h1>
-			<p>
-				Long-term Impact: The project will have a long-term self-sustaining
-				effect in terms of solving problems that poor families face such as
-				financial strains, nutritive food, and good farming. Another reason for
-				keeping pigs is that families must try being more self-reliant. Working
-				together as a family, in feeding pigs becomes a duty of everyone at
-				home.  Once fed well every year they will have some pigs to sell. Pigs
-				can produce10-12 piglets and within a year a pig can give birth two
-				times.  Pigs are source of meat. Pigs reach slaughter weights when they
-				are 6 months old. This means that in a period of 6 months the poor
-				rural family will have something to sell. So, I feel that pig farming
-				is the best project that can easily up lift the living standard of my
-				people in the rural places of Binzi.  Teaching our kids how to farm
-				pigs is a great way of helping the whole family to sustain themselves.
-				Everyone is involved, children and parents and guardians. This will
-				help teach our children the importance of caring for others and the
-				importance of being responsible.  This is why, once this project has
-				taken shape, our children will get knowledge that they need and the
-				experiences they will remember to use in life. 
-			</p>
-
-	</main>
-	</body>
-
-{% include "footer.html" %}
-
-
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-4 mb-12 max-w-[800px] w-full mx-auto">
+      <picture class="w-full">
+        <img class="w-full h-64 object-cover border-y sm:border border-black sm:rounded sm:shadow" src="/pictures/efp2.jpg" alt="Challenges faced" loading="lazy" />
+      </picture>
+      <picture class="w-full">
+        <img class="w-full h-64 object-cover border-b sm:border border-black sm:rounded sm:shadow" src="/pictures/sau-mit-ferkeln.jpg" alt="Pigs and piglets" loading="lazy" />
+      </picture>
+      <picture class="w-full">
+        <img class="w-full h-64 object-cover border-b sm:border border-black sm:rounded sm:shadow" src="/pictures/working-with-banana-plants.jpg" alt="Working with banana plants" loading="lazy" />
+      </picture>
+      <picture class="w-full">
+        <img class="w-full h-64 object-cover border-b sm:border border-black sm:rounded sm:shadow" src="/pictures/kids_infrontof_house_2.jpeg" alt="Kids in front of house" loading="lazy" />
+      </picture>
+    </section>
+    
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
+      <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-green-800">Long-Term Impact</h2>
+      <p class="mb-4">
+        The project will have a long-term self-sustaining
+        effect in terms of solving problems that poor families face such as
+        financial strains, nutritive food, and good farming. Another reason for
+        keeping pigs is that families must try being more self-reliant. Working
+        together as a family, in feeding pigs becomes a duty of everyone at
+        home.  Once fed well every year they will have some pigs to sell. Pigs
+        can produce 10-12 piglets and within a year a pig can give birth two
+        times.  Pigs are source of meat. Pigs reach slaughter weights when they
+        are 6 months old. This means that in a period of 6 months the poor
+        rural family will have something to sell. So, I feel that pig farming
+        is the best project that can easily up lift the living standard of my
+        people in the rural places of Binzi.  Teaching our kids how to farm
+        pigs is a great way of helping the whole family to sustain themselves.
+        Everyone is involved, children and parents and guardians. This will
+        help teach our children the importance of caring for others and the
+        importance of being responsible.  This is why, once this project has
+        taken shape, our children will get knowledge that they need and the
+        experiences they will remember to use in life. 
+      </p>
+    </article>
+  </main>
+  <footer>
+    {% include "footer.html" %}
+  </footer>
+</body>
 </html>

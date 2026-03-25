@@ -1,0 +1,33 @@
+{
+  "name": "website_source",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/tailwind.css --minify",
+    "build:images": "node scripts/optimize-images.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pretiola/srdolores-foundation.it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pretiola/srdolores-foundation.it/issues"
+  },
+  "homepage": "https://github.com/pretiola/srdolores-foundation.it#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "sharp": "^0.33.2",
+    "tailwindcss": "^4.2.2"
+  }
+}
