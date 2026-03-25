@@ -37,7 +37,7 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
                     .route(web::get().to(dynamic_page))
                     .route(web::head().to(dynamic_page)),
             )
-            // Fallback for static items at root level (e.g. /common.css referenced in HTML)
+            // Fallback for static items at root level (e.g. /robots.txt)
             .service(actix_files::Files::new("/", "./static"))
     })
     .listen(listener)?
