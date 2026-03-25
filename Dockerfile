@@ -27,7 +27,6 @@ RUN npm install
 COPY templates templates
 COPY static static
 RUN npm run build:css
-RUN npm run build:images
 
 # Runtime stage
 FROM debian:bookworm-slim
@@ -45,7 +44,6 @@ COPY static /app/static
 COPY templates /app/templates
 # Override cleanly compiled css from node stage
 COPY --from=css-builder /app/static/css/tailwind.css /app/static/css/tailwind.css
-COPY --from=css-builder /app/static/pictures/optimized /app/static/pictures/optimized
 
 ENV RUST_LOG="info"
 EXPOSE 8080

@@ -15,20 +15,20 @@
   <header>
     {% include "navbar.html" %}
   </header>
-  <main class="container mx-auto px-4 py-8 max-w-4xl">
+  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
     
-    <h1 class="text-4xl font-bold text-center mb-8 text-green-900">Who are the beneficiaries of this project?</h1>
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Who are the beneficiaries of this project?</h1>
 
-    <section class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-      <picture class="flex-1 max-w-[400px] mx-auto">
-        <img class="w-full h-auto object-cover border border-black rounded" src="/pictures/groceries_portrait_1.jpeg" alt="Beneficiaries with groceries" loading="eager" />
+    <section class="flex flex-col sm:flex-row justify-center gap-0 sm:gap-4 mb-8">
+      <picture class="w-full sm:flex-1 md:max-w-[500px]">
+        <img class="w-full h-auto object-cover border-y sm:border border-black sm:rounded" src="/pictures/groceries_portrait_1.jpeg" alt="Beneficiaries with groceries" loading="eager" />
       </picture>
-      <picture class="flex-1 max-w-[400px] mx-auto">
-        <img class="w-full h-auto object-cover border border-black rounded" src="/pictures/family-with-shovels.jpg" alt="Family carrying shovels for farming" loading="eager" />
+      <picture class="w-full sm:flex-1 md:max-w-[500px]">
+        <img class="w-full h-auto object-cover border-b sm:border border-black sm:rounded" src="/pictures/family-with-shovels.jpg" alt="Family carrying shovels for farming" loading="eager" />
       </picture>
     </section>
     
-    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-auto text-left leading-relaxed text-gray-800">
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
       <p class="mb-4">
         This project targets poor families, Children heading families (a family
         whereby all parents died, and the elder child takes the responsibility
@@ -40,18 +40,18 @@
       </p>
     </article>
 
-    <h2 class="text-3xl font-bold text-center mb-8 text-green-900">What are the responsibilities?</h2>
+    <h2 class="text-3xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">What are the responsibilities?</h2>
 
-    <section class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8 text-center">
-      <picture class="max-w-[60%] sm:max-w-[40%]">
-        <img class="w-full h-auto inline-block border border-black rounded" src="/pictures/efp3.jpg" alt="Children of beneficiaries" loading="lazy" />
+    <section class="flex flex-col sm:flex-row justify-center items-center gap-0 sm:gap-4 mb-8 text-center w-full">
+      <picture class="w-full sm:max-w-[50%] md:max-w-[500px]">
+        <img class="w-full h-auto block object-cover border-y sm:border border-black sm:rounded" src="/pictures/efp3.jpg" alt="Children of beneficiaries" loading="lazy" />
       </picture>
-      <picture class="max-w-[60%] sm:max-w-[40%]">
-        <img class="w-full h-auto inline-block border border-black rounded" src="/pictures/pigs-and-chicken.jpg" alt="Pigs and chicken farming together" loading="lazy" />
+      <picture class="w-full sm:max-w-[50%] md:max-w-[500px]">
+        <img class="w-full h-auto block object-cover border-b sm:border border-black sm:rounded" src="/pictures/pigs-and-chicken.jpg" alt="Pigs and chicken farming together" loading="lazy" />
       </picture>
     </section>
     
-    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-auto text-left leading-relaxed text-gray-800">
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
       <p class="mb-4">
         Firstly, the beneficiaries will prepare a place where the piglets will
         be housed, it will be done in an ordinary manner. A start pack of
@@ -63,7 +63,7 @@
       </p>
     </article>
     
-    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-auto text-center">
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-center">
       <h2 class="text-3xl font-bold mb-6 text-green-900 border-b pb-4">Message of Appreciation</h2>
       <p style="font-family: 'Brush Script MT', cursive;" class="text-3xl leading-relaxed text-gray-800 text-left">
         Dearest friends in Christ,<br><br>

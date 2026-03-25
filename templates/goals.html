@@ -15,17 +15,17 @@
   <header>
     {% include "navbar.html" %}
   </header>
-  <main class="container mx-auto px-4 py-8 max-w-4xl text-center">
+  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl text-center">
     
-    <h1 class="text-4xl font-bold mb-8 text-green-900">What are the goals of this project?</h1>
+    <h1 class="text-4xl font-bold mb-8 text-green-900 px-4 md:px-0">What are the goals of this project?</h1>
     
-    <section class="flex flex-col items-center mb-8">
-      <picture class="w-full max-w-[600px]">
-        <img class="w-full h-auto object-cover border border-black rounded shadow" src="/pictures/efp1.jpg" alt="Children involved in the project" loading="eager" />
+    <section class="flex flex-col items-center mb-8 w-full">
+      <picture class="block w-full md:max-w-[800px] mx-auto">
+        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/efp1.jpg" alt="Children involved in the project" loading="eager" />
       </picture>
     </section>
 
-    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-auto text-left leading-relaxed text-gray-800">
+    <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
       <p class="mb-4">
         To solve both nutrition and financial problems over 60 poor families in
         the village of BINZI community for their sustainability. To improve the
@@ -40,9 +40,9 @@
       </p>
     </article>
 
-    <section class="flex flex-col items-center mb-12">
-      <picture class="w-full max-w-[600px]">
-        <img class="w-full h-auto object-cover border border-black rounded shadow" src="/pictures/water-system-1.jpg" alt="Water system construction" loading="lazy" />
+    <section class="flex flex-col items-center mb-12 w-full">
+      <picture class="block w-full md:max-w-[800px] mx-auto">
+        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/water-system-1.jpg" alt="Water system construction" loading="lazy" />
       </picture>
     </section>
   </main>
