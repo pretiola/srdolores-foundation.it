@@ -25,21 +25,26 @@ fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
     }
 }
 
-pub async fn sitemap() -> impl Responder {
-    let xml = r#"<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://srdolores-foundation.it/</loc></url>
-  <url><loc>https://srdolores-foundation.it/index.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/who_we_are.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/what_we_do.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/benificiaries.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/challenges.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/goals.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/holy_mass.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/get_involved.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/privacy_policy.html</loc></url>
-  <url><loc>https://srdolores-foundation.it/terms_of_use.html</loc></url>
-</urlset>
-"#;
+const PARTIALS: &[&str] = &["navbar.html", "footer.html"];
+const BASE_URL: &str = "https://srdolores-foundation.it";
+
+pub async fn sitemap(tera: web::Data<Tera>) -> impl Responder {
+    let mut urls = Vec::new();
+    urls.push(format!("  <url><loc>{}/</loc></url>", BASE_URL));
+
+    let mut template_names: Vec<&str> = tera
+        .get_template_names()
+        .filter(|name| name.ends_with(".html") && !PARTIALS.contains(name))
+        .collect();
+    template_names.sort();
+
+    for name in template_names {
+        urls.push(format!("  <url><loc>{}/{}</loc></url>", BASE_URL, name));
+    }
+
+    let xml = format!(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{}\n</urlset>\n",
+        urls.join("\n")
+    );
     HttpResponse::Ok().content_type("application/xml").body(xml)
 }

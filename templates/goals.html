@@ -20,8 +20,10 @@
     <h1 class="text-4xl font-bold mb-8 text-green-900 px-4 md:px-0">What are the goals of this project?</h1>
     
     <section class="flex flex-col items-center mb-8 w-full">
-      <picture class="block w-full md:max-w-[800px] mx-auto">
-        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/efp1.jpg" alt="Children involved in the project" loading="eager" />
+      <picture class="block w-full mx-auto">
+        <source type="image/webp" srcset="/pictures/optimized/efp1_1200w.webp 1200w, /pictures/optimized/efp1_800w.webp 800w, /pictures/optimized/efp1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 896px">
+        <source type="image/jpeg" srcset="/pictures/optimized/efp1_1200w.jpg 1200w, /pictures/optimized/efp1_800w.jpg 800w, /pictures/optimized/efp1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 896px">
+        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/optimized/efp1_800w.jpg" alt="Children involved in the project" loading="eager" />
       </picture>
     </section>
 
@@ -41,8 +43,10 @@
     </article>
 
     <section class="flex flex-col items-center mb-12 w-full">
-      <picture class="block w-full md:max-w-[800px] mx-auto">
-        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/water-system-1.jpg" alt="Water system construction" loading="lazy" />
+      <picture class="block w-full mx-auto">
+        <source type="image/webp" srcset="/pictures/optimized/water-system-1_1200w.webp 1200w, /pictures/optimized/water-system-1_800w.webp 800w, /pictures/optimized/water-system-1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 896px">
+        <source type="image/jpeg" srcset="/pictures/optimized/water-system-1_1200w.jpg 1200w, /pictures/optimized/water-system-1_800w.jpg 800w, /pictures/optimized/water-system-1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 896px">
+        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/optimized/water-system-1_800w.jpg" alt="Water system construction" loading="lazy" />
       </picture>
     </section>
   </main>

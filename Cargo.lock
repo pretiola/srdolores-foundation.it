@@ -1428,20 +1428,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "petriola"
-version = "0.1.0"
-dependencies = [
- "actix-files",
- "actix-web",
- "chrono",
- "env_logger",
- "log",
- "reqwest",
- "tera",
- "tokio",
-]
-
-[[package]]
 name = "phf"
 version = "0.11.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1519,6 +1505,20 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9"
 dependencies = [
  "zerocopy",
+]
+
+[[package]]
+name = "pretiola"
+version = "0.1.0"
+dependencies = [
+ "actix-files",
+ "actix-web",
+ "chrono",
+ "env_logger",
+ "log",
+ "reqwest",
+ "tera",
+ "tokio",
 ]
 
 [[package]]

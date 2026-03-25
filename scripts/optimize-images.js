@@ -9,41 +9,57 @@ if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Find all image files matching *_sharpen pattern
-const files = fs.readdirSync(inputDir).filter(file => 
-    file.endsWith('_sharpen.png') || 
-    file.endsWith('_sharpen.jpg') || 
-    file.endsWith('_sharpen.jpeg')
-);
+// Find all image files, skipping optimized/, backups (*~), and *.orig.* files
+const allFiles = fs.readdirSync(inputDir).filter(file => {
+    const ext = path.extname(file).toLowerCase();
+    if (!['.jpg', '.jpeg', '.png'].includes(ext)) return false;
+    if (file.endsWith('~')) return false;
+    if (file.includes('.orig.')) return false;
+    return true;
+});
+
+// Build a map: basename -> source file path
+// If a _sharpen variant exists, prefer it as the high-res source
+const sourceMap = new Map();
+
+for (const file of allFiles) {
+    const ext = path.extname(file);
+    const nameWithoutExt = path.basename(file, ext);
+    const sharpenMatch = nameWithoutExt.match(/^(.+)_sharpen$/);
+
+    if (sharpenMatch) {
+        // _sharpen file: use as source for the base name
+        const basename = sharpenMatch[1];
+        sourceMap.set(basename, { file, path: path.join(inputDir, file) });
+    } else if (!sourceMap.has(nameWithoutExt)) {
+        // Regular file: only use if no _sharpen variant already registered
+        sourceMap.set(nameWithoutExt, { file, path: path.join(inputDir, file) });
+    }
+}
 
 const sizes = [400, 800, 1200];
 
 async function processImages() {
-    for (const file of files) {
-        const inputPath = path.join(inputDir, file);
-        // Extract the base payload without the _sharpen suffix to mount the final name flawlessly
-        const basename = file.replace(/_sharpen\.(png|jpg|jpeg)$/, '');
-
-        console.log(`Processing high-rez source: ${file}...`);
+    for (const [basename, source] of sourceMap) {
+        console.log(`Processing: ${source.file} -> ${basename}`);
 
         for (const size of sizes) {
-            // Generate modern highly compressed WebP format dynamically
-            await sharp(inputPath)
+            await sharp(source.path)
                 .resize(size)
                 .webp({ quality: 80 })
                 .toFile(path.join(outputDir, `${basename}_${size}w.webp`));
-            
-            // Generate universally compatible JPEG fallback dynamically
-            await sharp(inputPath)
+
+            await sharp(source.path)
                 .resize(size)
                 .jpeg({ quality: 80 })
                 .toFile(path.join(outputDir, `${basename}_${size}w.jpg`));
         }
-        console.log(`Successfully compiled 6 optimized variants for ${file} into /static/pictures/optimized/.`);
+        console.log(`  -> Generated 6 variants for ${basename}`);
     }
+    console.log(`\nDone. Processed ${sourceMap.size} images.`);
 }
 
 processImages().catch(err => {
-    console.error('Fatal error scaling image build automation:', err);
+    console.error('Fatal error in image optimization:', err);
     process.exit(1);
 });
