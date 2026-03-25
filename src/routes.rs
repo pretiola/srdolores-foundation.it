@@ -1,6 +1,6 @@
-use actix_web::{HttpResponse, Responder, web};
-use tera::Tera;
+use actix_web::{web, HttpResponse, Responder};
 use chrono::{Datelike, Utc};
+use tera::Tera;
 
 pub async fn index(tera: web::Data<Tera>) -> impl Responder {
     render_page("index", tera)

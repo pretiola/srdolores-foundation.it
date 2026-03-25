@@ -1,6 +1,6 @@
 use crate::routes::{dynamic_page, index, sitemap};
 use actix_web::dev::Server;
-use actix_web::{App, HttpServer, web};
+use actix_web::{web, App, HttpServer};
 use std::net::TcpListener;
 use tera::Tera;
 
@@ -23,19 +23,19 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
             .service(
                 web::resource("/")
                     .route(web::get().to(index))
-                    .route(web::head().to(index))
+                    .route(web::head().to(index)),
             )
             // Sitemap XML route
             .service(
                 web::resource("/sitemap.xml")
                     .route(web::get().to(sitemap))
-                    .route(web::head().to(sitemap))
+                    .route(web::head().to(sitemap)),
             )
             // Handle dynamic page routes
             .service(
                 web::resource("/{page}.html")
                     .route(web::get().to(dynamic_page))
-                    .route(web::head().to(dynamic_page))
+                    .route(web::head().to(dynamic_page)),
             )
             // Fallback for static items at root level (e.g. /common.css referenced in HTML)
             .service(actix_files::Files::new("/", "./static"))
