@@ -9,31 +9,40 @@ if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Find all image files, skipping optimized/, backups (*~), and *.orig.* files
-const allFiles = fs.readdirSync(inputDir).filter(file => {
-    const ext = path.extname(file).toLowerCase();
-    if (!['.jpg', '.jpeg', '.png'].includes(ext)) return false;
-    if (file.endsWith('~')) return false;
-    if (file.includes('.orig.')) return false;
-    return true;
-});
+// Collect image files from a directory, returning { file, fullPath, prefix }
+function collectImages(dir, prefix) {
+    if (!fs.existsSync(dir)) return [];
+    return fs.readdirSync(dir).filter(file => {
+        const ext = path.extname(file).toLowerCase();
+        if (!['.jpg', '.jpeg', '.png'].includes(ext)) return false;
+        if (file.endsWith('~')) return false;
+        if (file.includes('.orig.')) return false;
+        return true;
+    }).map(file => ({ file, fullPath: path.join(dir, file), prefix }));
+}
+
+// Find all image files from top-level and subdirectories
+const allFiles = [
+    ...collectImages(inputDir, ''),
+    ...collectImages(path.join(inputDir, 'agriculture'), 'agriculture'),
+    ...collectImages(path.join(inputDir, 'housing'), 'housing'),
+];
 
 // Build a map: basename -> source file path
 // If a _sharpen variant exists, prefer it as the high-res source
 const sourceMap = new Map();
 
-for (const file of allFiles) {
+for (const { file, fullPath, prefix } of allFiles) {
     const ext = path.extname(file);
     const nameWithoutExt = path.basename(file, ext);
     const sharpenMatch = nameWithoutExt.match(/^(.+)_sharpen$/);
+    const rawBase = sharpenMatch ? sharpenMatch[1] : nameWithoutExt;
+    const basename = prefix ? `${prefix}_${rawBase}` : rawBase;
 
     if (sharpenMatch) {
-        // _sharpen file: use as source for the base name
-        const basename = sharpenMatch[1];
-        sourceMap.set(basename, { file, path: path.join(inputDir, file) });
-    } else if (!sourceMap.has(nameWithoutExt)) {
-        // Regular file: only use if no _sharpen variant already registered
-        sourceMap.set(nameWithoutExt, { file, path: path.join(inputDir, file) });
+        sourceMap.set(basename, { file, path: fullPath });
+    } else if (!sourceMap.has(basename)) {
+        sourceMap.set(basename, { file, path: fullPath });
     }
 }
 
