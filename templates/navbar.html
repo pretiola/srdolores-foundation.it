@@ -1,35 +1,67 @@
-<nav id="navbar" aria-label="Main Navigation">
-  <!-- Checkbox for mobile menu toggle. Hidden in Lynx natively via attribute. -->
+<nav id="navbar" aria-label="Main Navigation" class="bg-[darkred] border-b-2 border-black">
+  <!-- Checkbox for mobile menu toggle. -->
   <input type="checkbox" id="menu-toggle" hidden class="peer" />
   
-  <!-- Hamburger Label. Hidden in Lynx naturally, visible on mobile via block, hidden on desktop via sm:hidden. -->
-  <label for="menu-toggle" class="block sm:hidden bg-[darkred] text-[gold] border border-black p-2 text-center font-bold cursor-pointer select-none">
-    ☰ Menu
+  <!-- Hamburger Label. -->
+  <label for="menu-toggle" class="flex items-center justify-between sm:hidden bg-[darkred] text-[gold] px-4 py-3 font-bold cursor-pointer select-none">
+    <span class="text-lg">Sr. Dolores Foundation</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
   </label>
   
   <!-- Consolidated Navigation List -->
-  <ul class="hidden peer-checked:flex sm:flex flex-col sm:flex-row w-full">
-    <li class="flex-1 group relative">
-      <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/">Home</a>
+  <ul class="hidden peer-checked:flex sm:flex flex-col sm:flex-row w-full sm:justify-center bg-[darkred]">
+    <li class="group relative w-full sm:w-auto">
+      <a class="flex items-center gap-3 p-4 sm:p-3 border-b sm:border-b-0 sm:border-r border-black/30 sm:border-black font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start sm:justify-center whitespace-nowrap" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </a>
     </li>
-    <li class="flex-1 group relative">
-      <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/who_we_are.html">Who we are</a>
+    <li class="group relative w-full sm:w-auto">
+      <a class="flex items-center gap-3 p-4 sm:p-3 border-b sm:border-b-0 sm:border-r border-black/30 sm:border-black font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start sm:justify-center whitespace-nowrap" href="/who_we_are.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Who we are</span>
+      </a>
     </li>
-    <li class="flex-1 group relative">
-      <a class="hidden sm:block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="#">What we do</a>
+    <li class="group relative w-full sm:w-auto">
+      <div class="hidden sm:flex items-center gap-3 p-4 sm:p-3 border-b sm:border-b-0 sm:border-r border-black/30 sm:border-black font-bold bg-[darkred] text-[gold] group-hover:bg-[gold] group-hover:text-[darkred] transition-all justify-start sm:justify-center cursor-default whitespace-nowrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a13 13 0 0 1-13 13Z"/><path d="M9.5 15.3 12 13"/></svg>
+        <span>What we do</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
       
-      <!-- Submenu: Permanent indent on mobile, hover overlay on desktop -->
-      <ul class="block sm:hidden sm:group-hover:block focus-within:block sm:absolute sm:left-0 sm:top-full sm:w-full z-10 shadow-lg">
-        <li><a class="block border border-black p-2 pl-6 sm:pl-2 text-center font-bold bg-[#8b0000] sm:bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/benificiaries.html">Beneficiaries</a></li>
-        <li><a class="block border border-black p-2 pl-6 sm:pl-2 text-center font-bold bg-[#8b0000] sm:bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/challenges.html">Challenges</a></li>
-        <li><a class="block border border-black p-2 pl-6 sm:pl-2 text-center font-bold bg-[#8b0000] sm:bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/goals.html">Goals</a></li>
+      <!-- Submenu -->
+      <ul class="flex flex-col sm:hidden sm:group-hover:flex focus-within:flex sm:absolute sm:left-0 sm:top-full sm:w-48 z-50 shadow-xl bg-[#8b0000]">
+        <li>
+          <a class="flex items-center gap-3 p-4 pl-8 sm:p-3 border-b border-black/20 font-bold bg-[#8b0000] sm:bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start" href="/benificiaries.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.82 2.96 0l1.1-1.1"/><path d="m14 12 4.22-4.22a2.17 2.17 0 0 1 3.07 0v0a2.17 2.17 0 0 1 0 3.07L17 15"/><path d="m11 13-1.5-1.5"/><path d="m15 17-2.5-2.5"/></svg>
+            <span>Beneficiaries</span>
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center gap-3 p-4 pl-8 sm:p-3 border-b border-black/20 font-bold bg-[#8b0000] sm:bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start" href="/challenges.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 2 2 4-4"/><path d="M2 12h10"/><path d="M9 18H2"/><path d="M12 6H2"/></svg>
+            <span>Challenges</span>
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center gap-3 p-4 pl-8 sm:p-3 border-b border-black/20 font-bold bg-[#8b0000] sm:bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start" href="/goals.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span>Goals</span>
+          </a>
+        </li>
       </ul>
     </li>
-    <li class="flex-1 group relative">
-      <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/holy_mass.html">Holy Mass</a>
+    <li class="group relative w-full sm:w-auto">
+      <a class="flex items-center gap-3 p-4 sm:p-3 border-b sm:border-b-0 sm:border-r border-black/30 sm:border-black font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start sm:justify-center whitespace-nowrap" href="/holy_mass.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M7 7h10"/></svg>
+        <span>Holy Mass</span>
+      </a>
     </li>
-    <li class="flex-1 group relative">
-      <a class="block border border-black p-2 text-center font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] focus:bg-[gold] focus:text-[darkred]" href="/get_involved.html">Get Involved</a>
+    <li class="group relative w-full sm:w-auto">
+      <a class="flex items-center gap-3 p-4 sm:p-3 border-b sm:border-b-0 border-black/30 font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start sm:justify-center whitespace-nowrap" href="/get_involved.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v3a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h7"/><path d="M16 3h5v5"/><path d="m16 8 5-5"/></svg>
+        <span>Get Involved</span>
+      </a>
     </li>
   </ul>
 </nav>
