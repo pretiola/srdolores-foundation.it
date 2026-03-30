@@ -10,7 +10,7 @@
   <meta property="og:title" content="Piglet Project - Sr. Dolores Foundation">
   <meta property="og:description" content="Reaching out to the poor families and children through productive and educative farming.">
   <meta property="og:type" content="website">
-  <title>Piglet Project - Sr. Dolores Foundation</title>
+  <title>Sr. Dolores Foundation - Welcome</title>
   <link href="/css/tailwind.css" rel="stylesheet">
 </head>
 
@@ -131,160 +131,15 @@
       <div data-gallery class="relative">
         <div class="gallery-viewport">
           <div data-gallery-track class="gallery-track">
+            {% for img in agriculture_images %}
             <div data-gallery-slide>
               <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_800w.jpg" alt="Community agriculture in Binzi" loading="lazy" />
+                <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
+                <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
+                <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="Community agriculture in Binzi" loading="lazy" />
               </picture>
             </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_1_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_1_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_1_800w.jpg" alt="Banana and coffee cultivation" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_2_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_2_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_2_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_2_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_2_800w.jpg" alt="Local farming progress" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_3_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_3_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_3_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_3_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-18-47_3_800w.jpg" alt="Harvests from the plantation" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_800w.jpg" alt="Community garden growth" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_1_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_1_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_1_800w.jpg" alt="Plantation development" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_2_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_2_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_2_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_2_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_2_800w.jpg" alt="Sustainable farming practices" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_3_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_3_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_3_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_3_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_3_800w.jpg" alt="Agricultural produce" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_4_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_4_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_4_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_4_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_4_800w.jpg" alt="Community farming efforts" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_5_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_5_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_5_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_5_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_5_800w.jpg" alt="Banana plantation progress" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_6_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_6_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_6_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_6_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_6_800w.jpg" alt="Coffee cultivation" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_7_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_7_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_7_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_7_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-20_7_800w.jpg" alt="Local agriculture development" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_800w.jpg" alt="Farming in Binzi village" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_1_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_1_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_1_800w.jpg" alt="Growing food for families" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_2_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_2_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_2_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_2_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_2_800w.jpg" alt="Plantation harvest" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_3_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_3_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_3_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_3_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-21-21_3_800w.jpg" alt="Sustainable agriculture" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_800w.jpg" alt="Economic growth through farming" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_1_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_1_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_1_800w.jpg" alt="Community garden produce" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_2_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_2_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_2_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_2_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_2_800w.jpg" alt="Nourishing the community" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_3_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_3_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_3_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_3_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-00_3_800w.jpg" alt="Agricultural income generation" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_800w.jpg" alt="Plantation growth" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_1_800w.webp 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_1_800w.jpg 800w, /pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/agriculture_PHOTO-2026-03-25-18-22-01_1_800w.jpg" alt="Sustainable income from crops" loading="lazy" />
-              </picture>
-            </div>
+            {% endfor %}
           </div>
         </div>
         <div class="gallery-controls">
@@ -310,55 +165,15 @@
       <div data-gallery class="relative">
         <div class="gallery-viewport">
           <div data-gallery-track class="gallery-track">
+            {% for img in housing_images %}
             <div data-gallery-slide>
               <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_800w.jpg" alt="Home restoration in Binzi" loading="lazy" />
+                <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
+                <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
+                <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="Restoring homes and providing shelter" loading="lazy" />
               </picture>
             </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_1_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_1_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_1_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_1_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_1_800w.jpg" alt="New shelter for families" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_2_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_2_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_2_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_2_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_2_800w.jpg" alt="Home structural improvements" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_3_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_3_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_3_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_3_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_3_800w.jpg" alt="Building stronger homes" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_4_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_4_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_4_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_4_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_4_800w.jpg" alt="Community housing project" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_5_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_5_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_5_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_5_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_5_800w.jpg" alt="Dignified shelter for families" loading="lazy" />
-              </picture>
-            </div>
-            <div data-gallery-slide>
-              <picture>
-                <source type="image/webp" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_6_800w.webp 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_6_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <source type="image/jpeg" srcset="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_6_800w.jpg 800w, /pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_6_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
-                <img src="/pictures/optimized/housing_PHOTO-2026-03-25-18-15-22_6_800w.jpg" alt="Home repairs completed" loading="lazy" />
-              </picture>
-            </div>
+            {% endfor %}
           </div>
         </div>
         <div class="gallery-controls">

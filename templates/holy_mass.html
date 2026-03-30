@@ -21,13 +21,18 @@
 
     <div class="text-center mb-8">
       <picture class="block w-full mx-auto">
-        <source type="image/webp" srcset="/pictures/optimized/emmanuel_mass_1200w.webp 1200w, /pictures/optimized/emmanuel_mass_800w.webp 800w, /pictures/optimized/emmanuel_mass_400w.webp 400w" sizes="(max-width: 768px) 100vw, 896px">
-        <source type="image/jpeg" srcset="/pictures/optimized/emmanuel_mass_1200w.jpg 1200w, /pictures/optimized/emmanuel_mass_800w.jpg 800w, /pictures/optimized/emmanuel_mass_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 896px">
-        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/optimized/emmanuel_mass_800w.jpg" alt="Fr. Emmanuel Kasibante celebrating Mass" loading="eager" />
+        <source type="image/webp" srcset="/pictures/optimized/mass-heading-new_1200w.webp 1200w, /pictures/optimized/mass-heading-new_800w.webp 800w, /pictures/optimized/mass-heading-new_400w.webp 400w" sizes="(max-width: 768px) 100vw, 896px">
+        <source type="image/jpeg" srcset="/pictures/optimized/mass-heading-new_1200w.jpg 1200w, /pictures/optimized/mass-heading-new_800w.jpg 800w, /pictures/optimized/mass-heading-new_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 896px">
+        <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/optimized/mass-heading-new_800w.jpg" alt="Fr. Emmanuel Kasibante celebrating Mass" loading="eager" />
       </picture>
     </div>
 
     <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
+      <picture class="float-right ml-4 mb-4 w-48 md:w-64 rounded shadow">
+        <source type="image/webp" srcset="/pictures/optimized/emmanuel_mass_800w.webp 800w, /pictures/optimized/emmanuel_mass_400w.webp 400w" sizes="(max-width: 768px) 192px, 256px">
+        <source type="image/jpeg" srcset="/pictures/optimized/emmanuel_mass_800w.jpg 800w, /pictures/optimized/emmanuel_mass_400w.jpg 400w" sizes="(max-width: 768px) 192px, 256px">
+        <img class="w-full h-auto rounded shadow" src="/pictures/optimized/emmanuel_mass_400w.jpg" alt="Fr. Emmanuel Kasibante celebrating Mass" loading="eager" />
+      </picture>
       <p class="mb-8">
         I am Fr. Emmanuel Kasibante, a Catholic Priest of the Catholic Diocese of
         Eshowe, South Africa. Currently I am here in Rome doing studies in Sacred
@@ -65,6 +70,30 @@
         You are free to ask a Mass intention offered for you.
       </p>
     </article>
+
+    <section class="mb-12 bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[800px] mx-4 md:mx-auto">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">After the Holy Mass with some of our children</h2>
+      <div data-gallery class="relative">
+        <div class="gallery-viewport">
+          <div data-gallery-track class="gallery-track">
+            {% for img in mass_images %}
+            <div data-gallery-slide>
+              <picture>
+                <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
+                <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
+                <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="After the Holy Mass with our children" loading="lazy" />
+              </picture>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button data-gallery-prev class="gallery-btn" aria-label="Previous slide">&#8249;</button>
+          <div data-gallery-dots class="flex gap-1.5 items-center"></div>
+          <button data-gallery-next class="gallery-btn" aria-label="Next slide">&#8250;</button>
+        </div>
+      </div>
+    </section>
   </main>
   <footer>
     {% include "footer.html" %}

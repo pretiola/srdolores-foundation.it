@@ -26,6 +26,7 @@ const allFiles = [
     ...collectImages(inputDir, ''),
     ...collectImages(path.join(inputDir, 'agriculture'), 'agriculture'),
     ...collectImages(path.join(inputDir, 'housing'), 'housing'),
+    ...collectImages(path.join(inputDir, 'mass'), 'mass'),
 ];
 
 // Build a map: basename -> source file path
