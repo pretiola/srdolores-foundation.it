@@ -30,7 +30,10 @@ fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
     context.insert("page_name", page);
     context.insert("current_year", &Utc::now().year());
 
-    if page == "holy_mass" {
+    if page == "index" {
+        context.insert("agriculture_images", &scan_gallery_images("agriculture"));
+        context.insert("housing_images", &scan_gallery_images("housing"));
+    } else if page == "holy_mass" {
         context.insert("mass_images", &scan_gallery_images("mass"));
     }
 
