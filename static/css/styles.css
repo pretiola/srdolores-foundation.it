@@ -10,26 +10,18 @@
   }
 }
 
-/* Gallery carousel — scroll-snap for native swipe on all browsers */
+/* Gallery carousel */
 .gallery-viewport {
   overflow: hidden;
   border-radius: 0.5rem;
 }
 .gallery-track {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.gallery-track::-webkit-scrollbar {
-  display: none;
+  transition: transform 0.5s ease;
 }
 .gallery-track > * {
   min-width: 100%;
   flex-shrink: 0;
-  scroll-snap-align: start;
 }
 .gallery-track img {
   width: 100%;

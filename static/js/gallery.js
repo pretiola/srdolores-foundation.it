@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Gallery carousel with native scroll-snap, auto-progress, and lightbox
+  // Gallery carousel with translateX navigation, touch swipe, and lightbox
   document.querySelectorAll("[data-gallery]").forEach(function (gallery) {
     var track = gallery.querySelector("[data-gallery-track]");
     var slides = track.querySelectorAll("[data-gallery-slide]");
@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var current = 0;
     var total = slides.length;
     var autoInterval = null;
-    var scrollTimeout = null;
 
     // Create dots
     for (var i = 0; i < total; i++) {
@@ -21,20 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     var dots = dotsContainer.querySelectorAll(".gallery-dot");
 
-    function updateDots() {
+    function goTo(index) {
+      current = ((index % total) + total) % total;
+      track.style.transform = "translateX(-" + (current * 100) + "%)";
       dots.forEach(function (d, i) {
         d.classList.toggle("active", i === current);
       });
     }
 
-    function scrollTo(index) {
-      current = ((index % total) + total) % total;
-      slides[current].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
-      updateDots();
-    }
-
-    function next() { scrollTo(current + 1); }
-    function prev() { scrollTo(current - 1); }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
 
     function startAuto() {
       stopAuto();
@@ -45,48 +40,83 @@ document.addEventListener("DOMContentLoaded", function () {
       if (autoInterval) clearInterval(autoInterval);
     }
 
-    // Detect which slide is visible after any scroll (swipe, button, or programmatic)
-    track.addEventListener("scroll", function () {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(function () {
-        var trackLeft = track.scrollLeft;
-        var slideWidth = track.offsetWidth;
-        var newIndex = Math.round(trackLeft / slideWidth);
-        if (newIndex >= 0 && newIndex < total && newIndex !== current) {
-          current = newIndex;
-          updateDots();
-          startAuto();
-        }
-      }, 100);
-    }, { passive: true });
-
     // Init
-    updateDots();
+    goTo(0);
     startAuto();
 
-    // Controls
+    // Button controls
     prevBtn.addEventListener("click", function () { prev(); startAuto(); });
     nextBtn.addEventListener("click", function () { next(); startAuto(); });
     dotsContainer.addEventListener("click", function (e) {
       if (e.target.dataset.index !== undefined) {
-        scrollTo(parseInt(e.target.dataset.index));
+        goTo(parseInt(e.target.dataset.index));
         startAuto();
       }
     });
+
+    // Touch swipe with real-time drag feedback
+    var startX = 0;
+    var startY = 0;
+    var deltaX = 0;
+    var gestureDecided = false;
+    var isHorizontal = false;
+
+    track.addEventListener("touchstart", function (e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      deltaX = 0;
+      gestureDecided = false;
+      isHorizontal = false;
+      track.style.transition = "none";
+      stopAuto();
+    }, { passive: true });
+
+    track.addEventListener("touchmove", function (e) {
+      var dx = e.touches[0].clientX - startX;
+      var dy = e.touches[0].clientY - startY;
+
+      // Decide gesture direction once after enough movement
+      if (!gestureDecided && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+        gestureDecided = true;
+        isHorizontal = Math.abs(dx) > Math.abs(dy);
+      }
+
+      if (!isHorizontal) return;
+
+      // Claim the gesture — prevent vertical scroll
+      e.preventDefault();
+
+      // Real-time drag: image follows finger
+      deltaX = dx;
+      track.style.transform = "translateX(calc(-" + (current * 100) + "% + " + deltaX + "px))";
+    }, { passive: false });
+
+    track.addEventListener("touchend", function () {
+      // Restore transition for the snap animation
+      track.style.transition = "transform 0.5s ease";
+
+      if (isHorizontal && Math.abs(deltaX) > 50) {
+        if (deltaX < 0) next(); else prev();
+      } else {
+        // Snap back to current slide
+        goTo(current);
+      }
+
+      startAuto();
+    }, { passive: true });
 
     // Pause on hover (desktop)
     gallery.addEventListener("mouseenter", stopAuto);
     gallery.addEventListener("mouseleave", startAuto);
 
-    // Pause auto-advance while touching
-    track.addEventListener("touchstart", stopAuto, { passive: true });
-
-    // Lightbox on image click — only if not swiping
-    var touchStartX = 0;
-    var touchStartY = 0;
-    track.addEventListener("touchstart", function (e) {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
+    // Lightbox on image click — suppress after swipe
+    track.addEventListener("touchend", function (e) {
+      if (isHorizontal && Math.abs(deltaX) > 10) {
+        track.addEventListener("click", function suppress(ev) {
+          ev.stopPropagation();
+          ev.preventDefault();
+        }, { capture: true, once: true });
+      }
     }, { passive: true });
 
     track.addEventListener("click", function (e) {
@@ -94,20 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!img) return;
       openLightbox(img.src, img.alt);
     });
-
-    // Prevent lightbox from opening on swipe-end
-    track.addEventListener("touchend", function (e) {
-      var dx = Math.abs(e.changedTouches[0].screenX - touchStartX);
-      var dy = Math.abs(e.changedTouches[0].screenY - touchStartY);
-      if (dx > 10 || dy > 10) {
-        // Was a swipe, suppress the click
-        e.target.addEventListener("click", function suppress(ev) {
-          ev.stopPropagation();
-          ev.preventDefault();
-          e.target.removeEventListener("click", suppress, true);
-        }, { capture: true, once: true });
-      }
-    }, { passive: true });
   });
 
   // Lightbox
