@@ -128,24 +128,19 @@
         <li>Coffee and banana plantations in action</li>
         <li>Economic growth through local agriculture</li>
       </ul>
-      <div data-gallery class="relative">
-        <div class="gallery-viewport">
-          <div data-gallery-track class="gallery-track">
+      <div class="splide" aria-label="Community agriculture photos">
+        <div class="splide__track">
+          <ul class="splide__list">
             {% for img in agriculture_images %}
-            <div data-gallery-slide>
+            <li class="splide__slide">
               <picture>
                 <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="Community agriculture in Binzi, Uganda" loading="lazy" />
               </picture>
-            </div>
+            </li>
             {% endfor %}
-          </div>
-        </div>
-        <div class="gallery-controls">
-          <button data-gallery-prev class="gallery-btn" aria-label="Previous slide">&#8249;</button>
-          <div data-gallery-dots class="flex gap-1.5 items-center"></div>
-          <button data-gallery-next class="gallery-btn" aria-label="Next slide">&#8250;</button>
+          </ul>
         </div>
       </div>
     </section>
@@ -162,24 +157,19 @@
         <li>Before and after home restorations</li>
         <li>Building a stronger village together</li>
       </ul>
-      <div data-gallery class="relative">
-        <div class="gallery-viewport">
-          <div data-gallery-track class="gallery-track">
+      <div class="splide" aria-label="Housing restoration photos">
+        <div class="splide__track">
+          <ul class="splide__list">
             {% for img in housing_images %}
-            <div data-gallery-slide>
+            <li class="splide__slide">
               <picture>
                 <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="Restoring homes and providing shelter" loading="lazy" />
               </picture>
-            </div>
+            </li>
             {% endfor %}
-          </div>
-        </div>
-        <div class="gallery-controls">
-          <button data-gallery-prev class="gallery-btn" aria-label="Previous slide">&#8249;</button>
-          <div data-gallery-dots class="flex gap-1.5 items-center"></div>
-          <button data-gallery-next class="gallery-btn" aria-label="Next slide">&#8250;</button>
+          </ul>
         </div>
       </div>
     </section>
