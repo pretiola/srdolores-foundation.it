@@ -57,10 +57,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Swipe support
+    var touchStartY = 0;
+    var swiping = false;
     track.addEventListener("touchstart", function (e) {
       touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      swiping = false;
       stopAuto();
     }, { passive: true });
+    track.addEventListener("touchmove", function (e) {
+      var dx = Math.abs(e.changedTouches[0].screenX - touchStartX);
+      var dy = Math.abs(e.changedTouches[0].screenY - touchStartY);
+      if (dx > dy && dx > 10) {
+        swiping = true;
+        e.preventDefault();
+      }
+    }, { passive: false });
     track.addEventListener("touchend", function (e) {
       touchEndX = e.changedTouches[0].screenX;
       var diff = touchStartX - touchEndX;
