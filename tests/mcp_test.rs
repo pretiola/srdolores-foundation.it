@@ -6,9 +6,10 @@ use std::time::Instant;
 async fn test_mcp_timeout_fail_open() {
     // Point to a non-routable address to force a timeout
     std::env::set_var("MCP_ENDPOINT", "http://10.255.255.1:8080/mcp");
+    let client = reqwest::Client::new();
     
     let start = Instant::now();
-    let result = call_mcp_tool("any_tool", json!({}), Some(std::time::Duration::from_millis(150))).await;
+    let result = call_mcp_tool(&client, "any_tool", json!({}), Some(std::time::Duration::from_millis(150))).await;
     let duration = start.elapsed();
     
     // Should return None (Fail-Open)
@@ -22,8 +23,9 @@ async fn test_mcp_timeout_fail_open() {
 async fn test_mcp_connection_failure_fail_open() {
     // Point to a dead port on localhost
     std::env::set_var("MCP_ENDPOINT", "http://127.0.0.1:1/mcp");
+    let client = reqwest::Client::new();
     
-    let result = call_mcp_tool("any_tool", json!({}), Some(std::time::Duration::from_millis(150))).await;
+    let result = call_mcp_tool(&client, "any_tool", json!({}), Some(std::time::Duration::from_millis(150))).await;
     
     // Should return None (Fail-Open)
     assert!(result.is_none());
