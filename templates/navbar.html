@@ -1,4 +1,4 @@
-<nav id="navbar" aria-label="Main Navigation" class="bg-[darkred] border-b-2 border-black">
+<nav id="navbar" aria-label="Main Navigation" class="bg-[darkred] border-b-2 border-black shadow-md">
   <!-- Checkbox for mobile menu toggle. -->
   <input type="checkbox" id="menu-toggle" hidden class="peer" />
   
@@ -75,3 +75,8 @@
     </li>
   </ul>
 </nav>
+
+<a href="/liturgy.html" class="block hover:opacity-90 transition-opacity">
+  {% set show_details = false %}
+  {% include "liturgical_bar.html" %}
+</a>

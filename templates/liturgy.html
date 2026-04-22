@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Celebrations - Sr. Dolores Foundation</title>
+    <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+  <header>
+    {% include "navbar.html" %}
+  </header>
+  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Daily celebrations for April 2026</h1>
+
+        <div class="space-y-6 relative">
+            {% for entry in liturgy_month %}
+                {% set date = entry.0 %}
+                {% set day_num = date | split(pat="-") | last %}
+                {% set liturgical_info = entry.1 %}
+                
+                <div class="relative group">
+                    {# Liturgical Content #}
+                    <div class="z-10 relative">
+                        {% set show_details = true %}
+                        {% include "liturgical_bar.html" %}
+                    </div>
+
+                    {# Subtle Day Number (Right) #}
+                    <div class="absolute -right-4 md:-right-8 top-4 hidden lg:block pointer-events-none">
+                        <div class="text-5xl font-serif font-bold text-gray-300/20 group-hover:text-[gold]/30 transition-colors">
+                            {{ day_num }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+  </main>
+
+
+    {% include "footer.html" %}
+</body>
+</html>

@@ -11,6 +11,9 @@ tera = "1"
 env_logger = "0.10"
 log = "0.4"
 chrono = "0.4.44"
+reqwest = { version = "0.12", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+futures = "0.3"
 
 [dev-dependencies]
-reqwest = "0.12"

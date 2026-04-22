@@ -1,4 +1,4 @@
-use crate::routes::{dynamic_page, index, sitemap};
+use crate::routes::{dynamic_page, index, liturgy, sitemap};
 use actix_web::dev::Server;
 use actix_web::{web, App, HttpServer};
 use std::net::TcpListener;
@@ -30,6 +30,12 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
                 web::resource("/sitemap.xml")
                     .route(web::get().to(sitemap))
                     .route(web::head().to(sitemap)),
+            )
+            // Liturgy regression test page
+            .service(
+                web::resource("/liturgy.html")
+                    .route(web::get().to(liturgy))
+                    .route(web::head().to(liturgy)),
             )
             // Handle dynamic page routes
             .service(

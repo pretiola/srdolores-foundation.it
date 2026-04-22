@@ -2,11 +2,23 @@ use actix_web::{web, HttpResponse, Responder};
 use chrono::{Datelike, Utc};
 use std::fs;
 use tera::Tera;
+use serde_json::json;
+use crate::mcp;
 
 pub async fn index(tera: web::Data<Tera>) -> impl Responder {
     let mut context = tera::Context::new();
     context.insert("page_name", "index");
     context.insert("current_year", &Utc::now().year());
+
+    // Opportunistic liturgical info
+    let today = Utc::now().format("%Y-%m-%d").to_string();
+    let liturgical_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+        "date": today,
+        "locale": "en",
+        "identifier": "general_en"
+    }), None).await;
+    context.insert("liturgical_info", &liturgical_info);
+
     context.insert("agriculture_images", &scan_gallery_images("agriculture"));
     context.insert("housing_images", &scan_gallery_images("housing"));
 
@@ -19,16 +31,75 @@ pub async fn index(tera: web::Data<Tera>) -> impl Responder {
     }
 }
 
-pub async fn dynamic_page(path: web::Path<String>, tera: web::Data<Tera>) -> impl Responder {
-    let page = path.into_inner();
-    render_page(&page, tera)
+pub async fn liturgy(tera: web::Data<Tera>) -> impl Responder {
+    let mut context = tera::Context::new();
+    let now = Utc::now();
+    let year = now.year();
+    let month = now.month();
+    
+    context.insert("current_year", &year);
+    context.insert("current_month", &month);
+
+    // Today's info for the navbar
+    let today_str = now.format("%Y-%m-%d").to_string();
+    let today_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+        "date": today_str,
+        "locale": "en",
+        "identifier": "general_en"
+    }), None).await;
+    context.insert("liturgical_info", &today_info);
+
+    // Calculate days in month
+    let last_day = if month == 12 {
+        chrono::NaiveDate::from_ymd_opt(year + 1, 1, 1)
+    } else {
+        chrono::NaiveDate::from_ymd_opt(year, month + 1, 1)
+    }.unwrap().pred_opt().unwrap().day();
+
+    let mut tasks = Vec::new();
+    let timeout_10s = Some(std::time::Duration::from_secs(10));
+    for day in 1..=last_day {
+        let date_str = format!("{:04}-{:02}-{:02}", year, month, day);
+        tasks.push(async move {
+            (date_str.clone(), mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+                "date": date_str,
+                "locale": "en",
+                "identifier": "general_en"
+            }), timeout_10s).await)
+        });
+    }
+
+    let results = futures::future::join_all(tasks).await;
+    context.insert("liturgy_month", &results);
+
+    match tera.render("liturgy.html", &context) {
+        Ok(html) => HttpResponse::Ok().content_type("text/html").body(html),
+        Err(e) => {
+            log::error!("Template rendering error: {}", e);
+            HttpResponse::InternalServerError().body("Error rendering liturgy page")
+        }
+    }
 }
 
-fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
+pub async fn dynamic_page(path: web::Path<String>, tera: web::Data<Tera>) -> impl Responder {
+    let page = path.into_inner();
+    render_page(&page, tera).await
+}
+
+async fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
     let template_name = format!("{}.html", page);
     let mut context = tera::Context::new();
     context.insert("page_name", page);
     context.insert("current_year", &Utc::now().year());
+
+    // Opportunistic liturgical info
+    let today = Utc::now().format("%Y-%m-%d").to_string();
+    let liturgical_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+        "date": today,
+        "locale": "en",
+        "identifier": "general_en"
+    }), None).await;
+    context.insert("liturgical_info", &liturgical_info);
 
     if page == "index" {
         context.insert("agriculture_images", &scan_gallery_images("agriculture"));

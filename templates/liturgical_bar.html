@@ -1,0 +1,108 @@
+{% if liturgical_info and liturgical_info.celebrations and liturgical_info.celebrations | length > 0 %}
+  {# Sort or pick celebrations: Highest grade is Primary, Grade 0 is usually Secondary #}
+  {% set primary = liturgical_info.celebrations | first %}
+  {% set secondary = "" %}
+  
+  {% for c in liturgical_info.celebrations %}
+    {% if c.grade > primary.grade %}
+      {% set_global secondary = primary %}
+      {% set_global primary = c %}
+    {% elif c.grade == 0 and c.name != primary.name %}
+      {% set_global secondary = c %}
+    {% endif %}
+  {% endfor %}
+
+  {% set lit_color = primary.color | default(value=["white"]) | first | lower %}
+  
+  {# Enhanced Liturgical Color Palette #}
+  {% if "white" in lit_color or "gold" in lit_color %}
+    {% set border_color = "#D4AF37" %}
+    {% set bg_color = "#FFFDF0" %}
+  {% elif "red" in lit_color %}
+    {% set border_color = "#B22222" %}
+    {% set bg_color = "#FFF5F5" %}
+  {% elif "green" in lit_color %}
+    {% set border_color = "#228B22" %}
+    {% set bg_color = "#F0FFF0" %}
+  {% elif "violet" in lit_color or "purple" in lit_color %}
+    {% set border_color = "#800080" %}
+    {% set bg_color = "#F5F0FF" %}
+  {% else %}
+    {% set border_color = "#D4AF37" %}
+    {% set bg_color = "#FFFDF0" %}
+  {% endif %}
+
+  <div class="border border-gray-200/60 shadow-sm transition-colors duration-500 mb-2 rounded-xl mx-2 md:mx-4 overflow-hidden" style="background-color: {{ bg_color }}; border-top: 4px solid {{ border_color }};">
+    {# Header Bar #}
+    <div class="py-3 px-6 {% if show_details %}border-b border-gray-200/30{% endif %}">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
+        <div class="flex items-center gap-3">
+          {# Liturgical Indicator Dot #}
+          <div class="w-2.5 h-2.5 rounded-full shadow-sm" style="background-color: {{ border_color }};"></div>
+          
+          <div class="flex flex-wrap items-center justify-center text-center">
+            {# Secondary Celebration (The Weekday) #}
+            {% if secondary and secondary.name != primary.name %}
+              <span class="text-gray-500 font-sans text-[11px] md:text-[12px] uppercase tracking-wider opacity-80">
+                {{ secondary.name }}
+              </span>
+              <span class="text-gray-300 mx-3 hidden md:inline">|</span>
+            {% endif %}
+
+            {# Primary Celebration #}
+            <span class="font-serif text-[14px] md:text-base text-gray-900 font-semibold tracking-tight">
+              {{ primary.name }}
+              {% if primary.grade_lcl and primary.grade_lcl != "weekday" and primary.grade_lcl != "" %}
+                <span class="ml-1 text-[10px] md:text-[11px] italic text-gray-500 font-sans font-normal lowercase">({{ primary.grade_lcl }})</span>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# Detailed Liturgical Info #}
+    {% if show_details and primary.readings %}
+      {# Handle nested day/evening readings (e.g. Easter Sunday) #}
+      {% set readings = primary.readings %}
+      {% if readings.day %}
+        {% set readings = readings.day %}
+      {% endif %}
+
+      {% if readings.first_reading or readings.responsorial_psalm or readings.gospel %}
+        <div class="px-6 py-4 bg-white/50 border-t border-gray-100/50">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center md:text-left">
+            {% if readings.first_reading %}
+              <div class="flex flex-col">
+                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">First Reading</span>
+                <span class="text-xs text-gray-700 font-serif italic">
+                  {{ readings.first_reading | split(pat="|") | first }}
+                </span>
+              </div>
+            {% endif %}
+            {% if readings.responsorial_psalm %}
+              <div class="flex flex-col">
+                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">Responsorial Psalm</span>
+                <span class="text-xs text-gray-700 font-serif italic">
+                  {{ readings.responsorial_psalm | split(pat="|") | first }}
+                </span>
+              </div>
+            {% endif %}
+            {% if readings.gospel %}
+              <div class="flex flex-col">
+                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1 text-[darkred]">Gospel</span>
+                <span class="text-xs text-gray-800 font-serif font-bold italic">
+                  {{ readings.gospel | split(pat="|") | first }}
+                </span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+{% else %}
+  <div class="p-2 text-xs text-gray-400 border border-dashed border-gray-200 mb-2 rounded mx-2 md:mx-4">
+    No liturgical data available.
+  </div>
+{% endif %}
