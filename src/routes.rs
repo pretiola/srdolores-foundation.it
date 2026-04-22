@@ -217,12 +217,26 @@ pub async fn sitemap(tera: web::Data<Tera>) -> impl Responder {
 
     let mut template_names: Vec<&str> = tera
         .get_template_names()
-        .filter(|name| name.ends_with(".html") && !PARTIALS.contains(name))
+        .filter(|name| name.ends_with(".html") && !PARTIALS.contains(name) && *name != "liturgy.html" && *name != "liturgical_bar.html")
         .collect();
     template_names.sort();
 
     for name in template_names {
         urls.push(format!("  <url><loc>{}/{}</loc></url>", BASE_URL, name));
+    }
+
+    // Add dynamic liturgy routes for current and next year
+    let now = Utc::now();
+    let years = [now.year(), now.year() + 1];
+    let months = [
+        "january", "february", "march", "april", "may", "june",
+        "july", "august", "september", "october", "november", "december"
+    ];
+
+    for year in years {
+        for month in months {
+            urls.push(format!("  <url><loc>{}/liturgy/{}/{}</loc></url>", BASE_URL, year, month));
+        }
     }
 
     let xml = format!(
