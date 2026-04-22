@@ -13,10 +13,20 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
     // We leave autoescape for HTML, but templates like `navbar.html` are also HTML. Tera standard is safe.
 
     let tera = web::Data::new(tera);
+    
+    // Shared HTTP client for connection pooling
+    let client = web::Data::new(
+        reqwest::Client::builder()
+            .timeout(std::time::Duration::from_secs(10))
+            .connect_timeout(std::time::Duration::from_millis(1000))
+            .build()
+            .expect("Failed to create HTTP client")
+    );
 
     let server = HttpServer::new(move || {
         App::new()
             .app_data(tera.clone())
+            .app_data(client.clone())
             // Configure static files serving from /static
             .service(actix_files::Files::new("/static", "./static"))
             // Additionally map /pictures directly for old HTML references

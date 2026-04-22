@@ -1,22 +1,19 @@
 use serde_json::{json, Value};
 use std::time::Duration;
 
-/// Generic function to call an MCP tool with an optional latency budget.
+/// Generic function to call an MCP tool with an optional latency budget using a shared client.
 /// Returns None if the request fails, times out, or returns an error.
-pub async fn call_mcp_tool(tool_name: &str, arguments: Value, timeout: Option<Duration>) -> Option<Value> {
+pub async fn call_mcp_tool(
+    client: &reqwest::Client,
+    tool_name: &str,
+    arguments: Value,
+    timeout: Option<Duration>,
+) -> Option<Value> {
     let timeout = timeout.unwrap_or(Duration::from_millis(300));
     
     // Default to the Liturgical Calendar MCP endpoint if not provided
     let endpoint = std::env::var("MCP_ENDPOINT")
         .unwrap_or_else(|_| "https://liturgical.pretiola.org/mcp".to_string());
-    
-    let client = match reqwest::Client::builder()
-        .timeout(timeout)
-        .connect_timeout(Duration::from_millis(1000))
-        .build() {
-            Ok(c) => c,
-            Err(_) => return None,
-        };
     
     let payload = json!({
         "jsonrpc": "2.0",
@@ -30,6 +27,7 @@ pub async fn call_mcp_tool(tool_name: &str, arguments: Value, timeout: Option<Du
 
     match client.post(&endpoint)
         .header("Accept", "application/json, text/event-stream")
+        .timeout(timeout)
         .json(&payload)
         .send()
         .await {

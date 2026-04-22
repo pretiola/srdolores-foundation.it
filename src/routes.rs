@@ -5,14 +5,14 @@ use tera::Tera;
 use serde_json::json;
 use crate::mcp;
 
-pub async fn index(tera: web::Data<Tera>) -> impl Responder {
+pub async fn index(tera: web::Data<Tera>, client: web::Data<reqwest::Client>) -> impl Responder {
     let mut context = tera::Context::new();
     context.insert("page_name", "index");
     context.insert("current_year", &Utc::now().year());
 
     // Opportunistic liturgical info
     let today = Utc::now().format("%Y-%m-%d").to_string();
-    let liturgical_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+    let liturgical_info = mcp::call_mcp_tool(&client, "get_liturgy_of_the_day", json!({
         "date": today,
         "locale": "en"
     }), None).await;
@@ -39,6 +39,7 @@ pub struct LiturgyParams {
 pub async fn liturgy(
     params: web::Path<LiturgyParams>,
     tera: web::Data<Tera>,
+    client: web::Data<reqwest::Client>,
 ) -> impl Responder {
     let mut context = tera::Context::new();
     let year = params.year;
@@ -91,7 +92,7 @@ pub async fn liturgy(
     // Today's info for the navbar
     let now = Utc::now();
     let today_str = now.format("%Y-%m-%d").to_string();
-    let today_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+    let today_info = mcp::call_mcp_tool(&client, "get_liturgy_of_the_day", json!({
         "date": today_str,
         "locale": "en"
     }), None).await;
@@ -108,8 +109,9 @@ pub async fn liturgy(
     let timeout_10s = Some(std::time::Duration::from_secs(10));
     for day in 1..=last_day {
         let date_str = format!("{:04}-{:02}-{:02}", year, month, day);
+        let client_clone = client.clone();
         tasks.push(async move {
-            (date_str.clone(), mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+            (date_str.clone(), mcp::call_mcp_tool(&client_clone, "get_liturgy_of_the_day", json!({
                 "date": date_str,
                 "locale": "en"
             }), timeout_10s).await)
@@ -128,12 +130,16 @@ pub async fn liturgy(
     }
 }
 
-pub async fn dynamic_page(path: web::Path<String>, tera: web::Data<Tera>) -> impl Responder {
+pub async fn dynamic_page(
+    path: web::Path<String>,
+    tera: web::Data<Tera>,
+    client: web::Data<reqwest::Client>
+) -> impl Responder {
     let page = path.into_inner();
-    render_page(&page, tera).await
+    render_page(&page, tera, client).await
 }
 
-async fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
+async fn render_page(page: &str, tera: web::Data<Tera>, client: web::Data<reqwest::Client>) -> HttpResponse {
     let template_name = format!("{}.html", page);
     let mut context = tera::Context::new();
     context.insert("page_name", page);
@@ -141,7 +147,7 @@ async fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
 
     // Opportunistic liturgical info
     let today = Utc::now().format("%Y-%m-%d").to_string();
-    let liturgical_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
+    let liturgical_info = mcp::call_mcp_tool(&client, "get_liturgy_of_the_day", json!({
         "date": today,
         "locale": "en"
     }), None).await;
