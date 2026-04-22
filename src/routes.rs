@@ -1,5 +1,6 @@
 use actix_web::{web, HttpResponse, Responder};
 use chrono::{Datelike, Utc};
+use futures::StreamExt;
 use std::fs;
 use tera::Tera;
 use serde_json::json;
@@ -25,7 +26,7 @@ pub async fn index(tera: web::Data<Tera>, client: web::Data<reqwest::Client>) ->
         Ok(html) => HttpResponse::Ok().content_type("text/html").body(html),
         Err(e) => {
             log::error!("Template rendering error: {}", e);
-            HttpResponse::NotFound().body("Page not found")
+            HttpResponse::InternalServerError().body("Error rendering page")
         }
     }
 }
@@ -118,7 +119,15 @@ pub async fn liturgy(
         });
     }
 
-    let results = futures::future::join_all(tasks).await;
+    let results = futures::stream::iter(tasks)
+        .buffer_unordered(10)
+        .collect::<Vec<_>>()
+        .await;
+
+    // Sort results by date since buffer_unordered might return them out of order
+    let mut results = results;
+    results.sort_by(|a, b| a.0.cmp(&b.0));
+
     context.insert("liturgy_month", &results);
 
     match tera.render("liturgy.html", &context) {
