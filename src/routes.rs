@@ -14,8 +14,7 @@ pub async fn index(tera: web::Data<Tera>) -> impl Responder {
     let today = Utc::now().format("%Y-%m-%d").to_string();
     let liturgical_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
         "date": today,
-        "locale": "en",
-        "identifier": "general_en"
+        "locale": "en"
     }), None).await;
     context.insert("liturgical_info", &liturgical_info);
 
@@ -31,21 +30,70 @@ pub async fn index(tera: web::Data<Tera>) -> impl Responder {
     }
 }
 
-pub async fn liturgy(tera: web::Data<Tera>) -> impl Responder {
+#[derive(serde::Deserialize)]
+pub struct LiturgyParams {
+    pub year: i32,
+    pub month: String,
+}
+
+pub async fn liturgy(
+    params: web::Path<LiturgyParams>,
+    tera: web::Data<Tera>,
+) -> impl Responder {
     let mut context = tera::Context::new();
-    let now = Utc::now();
-    let year = now.year();
-    let month = now.month();
+    let year = params.year;
+    let month_str = params.month.to_lowercase();
     
-    context.insert("current_year", &year);
-    context.insert("current_month", &month);
+    let month = match month_str.as_str() {
+        "january" | "1" => 1,
+        "february" | "2" => 2,
+        "march" | "3" => 3,
+        "april" | "4" => 4,
+        "may" | "5" => 5,
+        "june" | "6" => 6,
+        "july" | "7" => 7,
+        "august" | "8" => 8,
+        "september" | "9" => 9,
+        "october" | "10" => 10,
+        "november" | "11" => 11,
+        "december" | "12" => 12,
+        _ => return HttpResponse::NotFound().body("Invalid month"),
+    };
+
+    let month_name = match month {
+        1 => "January", 2 => "February", 3 => "March", 4 => "April",
+        5 => "May", 6 => "June", 7 => "July", 8 => "August",
+        9 => "September", 10 => "October", 11 => "November", 12 => "December",
+        _ => "",
+    };
+
+    context.insert("view_year", &year);
+    context.insert("view_month", &month);
+    context.insert("view_month_name", &month_name);
+    context.insert("current_year", &Utc::now().year());
+
+    // Navigation logic
+    let (prev_year, prev_month) = if month == 1 { (year - 1, 12) } else { (year, month - 1) };
+    let (next_year, next_month) = if month == 12 { (year + 1, 1) } else { (year, month + 1) };
+    
+    let month_to_name = |m: u32| match m {
+        1 => "january", 2 => "february", 3 => "march", 4 => "april",
+        5 => "may", 6 => "june", 7 => "july", 8 => "august",
+        9 => "september", 10 => "october", 11 => "november", 12 => "december",
+        _ => "",
+    };
+
+    context.insert("prev_url", &format!("/liturgy/{}/{}", prev_year, month_to_name(prev_month)));
+    context.insert("next_url", &format!("/liturgy/{}/{}", next_year, month_to_name(next_month)));
+    context.insert("prev_month_name", &month_to_name(prev_month));
+    context.insert("next_month_name", &month_to_name(next_month));
 
     // Today's info for the navbar
+    let now = Utc::now();
     let today_str = now.format("%Y-%m-%d").to_string();
     let today_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
         "date": today_str,
-        "locale": "en",
-        "identifier": "general_en"
+        "locale": "en"
     }), None).await;
     context.insert("liturgical_info", &today_info);
 
@@ -53,7 +101,7 @@ pub async fn liturgy(tera: web::Data<Tera>) -> impl Responder {
     let last_day = if month == 12 {
         chrono::NaiveDate::from_ymd_opt(year + 1, 1, 1)
     } else {
-        chrono::NaiveDate::from_ymd_opt(year, month + 1, 1)
+        chrono::NaiveDate::from_ymd_opt(year, month as u32 + 1, 1)
     }.unwrap().pred_opt().unwrap().day();
 
     let mut tasks = Vec::new();
@@ -63,8 +111,7 @@ pub async fn liturgy(tera: web::Data<Tera>) -> impl Responder {
         tasks.push(async move {
             (date_str.clone(), mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
                 "date": date_str,
-                "locale": "en",
-                "identifier": "general_en"
+                "locale": "en"
             }), timeout_10s).await)
         });
     }
@@ -96,8 +143,7 @@ async fn render_page(page: &str, tera: web::Data<Tera>) -> HttpResponse {
     let today = Utc::now().format("%Y-%m-%d").to_string();
     let liturgical_info = mcp::call_mcp_tool("get_liturgy_of_the_day", json!({
         "date": today,
-        "locale": "en",
-        "identifier": "general_en"
+        "locale": "en"
     }), None).await;
     context.insert("liturgical_info", &liturgical_info);
 

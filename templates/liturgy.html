@@ -11,30 +11,45 @@
     {% include "navbar.html" %}
   </header>
   <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
-    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Daily celebrations for April 2026</h1>
+    <div class="flex items-center justify-between mb-12 px-4 md:px-0">
+        <a href="{{ prev_url }}" class="text-[darkred] hover:text-[gold] transition-colors flex items-center gap-2 font-bold uppercase text-[10px] tracking-widest min-w-[80px]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            {{ prev_month_name }}
+        </a>
+        
+        <h1 class="text-4xl font-bold text-center text-green-900 leading-tight">
+            {{ view_month_name }} {{ view_year }}
+        </h1>
 
-        <div class="space-y-6 relative">
-            {% for entry in liturgy_month %}
-                {% set date = entry.0 %}
-                {% set day_num = date | split(pat="-") | last %}
-                {% set liturgical_info = entry.1 %}
-                
-                <div class="relative group">
-                    {# Liturgical Content #}
-                    <div class="z-10 relative">
-                        {% set show_details = true %}
-                        {% include "liturgical_bar.html" %}
-                    </div>
+        <a href="{{ next_url }}" class="text-[darkred] hover:text-[gold] transition-colors flex items-center gap-2 font-bold uppercase text-[10px] tracking-widest min-w-[80px] justify-end">
+            {{ next_month_name }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+    </div>
 
-                    {# Subtle Day Number (Right) #}
-                    <div class="absolute -right-4 md:-right-8 top-4 hidden lg:block pointer-events-none">
-                        <div class="text-5xl font-serif font-bold text-gray-300/20 group-hover:text-[gold]/30 transition-colors">
-                            {{ day_num }}
-                        </div>
+    <div class="space-y-6 relative">
+        {% for entry in liturgy_month %}
+            {% set date = entry.0 %}
+            {% set day_num = date | split(pat="-") | last %}
+            {% set liturgical_info = entry.1 %}
+
+            <div class="relative group pr-8 md:pr-12">
+                {# Liturgical Content #}
+                <div class="z-10 relative">
+                    {% set show_details = true %}
+                    {% include "liturgical_bar.html" %}
+                </div>
+
+                {# Subtle Day Number (Right) #}
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none pr-2">
+                    <div class="text-3xl md:text-5xl font-serif font-bold text-gray-400/20 group-hover:text-[gold]/40 transition-colors tracking-tighter">
+                        {{ day_num }}
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
+    </div>
+
   </main>
 
 

@@ -38,15 +38,15 @@
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
         <div class="flex items-center gap-3">
           {# Liturgical Indicator Dot #}
-          <div class="w-2.5 h-2.5 rounded-full shadow-sm" style="background-color: {{ border_color }};"></div>
+          <div class="w-2.5 h-2.5 rounded-full shadow-sm shrink-0" style="background-color: {{ border_color }};"></div>
           
           <div class="flex flex-wrap items-center justify-center text-center">
             {# Secondary Celebration (The Weekday) #}
             {% if secondary and secondary.name != primary.name %}
-              <span class="text-gray-500 font-sans text-[11px] md:text-[12px] uppercase tracking-wider opacity-80">
+              <span class="text-gray-500 font-sans text-[11px] md:text-[12px] uppercase tracking-wider opacity-80 mr-3">
                 {{ secondary.name }}
               </span>
-              <span class="text-gray-300 mx-3 hidden md:inline">|</span>
+              <span class="text-gray-300 hidden md:inline mr-3">|</span>
             {% endif %}
 
             {# Primary Celebration #}
@@ -63,46 +63,51 @@
 
     {# Detailed Liturgical Info #}
     {% if show_details and primary.readings %}
-      {# Handle nested day/evening readings (e.g. Easter Sunday) #}
+      {# Handle nested day/evening readings #}
       {% set readings = primary.readings %}
       {% if readings.day %}
         {% set readings = readings.day %}
       {% endif %}
 
-      {% if readings.first_reading or readings.responsorial_psalm or readings.gospel %}
-        <div class="px-6 py-4 bg-white/50 border-t border-gray-100/50">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center md:text-left">
-            {% if readings.first_reading %}
-              <div class="flex flex-col">
-                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">First Reading</span>
-                <span class="text-xs text-gray-700 font-serif italic">
-                  {{ readings.first_reading | split(pat="|") | first }}
-                </span>
-              </div>
-            {% endif %}
-            {% if readings.responsorial_psalm %}
-              <div class="flex flex-col">
-                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">Responsorial Psalm</span>
-                <span class="text-xs text-gray-700 font-serif italic">
-                  {{ readings.responsorial_psalm | split(pat="|") | first }}
-                </span>
-              </div>
-            {% endif %}
-            {% if readings.gospel %}
-              <div class="flex flex-col">
-                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1 text-[darkred]">Gospel</span>
-                <span class="text-xs text-gray-800 font-serif font-bold italic">
-                  {{ readings.gospel | split(pat="|") | first }}
-                </span>
-              </div>
-            {% endif %}
-          </div>
+      <div class="px-6 py-4 bg-white/50 border-t border-gray-100/50">
+        <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4">
+          {% if readings.first_reading %}
+            <div class="flex flex-col min-w-[120px]">
+              <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">1st Reading</span>
+              <span class="text-xs text-gray-700 font-serif italic">{{ readings.first_reading | split(pat="|") | first }}</span>
+            </div>
+          {% endif %}
+          {% if readings.responsorial_psalm %}
+            <div class="flex flex-col min-w-[120px]">
+              <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">Psalm</span>
+              <span class="text-xs text-gray-700 font-serif italic">{{ readings.responsorial_psalm | split(pat="|") | first }}</span>
+            </div>
+          {% endif %}
+          {% if readings.second_reading %}
+            <div class="flex flex-col min-w-[120px]">
+              <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">2nd Reading</span>
+              <span class="text-xs text-gray-700 font-serif italic">{{ readings.second_reading | split(pat="|") | first }}</span>
+            </div>
+          {% endif %}
+          {% if readings.epistle %}
+            <div class="flex flex-col min-w-[120px]">
+              <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">Epistle</span>
+              <span class="text-xs text-gray-700 font-serif italic">{{ readings.epistle | split(pat="|") | first }}</span>
+            </div>
+          {% endif %}
+          {% if readings.gospel %}
+            <div class="flex flex-col min-w-[120px]">
+              <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1 text-[darkred]">Gospel</span>
+              <span class="text-xs text-gray-800 font-serif font-bold italic">{{ readings.gospel | split(pat="|") | first }}</span>
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
+      </div>
     {% endif %}
   </div>
 {% else %}
-  <div class="p-2 text-xs text-gray-400 border border-dashed border-gray-200 mb-2 rounded mx-2 md:mx-4">
-    No liturgical data available.
+  <div class="p-4 text-xs text-gray-400 border border-dashed border-gray-200 mb-6 rounded-xl mx-2 md:mx-4 flex items-center justify-center gap-2 italic bg-white/30">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-40"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    The liturgical calendar for this date is empty in the source API.
   </div>
 {% endif %}

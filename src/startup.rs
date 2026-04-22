@@ -1,8 +1,10 @@
 use crate::routes::{dynamic_page, index, liturgy, sitemap};
 use actix_web::dev::Server;
-use actix_web::{web, App, HttpServer};
+use actix_web::{web, App, HttpServer, HttpResponse};
+use chrono::Datelike;
 use std::net::TcpListener;
 use tera::Tera;
+
 
 pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
     // Initialize Tera with all HTML files in templates directory
@@ -31,11 +33,28 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
                     .route(web::get().to(sitemap))
                     .route(web::head().to(sitemap)),
             )
-            // Liturgy regression test page
+            // Liturgy dynamic route
             .service(
-                web::resource("/liturgy.html")
+                web::resource("/liturgy/{year}/{month}")
                     .route(web::get().to(liturgy))
                     .route(web::head().to(liturgy)),
+            )
+            // Redirect old /liturgy.html to current month
+            .service(
+                web::resource("/liturgy.html")
+                    .route(web::get().to(|_tera: web::Data<Tera>| async {
+                        let now = chrono::Utc::now();
+                        let year = now.year();
+                        let month = match now.month() {
+                            1 => "january", 2 => "february", 3 => "march", 4 => "april",
+                            5 => "may", 6 => "june", 7 => "july", 8 => "august",
+                            9 => "september", 10 => "october", 11 => "november", 12 => "december",
+                            _ => "january",
+                        };
+                        HttpResponse::Found()
+                            .append_header(("Location", format!("/liturgy/{}/{}", year, month)))
+                            .finish()
+                    })),
             )
             // Handle dynamic page routes
             .service(
