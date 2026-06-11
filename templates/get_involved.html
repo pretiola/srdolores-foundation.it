@@ -111,11 +111,133 @@
     <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
       <h2 class="text-3xl font-bold mb-6 text-center text-green-900">Contact information</h2>
       <ul class="flex flex-col space-y-4 text-gray-800 text-lg">
-        <li class="border-b pb-2"><strong>Name:</strong> Kasibante Emmanuel</li>
         <li class="border-b pb-2"><strong>Paypal:</strong> <a href="mailto:vitalimmanuel@gmail.com" class="text-blue-600 hover:underline">vitalimmanuel@gmail.com</a></li>
-        <li class="border-b pb-2"><strong>IBAN:</strong> <span class="font-mono bg-gray-100 px-2 rounded">IT41T3608105138265553265858</span></li>
-        <li class="border-b pb-2"><strong>CRYPTO IBAN PAYMENTS:</strong> <span class="font-mono bg-gray-100 px-2 rounded">Register for a Keeta wallet to pay using various crypto currencies.</span>
+        <li class="border-b pb-4">
+          <strong class="block mb-2 text-gray-900 text-lg">Bank transfer (Europe):</strong>
+          
+          <!-- SEPA Bank Transfer Details Card with QR Code -->
+          <div class="bank-transfer-card">
+            <!-- Mode Toggles -->
+            <div class="bank-toggle-container">
+              <button class="bank-btn active" id="btn-open" onclick="setMode('open')">Custom Amount</button>
+              <button class="bank-btn" id="btn-preset" onclick="setMode('preset')">€40.00 Preset</button>
+            </div>
+
+            <!-- QR Canvas Frame -->
+            <div class="bank-qr-wrapper">
+              <canvas id="qr-canvas"></canvas>
+            </div>
+
+            <!-- Payment Details metadata -->
+            <div class="bank-details-box text-base">
+              <p><span>Beneficiary:</span> <strong>Kasibante Emmanuel</strong></p>
+              <p><span>IBAN:</span> <strong>IT41T3608105138265553265858</strong></p>
+              <p><span>BIC:</span> <strong>BPPIITRRXXX</strong></p>
+              <p><span>Remittance:</span> <strong>Sr. Dolores Foundation</strong></p>
+              <p><span>Amount:</span> <strong id="amount-label">Custom / Enter in App</strong></p>
+            </div>
+          </div>
+        </li>
+        <li class="border-b pb-4"><strong>Crypto IBAN payments:</strong> Instantly register for a Keeta wallet to pay using various crypto currencies:
 <style>
+        .bank-transfer-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 100%;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .bank-qr-wrapper {
+            position: relative;
+            display: block;
+            background-color: #ffffff;
+            padding: 0.75rem;
+            border: 1px solid #e5e5ea;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin: 0 auto 1rem auto;
+            max-width: 100%;
+        }
+
+        #qr-canvas {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto !important;
+            margin: 0 auto;
+        }
+
+        .bank-details-box {
+            text-align: left;
+            background-color: #fafafa;
+            border: 1px solid #e5e5ea;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .bank-details-box p {
+            margin-bottom: 0.4rem;
+            color: #666666;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .bank-details-box p strong {
+            color: #111111;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.8rem;
+            letter-spacing: -0.2px;
+            word-break: break-all;
+            text-align: right;
+        }
+
+        .bank-details-box p:last-child {
+            margin-bottom: 0;
+            border-top: 1px dashed #e5e5ea;
+            padding-top: 0.4rem;
+            margin-top: 0.4rem;
+        }
+
+        .bank-toggle-container {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .bank-btn {
+            flex: 1;
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #666666;
+        }
+
+        .bank-btn:hover {
+            border-color: #166534;
+            color: #166534;
+        }
+
+        .bank-btn.active {
+            background-color: #166534;
+            border-color: #166534;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(22, 101, 52, 0.2);
+        }
+
 .keeta-donate-button {
   /* Layout & Alignment */
   display: inline-flex;
@@ -123,9 +245,9 @@
   justify-content: center;
   gap: 12px;
 
-  /* Keeta Brand Colors */
-  background-color: #FF886D; /* Keeta Salmon */
-  color: #2C2A2A; /* Keeta Black */
+  /* Matches the Dark Green Button Style */
+  background-color: #166534; /* Darker Green */
+  color: #ffffff; /* White text */
 
   /* Typography */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -141,14 +263,14 @@
   cursor: pointer;
 
   /* Smooth Hover Effects */
-  box-shadow: 0 4px 6px rgba(255, 136, 109, 0.2);
+  box-shadow: 0 4px 6px rgba(22, 101, 52, 0.2);
   transition: all 0.2s ease-in-out;
 }
 
 .keeta-donate-button:hover {
-  /* Slightly darker shade on hover for interactivity */
-  background-color: #E67A62;
-  box-shadow: 0 6px 12px rgba(255, 136, 109, 0.3);
+  background-color: #14532d; /* Even darker green */
+  color: #ffffff;
+  box-shadow: 0 6px 12px rgba(22, 101, 52, 0.3);
   transform: translateY(-1px);
 }
 
@@ -159,13 +281,13 @@
   display: block;
 }
 </style>
-		<a href="https://wallet.keeta.com" class="keeta-donate-button">
-  <img src="pictures/keeta.svg" alt="Keeta Cheetah" class="keeta-logo">
-  <span>Donate with Cryptocurrency</span>
-</a>
-
+          <div class="flex justify-center mt-3">
+            <a href="https://wallet.keeta.com" class="keeta-donate-button">
+              <img src="pictures/keeta.svg" alt="Keeta Cheetah" class="keeta-logo">
+              <span>Donate with Cryptocurrency</span>
+            </a>
+          </div>
 	</li>
-        <li class="border-b pb-2"><strong>BIC:</strong> <span class="font-mono bg-gray-100 px-2 rounded">BPPIITRRXXX</span></li>
         <li class="border-b pb-2"><strong>Telephone/WhatsApp:</strong> +39 377 097 5371</li>
         <li class="pt-2 leading-relaxed">
           <strong>Postal address:</strong><br>
@@ -175,6 +297,118 @@
         </li>
       </ul>
     </section>
+
+    <!-- EPC SEPA QR Code Generator Scripts -->
+    <script src="/static/js/qrcode.min.js"></script>
+    <script>
+      (function() {
+          let currentMode = 'open'; // Default mode is Custom/Open Amount
+
+          window.setMode = function(mode) {
+              currentMode = mode;
+              
+              // Toggle active button styles
+              document.getElementById('btn-open').classList.toggle('active', mode === 'open');
+              document.getElementById('btn-preset').classList.toggle('active', mode === 'preset');
+              
+              // Toggle details label
+              document.getElementById('amount-label').innerText = mode === 'open' ? 'Custom / Enter in App' : '€40.00';
+              
+              // Re-render
+              generateQrCode();
+          };
+
+          window.generateQrCode = async function() {
+              // Build Amount string for the EPC format (now €40.00)
+              const amountField = currentMode === 'preset' ? 'EUR40.00' : '';
+
+              // Construct exact line-break-delimited EPC payload array
+              const epcLines = [
+                  'BCD',                       // 1. Service Tag
+                  '002',                       // 2. Version
+                  '1',                         // 3. Character Set (UTF-8)
+                  'SCT',                       // 4. SEPA Credit Transfer Ident
+                  'BPPIITRRXXX',               // 5. Beneficiary Bank BIC
+                  'Kasibante Emmanuel',        // 6. Beneficiary Account Owner Name
+                  'IT41T3608105138265553265858',// 7. Beneficiary Account IBAN
+                  amountField,                 // 8. Amount (EURxx.xx or empty)
+                  '',                          // 9. Purpose Code (empty)
+                  '',                          // 10. Structured Reference (empty)
+                  'Sr. Dolores Foundation',    // 11. Unstructured Reference / Remittance Text
+                  ''                           // 12. Beneficiary Information (empty)
+              ];
+
+              const epcPayload = epcLines.join('\n');
+              const canvas = document.getElementById('qr-canvas');
+              if (!canvas) return;
+
+              try {
+                  // Step 1: Render the clean QR code onto the canvas using standard library
+                  // We use Error Correction Level 'Q' (25%) to ensure the QR code remains fully scannable
+                  // even when we overlay the central logo.
+                  await QRCode.toCanvas(canvas, epcPayload, {
+                      errorCorrectionLevel: 'Q',
+                      margin: 2,
+                      scale: 8, // high density canvas resolution
+                      color: {
+                          dark: '#111111',
+                          light: '#ffffff'
+                      }
+                  });
+
+                  const ctx = canvas.getContext('2d');
+                  const size = canvas.width;
+
+                  // Step 2: Overlay the locally stored "Sr Dolores" SVG on top of the canvas center
+                  const img = new Image();
+                  img.src = '/pictures/sr-dolores-qr.svg'; // Loaded relatively
+
+                  img.onload = function() {
+                      const logoSize = size * 0.22; // Logo scales beautifully at 22% of total QR size
+                      const x = (size - logoSize) / 2;
+                      const y = (size - logoSize) / 2;
+
+                      // Step 2a: Draw a white circular shielding background so the QR pixels do not bleed into the logo
+                      ctx.fillStyle = '#ffffff';
+                      ctx.beginPath();
+                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
+                      ctx.fill();
+
+                      // Step 2b: Draw a thin subtle border around the shield to give it contrast
+                      ctx.strokeStyle = '#e5e5ea';
+                      ctx.lineWidth = 1.5;
+                      ctx.beginPath();
+                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
+                      ctx.stroke();
+
+                      // Step 2c: Clip a circle inside the logo area so the SVG background matches the circle
+                      ctx.save();
+                      ctx.beginPath();
+                      ctx.arc(size / 2, size / 2, logoSize / 2, 0, Math.PI * 2);
+                      ctx.clip();
+
+                      // Step 2d: Render the SVG image
+                      ctx.drawImage(img, x, y, logoSize, logoSize);
+                      ctx.restore();
+                  };
+
+                  img.onerror = function(err) {
+                      console.error('Failed to load SVG Image source:', err);
+                  };
+
+              } catch (err) {
+                  console.error('Failed to generate or overlay QR Code:', err);
+              }
+          };
+
+          // Run initial generation on page load/DOM readiness
+          if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', generateQrCode);
+          } else {
+              generateQrCode();
+          }
+      })();
+    </script>
   </main>
   <footer>
     {% include "footer.html" %}

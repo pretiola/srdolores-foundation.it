@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPC SEPA QR Code Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Load standard client-side QR Code library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --surface-color: #ffffff;
+            --surface-border: #e5e5ea;
+            --primary: #ff5a00; /* Orange Accent */
+            --text-main: #111111;
+            --text-muted: #666666;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            padding: 3rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+
+        .qr-wrapper {
+            position: relative;
+            display: inline-block;
+            background-color: #ffffff;
+            padding: 1rem;
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            margin-bottom: 1.5rem;
+        }
+
+        canvas {
+            display: block;
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        .details-box {
+            text-align: left;
+            background-color: #fafafa;
+            border: 1px solid var(--surface-border);
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .details-box p {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .details-box p strong {
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: -0.2px;
+        }
+
+        .details-box p:last-child {
+            margin-bottom: 0;
+            border-top: 1px dashed var(--surface-border);
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .toggle-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            flex: 1;
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-muted);
+        }
+
+        .btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn.active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(255, 90, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Mode Toggles -->
+        <div class="toggle-container">
+            <button class="btn active" id="btn-open" onclick="setMode('open')">Custom Amount</button>
+            <button class="btn" id="btn-preset" onclick="setMode('preset')">€40.00 Preset</button>
+        </div>
+
+        <!-- QR Canvas Frame -->
+        <div class="qr-wrapper">
+            <canvas id="qr-canvas"></canvas>
+        </div>
+
+        <!-- Payment Details metadata -->
+        <div class="details-box">
+            <p>Beneficiary: <strong>Kasibante Emmanuel</strong></p>
+            <p>IBAN: <strong>IT41T3608105138265553265858</strong></p>
+            <p>BIC: <strong>BPPIITRRXXX</strong></p>
+            <p>Remittance: <strong>Sr. Dolores Foundation</strong></p>
+            <p>Amount: <strong id="amount-label">Custom / Enter in App</strong></p>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'open'; // Default mode is Custom/Open Amount
+
+        function setMode(mode) {
+            currentMode = mode;
+            
+            // Toggle active button styles
+            document.getElementById('btn-open').classList.toggle('active', mode === 'open');
+            document.getElementById('btn-preset').classList.toggle('active', mode === 'preset');
+            
+            // Toggle details label
+            document.getElementById('amount-label').innerText = mode === 'open' ? 'Custom / Enter in App' : '€40.00';
+            
+            // Re-render
+            generateQrCode();
+        }
+
+        async function generateQrCode() {
+            // Build Amount string for the EPC format (now €40.00)
+            const amountField = currentMode === 'preset' ? 'EUR40.00' : '';
+
+            // Construct exact line-break-delimited EPC payload array
+            const epcLines = [
+                'BCD',                       // 1. Service Tag
+                '002',                       // 2. Version
+                '1',                         // 3. Character Set (UTF-8)
+                'SCT',                       // 4. SEPA Credit Transfer Ident
+                'BPPIITRRXXX',               // 5. Beneficiary Bank BIC
+                'Kasibante Emmanuel',        // 6. Beneficiary Account Owner Name
+                'IT41T3608105138265553265858',// 7. Beneficiary Account IBAN
+                amountField,                 // 8. Amount (EURxx.xx or empty)
+                '',                          // 9. Purpose Code (empty)
+                '',                          // 10. Structured Reference (empty)
+                'Sr. Dolores Foundation',    // 11. Unstructured Reference / Remittance Text
+                ''                           // 12. Beneficiary Information (empty)
+            ];
+
+            const epcPayload = epcLines.join('\n');
+            const canvas = document.getElementById('qr-canvas');
+
+            try {
+                // Step 1: Render the clean QR code onto the canvas using standard library
+                // We use Error Correction Level 'Q' (25%) to ensure the QR code remains fully scannable
+                // even when we overlay the central logo.
+                await QRCode.toCanvas(canvas, epcPayload, {
+                    errorCorrectionLevel: 'Q',
+                    margin: 2,
+                    scale: 8, // high density canvas resolution
+                    color: {
+                        dark: '#111111',
+                        light: '#ffffff'
+                    }
+                });
+
+                const ctx = canvas.getContext('2d');
+                const size = canvas.width;
+
+                // Step 2: Overlay the locally stored "Sr Dolores" SVG on top of the canvas center
+                const img = new Image();
+                img.src = 'sr_dolores.svg'; // Loaded relatively, completely avoiding line-length issues!
+
+                img.onload = function() {
+                    const logoSize = size * 0.22; // Logo scales beautifully at 22% of total QR size
+                    const x = (size - logoSize) / 2;
+                    const y = (size - logoSize) / 2;
+
+                    // Step 2a: Draw a white circular shielding background so the QR pixels do not bleed into the logo
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Step 2b: Draw a thin subtle border around the shield to give it contrast
+                    ctx.strokeStyle = '#e5e5ea';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
+                    ctx.stroke();
+
+                    // Step 2c: Clip a circle inside the logo area so the SVG background matches the circle
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(size / 2, size / 2, logoSize / 2, 0, Math.PI * 2);
+                    ctx.clip();
+
+                    // Step 2d: Render the SVG image
+                    ctx.drawImage(img, x, y, logoSize, logoSize);
+                    ctx.restore();
+                };
+
+                img.onerror = function(err) {
+                    console.error('Failed to load SVG Image source:', err);
+                };
+
+            } catch (err) {
+                console.error('Failed to generate or overlay QR Code:', err);
+            }
+        }
+
+        // Run initial generation on page load
+        generateQrCode();
+    </script>
+</body>
+</html>
