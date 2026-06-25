@@ -29,7 +29,7 @@ jobs:
       - name: Setup Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy
-        run: flyctl deploy --remote-only
+        run: flyctl deploy --remote-only --build-secret X_CONV_API="${{ secrets.X_CONV_API }}" --env X_CONV_API="${{ secrets.X_CONV_API }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       - name: Scale across regions

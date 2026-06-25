@@ -245,3 +245,69 @@ pub async fn sitemap(tera: web::Data<Tera>) -> impl Responder {
     );
     HttpResponse::Ok().content_type("application/xml").body(xml)
 }
+
+pub async fn track_get_involved(
+    req: actix_web::HttpRequest,
+    client: web::Data<reqwest::Client>,
+) -> impl Responder {
+    let token = match std::env::var("X_CONV_API") {
+        Ok(t) => t,
+        Err(_) => {
+            log::warn!("X_CONV_API not set, skipping tracking");
+            return HttpResponse::Ok().finish();
+        }
+    };
+
+    let user_agent = req
+        .headers()
+        .get("user-agent")
+        .and_then(|h| h.to_str().ok())
+        .unwrap_or("")
+        .to_string();
+
+    let ip_address = req
+        .connection_info()
+        .realip_remote_addr()
+        .unwrap_or("")
+        .to_string();
+
+    let conversion_time = Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Millis, true);
+    let nanos = Utc::now().timestamp_nanos_opt().unwrap_or_else(|| Utc::now().timestamp_micros() * 1000);
+    let event_id = format!("tw-rd7do-{}", nanos);
+
+    let payload = json!({
+        "conversions": [
+            {
+                "conversion_time": conversion_time,
+                "event_id": event_id,
+                "identifiers": [
+                    {
+                        "ip_address": ip_address,
+                        "user_agent": user_agent
+                    }
+                ]
+            }
+        ]
+    });
+
+    let res = client
+        .post("https://ads-api.x.com/12/measurement/conversions/rd7do")
+        .header("X-Pixel-Token", token)
+        .header("Content-Type", "application/json")
+        .json(&payload)
+        .send()
+        .await;
+
+    match res {
+        Ok(resp) => {
+            if !resp.status().is_success() {
+                log::error!("X conversion API error: {}", resp.status());
+            }
+        }
+        Err(e) => {
+            log::error!("X conversion request failed: {}", e);
+        }
+    }
+
+    HttpResponse::Ok().finish()
+}
