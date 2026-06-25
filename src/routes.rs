@@ -301,7 +301,9 @@ pub async fn track_get_involved(
     match res {
         Ok(resp) => {
             if !resp.status().is_success() {
-                log::error!("X conversion API error: {}", resp.status());
+                let status = resp.status();
+                let body = resp.text().await.unwrap_or_else(|_| "Failed to read body".to_string());
+                log::error!("X conversion API error: {} - {}", status, body);
             }
         }
         Err(e) => {
