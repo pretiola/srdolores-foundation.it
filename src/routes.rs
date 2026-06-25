@@ -258,6 +258,8 @@ pub async fn track_get_involved(
         }
     };
 
+    let event_id = std::env::var("X_EVENT_ID").unwrap_or_else(|_| "tw-rd7do-xxxxx".to_string());
+
     let user_agent = req
         .headers()
         .get("user-agent")
@@ -273,13 +275,14 @@ pub async fn track_get_involved(
 
     let conversion_time = Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Millis, true);
     let nanos = Utc::now().timestamp_nanos_opt().unwrap_or_else(|| Utc::now().timestamp_micros() * 1000);
-    let event_id = format!("tw-rd7do-{}", nanos);
+    let conversion_id = format!("interaction-{}", nanos);
 
     let payload = json!({
         "conversions": [
             {
                 "conversion_time": conversion_time,
                 "event_id": event_id,
+                "conversion_id": conversion_id,
                 "identifiers": [
                     {
                         "ip_address": ip_address,
