@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var pics = [];
   document.querySelectorAll("picture").forEach(function (pic) {
     // Skip pictures inside gallery carousels
-    if (pic.closest("[data-gallery]")) return;
+    if (pic.closest(".splide") || pic.closest("[data-gallery]")) return;
     
     var baseAngle = (Math.random() * 5 - 2.5);
     pic.dataset.baseAngle = baseAngle;
