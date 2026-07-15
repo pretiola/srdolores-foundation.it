@@ -108,8 +108,21 @@
       </picture>
     </div>
         
-    <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
+    <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-6 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
       <h2 class="text-3xl font-bold mb-6 text-center text-green-900">Contact information</h2>
+      <ul class="flex flex-col space-y-4 text-gray-800 text-lg">
+        <li class="border-b pb-4"><strong>Telephone/WhatsApp:</strong> +39 377 097 5371</li>
+        <li class="leading-relaxed">
+          <strong>Postal address:</strong><br>
+          Collegio Sant'Anselmo<br>
+          Piazza dei Cavalieri di Malta 5, 00153 Roma<br>
+          ITALY
+        </li>
+      </ul>
+    </section>
+
+    <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
+      <h2 class="text-3xl font-bold mb-6 text-center text-green-900">Donation information</h2>
       <ul class="flex flex-col space-y-4 text-gray-800 text-lg">
         <li class="border-b pb-2"><strong>Paypal:</strong> <a href="mailto:vitalimmanuel@gmail.com" class="text-blue-600 hover:underline">vitalimmanuel@gmail.com</a></li>
         <li class="border-b pb-4">
@@ -138,7 +151,44 @@
             </div>
           </div>
         </li>
-        <li class="border-b pb-4"><strong>Crypto IBAN payments:</strong> Instantly register for a Keeta wallet to pay using various crypto currencies:
+        <li class="border-b pb-4">
+          <strong class="block mb-2 text-gray-900 text-lg">Crypto payments (EURC on Ethereum):</strong>
+          <p class="text-gray-700 mb-4">Funds are automatically deposited into the IBAN account listed above via SEPA using Keeta payment rails.</p>
+          
+          <div class="bank-transfer-card mt-2 mb-4">
+            <div class="bank-qr-wrapper">
+              <canvas id="crypto-qr-canvas"></canvas>
+              <div class="mt-3 flex flex-col items-center w-full px-2">
+                <span class="font-bold text-gray-900 mb-1 text-sm">Ethereum Address</span>
+                <div class="flex items-center justify-center w-full">
+                  <span class="text-[11px] sm:text-xs text-gray-800 font-mono tracking-tight mr-3" style="word-break: break-all;">0x344d169735f17D25E0d3AE8aa00b47F88D613017</span>
+                  <button onclick="copyAddressToClipboard()" class="text-gray-500 hover:text-green-800 transition-colors focus:outline-none shrink-0" title="Copy to clipboard">
+                    <svg id="crypto-copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                    </svg>
+                    <svg id="crypto-check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-green-600" style="display: none;" viewBox="0 0 16 16">
+                      <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bank-details-box text-base">
+              <p><span>Network:</span> <strong>Ethereum Mainnet</strong></p>
+              <p><span>Token:</span> <strong>EURC</strong></p>
+              <p id="crypto-counter-container" style="display: none;"><span>Total raised via EURC:</span> <a href="https://etherscan.io/address/0x344d169735f17D25E0d3AE8aa00b47F88D613017#tokentxns" target="_blank" rel="noopener noreferrer" class="hover:underline text-green-800 transition-colors" title="View transparent ledger"><strong><span id="crypto-counter">0.00</span> EUR</strong></a></p>
+            </div>
+          </div>
+          
+          <p class="text-gray-800 mt-6 mb-4"><strong>Crypto IBAN payments:</strong> Instantly register for a Keeta wallet to pay using various crypto currencies:</p>
+
+          <div class="flex justify-center mt-3 mb-2">
+            <a href="https://wallet.keeta.com" class="keeta-donate-button">
+              <img src="/pictures/keeta.svg" alt="Keeta Cheetah" class="keeta-logo">
+              <span>Donate with Keeta Wallet</span>
+            </a>
+          </div>
 <style>
         .bank-transfer-card {
             background-color: #ffffff;
@@ -155,20 +205,17 @@
         .bank-qr-wrapper {
             position: relative;
             display: block;
-            background-color: #ffffff;
-            padding: 0.75rem;
-            border: 1px solid #e5e5ea;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            width: 100%;
             margin: 0 auto 1rem auto;
-            max-width: 100%;
+            max-width: 380px;
         }
 
-        #qr-canvas {
+        #qr-canvas, #crypto-qr-canvas {
             display: block;
-            width: 100%;
-            max-width: 100%;
+            width: 100% !important;
+            max-width: 100% !important;
             height: auto !important;
+            aspect-ratio: 1 / 1 !important;
             margin: 0 auto;
         }
 
@@ -281,20 +328,8 @@
   display: block;
 }
 </style>
-          <div class="flex justify-center mt-3">
-            <a href="https://wallet.keeta.com" class="keeta-donate-button">
-              <img src="pictures/keeta.svg" alt="Keeta Cheetah" class="keeta-logo">
-              <span>Donate with Cryptocurrency</span>
-            </a>
-          </div>
+
 	</li>
-        <li class="border-b pb-2"><strong>Telephone/WhatsApp:</strong> +39 377 097 5371</li>
-        <li class="pt-2 leading-relaxed">
-          <strong>Postal address:</strong><br>
-          Collegio Sant'Anselmo<br>
-          Piazza dei Cavalieri di Malta 5, 00153 Roma<br>
-          ITALY
-        </li>
       </ul>
     </section>
 
@@ -401,12 +436,118 @@
               }
           };
 
+          window.generateCryptoQrCode = async function() {
+              const epcPayload = 'ethereum:0x344d169735f17D25E0d3AE8aa00b47F88D613017';
+              const canvas = document.getElementById('crypto-qr-canvas');
+              if (!canvas) return;
+
+              try {
+                  await QRCode.toCanvas(canvas, epcPayload, {
+                      errorCorrectionLevel: 'Q',
+                      margin: 2,
+                      scale: 8,
+                      color: {
+                          dark: '#8b0000', // Matches IBAN maroon color
+                          light: '#ffffff'
+                      }
+                  });
+
+                  const ctx = canvas.getContext('2d');
+                  const size = canvas.width;
+
+                  const img = new Image();
+                  img.src = '/pictures/sr-dolores-qr.svg';
+
+                  img.onload = function() {
+                      const logoSize = size * 0.22;
+                      const x = (size - logoSize) / 2;
+                      const y = (size - logoSize) / 2;
+
+                      ctx.fillStyle = '#ffffff';
+                      ctx.beginPath();
+                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
+                      ctx.fill();
+
+                      ctx.strokeStyle = '#e5e5ea';
+                      ctx.lineWidth = 1.5;
+                      ctx.beginPath();
+                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
+                      ctx.stroke();
+
+                      ctx.save();
+                      ctx.beginPath();
+                      ctx.arc(size / 2, size / 2, logoSize / 2, 0, Math.PI * 2);
+                      ctx.clip();
+
+                      ctx.drawImage(img, x, y, logoSize, logoSize);
+                      ctx.restore();
+                  };
+              } catch (err) {
+                  console.error('Failed to generate Crypto QR Code:', err);
+              }
+          };
+
           // Run initial generation on page load/DOM readiness
           if (document.readyState === 'loading') {
-              document.addEventListener('DOMContentLoaded', generateQrCode);
+              document.addEventListener('DOMContentLoaded', () => { generateQrCode(); generateCryptoQrCode(); });
           } else {
               generateQrCode();
+              generateCryptoQrCode();
           }
+
+          let cryptoCounted = false;
+          const cryptoCounterContainer = document.getElementById('crypto-counter-container');
+          const cryptoCounter = document.getElementById('crypto-counter');
+          
+          if (cryptoCounterContainer && window.IntersectionObserver) {
+              const observer = new IntersectionObserver((entries) => {
+                  if (entries[0].isIntersecting && !cryptoCounted) {
+                      cryptoCounted = true;
+                      fetch('/api/crypto/total-donated')
+                          .then(res => res.json())
+                          .then(data => {
+                              if (data.total_eurc > 0) {
+                                  cryptoCounterContainer.style.display = '';
+                                  animateValue(cryptoCounter, 0, data.total_eurc, 1500);
+                              }
+                          })
+                          .catch(console.error);
+                      observer.disconnect();
+                  }
+              });
+              observer.observe(cryptoCounterContainer.parentElement);
+          }
+
+          function animateValue(obj, start, end, duration) {
+              let startTimestamp = null;
+              const step = (timestamp) => {
+                  if (!startTimestamp) startTimestamp = timestamp;
+                  const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                  obj.innerHTML = (progress * (end - start) + start).toFixed(2);
+                  if (progress < 1) {
+                      window.requestAnimationFrame(step);
+                  }
+              };
+              window.requestAnimationFrame(step);
+          }
+
+          window.copyAddressToClipboard = function() {
+              const address = '0x344d169735f17D25E0d3AE8aa00b47F88D613017';
+              if (navigator.clipboard && window.isSecureContext) {
+                  navigator.clipboard.writeText(address).then(() => {
+                      const icon = document.getElementById('crypto-copy-icon');
+                      const check = document.getElementById('crypto-check-icon');
+                      if (icon && check) {
+                          icon.style.display = 'none';
+                          check.style.display = 'inline';
+                          setTimeout(() => { 
+                              icon.style.display = 'inline';
+                              check.style.display = 'none';
+                          }, 2000);
+                      }
+                  }).catch(console.error);
+              }
+          };
       })();
     </script>
   </main>

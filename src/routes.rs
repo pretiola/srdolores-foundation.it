@@ -316,3 +316,58 @@ pub async fn track_get_involved(
 
     HttpResponse::Ok().finish()
 }
+
+#[derive(serde::Deserialize, Debug)]
+struct EtherscanResponse {
+    status: String,
+    result: Option<serde_json::Value>,
+}
+
+pub async fn crypto_total(client: web::Data<reqwest::Client>) -> impl Responder {
+    let api_key = std::env::var("ETHERSCAN_API_KEY").unwrap_or_default();
+    if api_key.is_empty() {
+        return HttpResponse::Ok().json(json!({"total_eurc": 0.0}));
+    }
+
+    // Use V2 API and limit offset to 1000
+    let url = format!(
+        "https://api.etherscan.io/v2/api?chainid=1&module=account&action=tokentx&contractaddress=0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c&address=0x344d169735f17D25E0d3AE8aa00b47F88D613017&page=1&offset=1000&startblock=0&sort=asc&apikey={}",
+        api_key
+    );
+
+    match client.get(&url).send().await {
+        Ok(resp) => {
+            if let Ok(text) = resp.text().await {
+                if let Ok(data) = serde_json::from_str::<EtherscanResponse>(&text) {
+                    if data.status == "1" {
+                        let mut total_value: f64 = 0.0;
+                        if let Some(serde_json::Value::Array(txs)) = data.result {
+                            for tx in txs {
+                                let to = tx.get("to").and_then(|v| v.as_str()).unwrap_or("").to_lowercase();
+                                if to == "0x344d169735f17d25e0d3ae8aa00b47f88d613017" {
+                                    let value_str = tx.get("value").and_then(|v| v.as_str()).unwrap_or("0");
+                                    if let Ok(val) = value_str.parse::<f64>() {
+                                        total_value += val;
+                                    }
+                                }
+                            }
+                        }
+                        let total_eurc = total_value / 1_000_000.0;
+                        return HttpResponse::Ok().json(json!({"total_eurc": total_eurc}));
+                    } else {
+                        log::error!("Etherscan API error (status {}): {}", data.status, text);
+                    }
+                } else {
+                    log::error!("Etherscan JSON parse error. Raw response: {}", text);
+                }
+            } else {
+                log::error!("Failed to read text from Etherscan response");
+            }
+        }
+        Err(e) => {
+            log::error!("Etherscan request failed: {}", e);
+        }
+    }
+
+    HttpResponse::Ok().json(json!({"total_eurc": 0.0}))
+}
