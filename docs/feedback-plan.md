@@ -23,7 +23,13 @@ The first local UAT batch is committed. See `uat-checklist.md` for review steps 
 | `82f7357` | Smooth initial photo rotation with scroll response and reduced-motion handling |
 | `8d43bd5` | Facts register, narrative questions, publishing templates, financial schema and December readiness drafts |
 
-The earlier display/donation edits shared templates and compiled CSS, so they were retained as one coherent tested commit rather than split into broken intermediate states. Draft documents do not resolve factual dependencies. The consolidated project overview, Updates destination, full browser matrix, Docker validation and approved factual content remain open.
+The earlier display/donation edits shared templates and compiled CSS, so they were retained as one coherent tested commit rather than split into broken intermediate states. Draft documents do not resolve factual dependencies. The consolidated project overview and initial Updates destination are implemented locally. Full browser coverage, Docker validation and approved factual content remain open.
+
+## Latest UAT and implementation record
+
+The user approved the sliding photo behavior, contact information and compact Lynx QR display. This approval does not authorize a push or deployment.
+
+Local commit `5ddc41b` adds the project overview and initial Updates destination, links them from the existing navigation/homepage, and keeps all old page URLs. Updates explicitly has no field reports rather than invented entries. Checks: ten Rust integration tests; both pages at four widths; automated accessibility checks; keyboard navigation; JavaScript-disabled content; actual Lynx output; visual inspection.
 
 ## Ordered batches
 
@@ -82,7 +88,7 @@ Suggested commits: `fix: preserve navigation and gallery access across browsers`
 ### 6. Clarify the homepage and project explanation
 
 - [ ] Review the current 60-family homepage emphasis and primary action.
-- [ ] Draft a coherent project overview covering Binzi, the families, practical challenges, the operating model, family responsibilities and intended outcomes.
+- [x] Draft a coherent project overview covering Binzi, the families, practical challenges, the operating model, family responsibilities and intended outcomes.
 - [ ] Retain useful detailed information and preserve existing URLs; use redirects if an approved navigation change needs new URLs.
 - [ ] Keep education, agriculture, water and housing visible without obscuring the primary 60-family objective.
 - [ ] Replace unsupported certainty with sourced, accurate wording; distinguish aspiration from evidence.
@@ -103,8 +109,8 @@ Dependency: Fr. Emmanuel's corrections, account of the personal connection and a
 
 ### 8. Prepare evidence and updates publishing
 
-- [ ] Design a simple server-rendered Updates/Evidence destination, without adding a new platform unless needed.
-- [ ] Prepare reusable field-update, case-study, milestone and financial-note templates.
+- [x] Design a simple server-rendered Updates/Evidence destination, without adding a new platform unless needed.
+- [x] Prepare reusable field-update, case-study, milestone and financial-note templates.
 - [ ] Include dates, status, sources and meaningful captions; retain consent and sensitive participant records privately rather than in public pages or the public Git repository.
 - [ ] Link contributions to expenditure and outcomes without treating the incoming EURC ledger as proof of local spending or impact.
 - [ ] Publish only real updates. Keep demonstrations clearly marked in local drafts and out of production.
@@ -141,7 +147,7 @@ Dependency: itinerary, observable activities, participants, local liaison, equip
 
 - [ ] Review relevant dependency/security findings, external-service timeouts, error handling and payment-total accuracy; prioritize concrete issues over unrelated infrastructure changes.
 - [ ] Verify the actual Docker build and generated assets, in addition to local Rust execution.
-- [ ] Document deployment, rollback and recovery with no credentials in source.
+- [x] Document deployment, rollback and recovery with no credentials in source.
 - [ ] Run the final regression suite and browser matrix against the actual local application.
 - [ ] Produce a review summary with commit list, completed backlog items, unresolved facts, screenshots where useful and known limitations.
 - [ ] Obtain explicit user sign-off on the local changes and the intended release action before any push or deployment. Pushing main currently triggers deployment automatically.

@@ -27,6 +27,14 @@ Review the actual Rust application at http://localhost:8080/. No pushes or deplo
 
 This is an initial UAT batch, not final approval of the entire September–December program. Full Firefox/WebKit testing and a Docker image build remain outstanding. The local environment currently has no Docker/Podman executable. No Etherscan key is configured locally, so the honest unavailable-total state is shown.
 
-Fr. Emmanuel still needs to confirm costs, feed quantities, current delivery counts, heritage facts and reporting responsibilities. The narrative, field workflow and financial template are drafts. No real financial record has been reconciled and no December assets have been received. The Updates destination and consolidated project overview remain future implementation batches.
+Fr. Emmanuel still needs to confirm costs, feed quantities, current delivery counts, heritage facts and reporting responsibilities. The narrative, field workflow and financial template are drafts. No real financial record has been reconciled and no December assets have been received. The initial Updates destination and consolidated project overview are now ready for the second local review batch.
 
 Record each finding as: page; device/browser; action; expected result; observed result; priority. Sign-off should identify the reviewed local commit and whether it authorizes only the content/design or also a specific push/deployment. A push to main currently triggers Fly.io deployment automatically.
+
+## Second local review batch
+
+The user approved the sliding photos, contact information and compact Lynx QR display.
+
+Now review `/project.html` and `/updates.html`, available under What we do and from the homepage. Check that the overview explains the target and operating model clearly, the Updates empty state is understandable, and the contact/budget links lead to the right destinations. Existing detail-page URLs are retained.
+
+Both pages passed checks at 320, 375, 768 and 1280 pixels, automated accessibility checks, keyboard submenu access, JavaScript-disabled rendering and Lynx reads. Their routes are covered by the existing page and sitemap integration tests. Historical claims, new outcome figures, financial reconciliation and December media still await supporting facts.
