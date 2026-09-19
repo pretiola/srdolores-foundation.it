@@ -1,3 +1,13 @@
+{% if reading_previous is defined or reading_next is defined %}
+<nav class="reading-navigation" aria-label="Continue reading">
+  {% if reading_previous is defined %}
+  <a class="reading-previous" href="{{ reading_previous.url }}" rel="prev"><span>← Previous page: </span> <strong>{{ reading_previous.title }}</strong></a>
+  {% endif %}
+  {% if reading_next is defined %}
+  <a class="reading-next" href="{{ reading_next.url }}" rel="next"><span>Next page → </span> <strong>{{ reading_next.title }}</strong></a>
+  {% endif %}
+</nav>
+{% endif %}
 <div id="footer-bar" class="pb-12">
   <div class="flex flex-wrap justify-center gap-4 mb-8">
     <a href="https://x.com/FrKasibant15063" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="text-[darkred] hover:text-[gold] transition-colors p-3 flex items-center gap-2">

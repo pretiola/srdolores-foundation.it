@@ -38,3 +38,12 @@ The user approved the sliding photos, contact information and compact Lynx QR di
 Now review `/project.html` and `/updates.html`, available under What we do and from the homepage. Check that the overview explains the target and operating model clearly, the Updates empty state is understandable, and the contact/budget links lead to the right destinations. Existing detail-page URLs are retained.
 
 Both pages passed checks at 320, 375, 768 and 1280 pixels, automated accessibility checks, keyboard submenu access, JavaScript-disabled rendering and Lynx reads. Their routes are covered by the existing page and sitemap integration tests. Historical claims, new outcome figures, financial reconciliation and December media still await supporting facts.
+
+## Navigation and project history review — 19 September 2026
+
+- Review Project updates: historical website work, July ledger milestone, reporting preparations, and December visit explicitly planned.
+- Open What we do: Beneficiaries, Challenges, Goals, Project overview (piglet), Updates (newspaper).
+- Follow footer previous/next links from Home through Who we are, Beneficiaries, Challenges, Goals, Project overview, Updates, Holy Mass, Get Involved.
+- Calendar and legal pages offer a route into Project overview, without replacing calendar month controls.
+- Verified: 10 Rust integration tests; project/updates at 320, 375, 768, 1280px; automated WCAG checks, keyboard submenu, JavaScript-disabled content; Lynx text output.
+- Awaiting user UAT. No push or deployment authorized.

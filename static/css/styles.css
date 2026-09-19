@@ -232,3 +232,11 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
     transition: transform 700ms cubic-bezier(.22, .61, .36, 1), filter 700ms ease-out;
   }
 }
+
+/* Ordinary links retain their reading order without styles or scripting. */
+.reading-navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 56rem; margin: 1rem auto 3rem; padding: 0 1rem; }
+.reading-navigation a { display: flex; flex-direction: column; gap: .4rem; padding: 1.25rem; border: 1px solid #8b9983; border-radius: .5rem; background: #fff; color: #14532d; text-decoration: none; }
+.reading-navigation a:hover { background: #f0f5eb; border-color: #14532d; }
+.reading-navigation strong { font-size: 1.25rem; text-decoration: underline; text-underline-offset: .2em; }
+.reading-next { grid-column: 2; text-align: right; }
+@media (max-width: 479px) { .reading-navigation { grid-template-columns: 1fr; } .reading-next { grid-column: 1; } }

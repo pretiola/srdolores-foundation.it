@@ -171,3 +171,14 @@ Dependency: actual field material and factual/participant approvals. This is a d
 3. Relevant verification passes; any limitation is recorded.
 4. A coherent local commit exists and the checklist records its hash.
 5. No remote push or deployment occurs.
+
+### Navigation and historical updates batch — 19 September 2026
+
+Implemented requested submenu icons and ordering, source-grounded Project updates, and server-rendered previous/next reading links before social links. December remains planned and the 60-family target remains distinct from delivered support.
+
+Sources read:
+- March–May report (published 1 June; scope includes Christmas 2025): https://docs.google.com/document/d/1RRpDYL-2jd7um0L-ld1X1pgPz1u3abtgYADn1OfjCIs/edit
+- June–August report (published 14 September): https://docs.google.com/document/d/14L0zsIHuPjWyjMZLZC0hE4be6zQOCS3b__rQghZPVMk/edit
+- September–December planning brief: https://docs.google.com/document/d/1QkFk3PpoJGVLGWfbqgwUh7P1XZLpoRrLtgDFWu4SrM0/edit
+
+The user's two latest links duplicate the June–August report; that report itself references the earlier report. Public summaries omit unverified settlement guarantees, analytics claims, biographical draft details, and unsupported delivery totals. Historical reporting preparation is attributed to its reporting period, rather than an invented exact event date.

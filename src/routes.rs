@@ -6,9 +6,36 @@ use tera::Tera;
 use serde_json::json;
 use crate::mcp;
 
+/// One reading sequence for ordinary links in every browser.
+fn reading_navigation(context: &mut tera::Context, page: &str) {
+    let pages = [
+        ("index", "/", "Home"),
+        ("who_we_are", "/who_we_are.html", "Who we are"),
+        ("benificiaries", "/benificiaries.html", "Beneficiaries"),
+        ("challenges", "/challenges.html", "Challenges"),
+        ("goals", "/goals.html", "Goals"),
+        ("project", "/project.html", "Project overview"),
+        ("updates", "/updates.html", "Project updates"),
+        ("holy_mass", "/holy_mass.html", "Holy Mass"),
+        ("get_involved", "/get_involved.html", "Get Involved"),
+    ];
+    if let Some(index) = pages.iter().position(|item| item.0 == page) {
+        if index > 0 {
+            let item = pages[index - 1];
+            context.insert("reading_previous", &json!({"url": item.1, "title": item.2}));
+        }
+        if let Some(item) = pages.get(index + 1) {
+            context.insert("reading_next", &json!({"url": item.1, "title": item.2}));
+        }
+    } else {
+        context.insert("reading_next", &json!({"url": "/project.html", "title": "Project overview"}));
+    }
+}
+
 pub async fn index(tera: web::Data<Tera>, client: web::Data<reqwest::Client>) -> impl Responder {
     let mut context = tera::Context::new();
     context.insert("page_name", "index");
+    reading_navigation(&mut context, "index");
     context.insert("current_year", &Utc::now().year());
 
     // Opportunistic liturgical info
@@ -43,6 +70,7 @@ pub async fn liturgy(
     client: web::Data<reqwest::Client>,
 ) -> impl Responder {
     let mut context = tera::Context::new();
+    reading_navigation(&mut context, "liturgy");
     let year = params.year;
     let month_str = params.month.to_lowercase();
     
@@ -152,6 +180,7 @@ async fn render_page(page: &str, tera: web::Data<Tera>, client: web::Data<reqwes
     let template_name = format!("{}.html", page);
     let mut context = tera::Context::new();
     context.insert("page_name", page);
+    reading_navigation(&mut context, page);
     context.insert("current_year", &Utc::now().year());
 
     // Opportunistic liturgical info
