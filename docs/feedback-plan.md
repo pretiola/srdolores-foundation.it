@@ -13,13 +13,23 @@ Source: the September–December 2026 briefing supplied by the user, the reposit
 
 ## Current state
 
-The local application contains uncommitted improvements to the budget, 60-family emphasis, payment tiles, browser fallbacks, navigation, galleries, calendar display and removal of X tracking. Those changes have already received an initial test pass. They need to be split into coherent commits and checked in their committed states; this plan does not treat the full feedback list as complete.
+The first local UAT batch is committed. See `uat-checklist.md` for review steps and verification limits. The application remains local; no pushes or deployments have occurred since the local-only instruction.
+
+| Commit | Completed work |
+|---|---|
+| `9fcd5e8` | Removed X beacons, conversion endpoint and deployment variables; tested the staged commit separately |
+| `0d2680a` | Corrected budget and 60-family focus; donation tiles and browser/accessibility repairs; tested the staged commit separately |
+| `617c990` | Contact name and compact/ASCII text QR files, shared payloads, freshness check and regression coverage |
+| `82f7357` | Smooth initial photo rotation with scroll response and reduced-motion handling |
+| `8d43bd5` | Facts register, narrative questions, publishing templates, financial schema and December readiness drafts |
+
+The earlier display/donation edits shared templates and compiled CSS, so they were retained as one coherent tested commit rather than split into broken intermediate states. Draft documents do not resolve factual dependencies. The consolidated project overview, Updates destination, full browser matrix, Docker validation and approved factual content remain open.
 
 ## Ordered batches
 
 ### 1. Establish the review baseline
 
-- [ ] Preserve the existing changes on a local review branch and record their baseline.
+- [x] Preserve the existing changes on a local review branch and record their baseline.
 - [ ] Split existing work into the following coherent commits, keeping each intermediate state usable; combine inseparable changes rather than creating broken commits.
 - [ ] Record the checks and remaining issues for each batch below.
 
@@ -27,43 +37,43 @@ Suggested commit: `docs: record feedback burn-down and local review process`.
 
 ### 2. Remove X tracking
 
-- [ ] Review and commit removal of the browser beacon, interaction event, server endpoint and deployment variables.
-- [ ] Preserve ordinary social links.
+- [x] Review and commit removal of the browser beacon, interaction event, server endpoint and deployment variables.
+- [x] Preserve ordinary social links.
 - [ ] Verify no X tracking request occurs on load, scroll or click, and that the old endpoint no longer accepts conversion events.
-- [ ] Record that Google Analytics remains; any broader analytics decision is separate from the user's explicit X-removal request.
+- [x] Record that Google Analytics remains; any broader analytics decision is separate from the user's explicit X-removal request.
 
 Suggested commit: `privacy: remove X conversion tracking`.
 
 ### 3. Correct the budget and establish a facts register
 
-- [ ] Commit the arithmetic corrections and clear per-family versus project totals.
-- [ ] Keep the existing 60 feed bags as the calculation basis, explicitly pending confirmation of the intended quantity.
+- [x] Commit the arithmetic corrections and clear per-family versus project totals.
+- [x] Keep the existing 60 feed bags as the calculation basis, explicitly pending confirmation of the intended quantity.
 - [ ] Verify UGX and EUR column sums separately. The current estimates imply UGX 50,000,000 and approximately EUR 13,366; do not imply one verified current exchange rate.
-- [ ] Create a dated facts register with source, owner, status and last verification date for every numerical or historical public claim.
-- [ ] Flag unit prices, feed quantities, veterinary costs, training/supervision costs, education coverage, target status and actual delivery counts for Fr. Emmanuel's confirmation.
+- [x] Create a dated facts register with source, owner, status and last verification date for every numerical or historical public claim.
+- [x] Flag unit prices, feed quantities, veterinary costs, training/supervision costs, education coverage, target status and actual delivery counts for Fr. Emmanuel's confirmation.
 - [ ] Distinguish planned activities, ongoing work and documented outcomes consistently.
 
 Suggested commits: `fix: correct the 60-family planning budget`; `docs: track sources and unresolved project claims`.
 
 ### 4. Complete the Get Involved journey
 
-- [ ] Put the current 60-family need and contribution impact before payment details.
-- [ ] Review the IBAN/European flag, EURC/Ethereum and PayPal tiles on desktop and mobile.
-- [ ] Preserve all recipient details and clear token/network labels in plain HTML.
+- [x] Put the current 60-family need and contribution impact before payment details.
+- [x] Review the IBAN/European flag, EURC/Ethereum and PayPal tiles on desktop and mobile.
+- [x] Preserve all recipient details and clear token/network labels in plain HTML.
 - [ ] Verify native disclosure behavior, keyboard focus, touch targets, narrow-screen wrapping and text labels without icons.
 - [ ] Decode both bank QR modes and the crypto QR; check clipboard success and failure behavior.
 - [ ] Show unavailable totals honestly, preserve the public ledger link without JavaScript, and avoid reporting a capped or failed transaction response as a complete total.
-- [ ] Keep PayPal's current email-based instructions accurate; do not invent a checkout destination.
+- [x] Keep PayPal's current email-based instructions accurate; do not invent a checkout destination.
 - [ ] Add an accurate explanation of how progress is reported once that reporting process is agreed; do not publish an unsupported promise.
 
 Suggested commit: `feat: progressively enhance donation choices`.
 
 ### 5. Finish the cross-browser and accessibility repairs
 
-- [ ] Commit keyboard-operable navigation, skip links and visible focus states.
+- [x] Commit keyboard-operable navigation, skip links and visible focus states.
 - [ ] Keep gallery images and links accessible without the carousel library; verify image-dialog focus and Escape behavior.
-- [ ] Respect reduced motion and prevent image effects from causing clipping or sideways scrolling.
-- [ ] Finish calendar readability and truthful unavailable-data handling.
+- [x] Respect reduced motion and prevent image effects from causing clipping or sideways scrolling.
+- [x] Finish calendar readability and truthful unavailable-data handling.
 - [ ] Audit headings, table semantics, alt text, contrast, zoom/reflow, link names and missing assets across every page, not just Get Involved.
 - [ ] Test Chromium, Firefox and WebKit where available, plus actual Lynx, CSS-disabled and JavaScript-disabled rendering. Record coverage limits explicitly.
 
@@ -107,7 +117,7 @@ Dependency: approved facts and real evidence for populated public entries.
 
 - [ ] Draft a lightweight template for contribution date/channel/currency, fees, transfer or bank receipt, local expenditure, evidence reference and outcome/status.
 - [ ] Explain the distinction between incoming funds, funds available locally, expenditure and results.
-- [ ] Prepare a redacted public-summary format.
+- [x] Prepare a redacted public-summary format.
 - [ ] Reconcile one real contribution end to end once authorized records are supplied. Keep private financial records outside the public repository.
 
 Suggested commit: `docs: define contribution-to-outcome reporting`.
@@ -117,11 +127,11 @@ Dependency: transaction and expenditure records, plus confirmation of the actual
 ### 10. Prepare December field capture and intake
 
 - [ ] Produce a minimum capture checklist: Fr. Emmanuel interview, one consenting adult/household case study, operational evidence, community/pastoral context and useful horizontal/vertical coverage.
-- [ ] Prepare interview prompts and the unresolved factual questions the trip should answer.
+- [x] Prepare interview prompts and the unresolved factual questions the trip should answer.
 - [ ] Create blank metadata and consent-record templates covering date, location, activity, creator, identification permission, reuse restrictions and appropriate child/guardian requirements.
-- [ ] Define naming, original-file preservation, backup and intake-folder conventions.
+- [x] Define naming, original-file preservation, backup and intake-folder conventions.
 - [ ] Document intake → metadata → selection → editorial → factual approval → publication → archive, with proposed responsibilities awaiting confirmation.
-- [ ] Prepare the one-page phone-friendly field checklist and November readiness scorecard.
+- [x] Prepare the one-page phone-friendly field checklist and November readiness scorecard.
 
 Suggested commit: `docs: prepare December capture and publishing workflow`.
 
