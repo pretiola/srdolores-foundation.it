@@ -55,3 +55,7 @@ Both pages passed checks at 320, 375, 768 and 1280 pixels, automated accessibili
 - HTML facts explain climate care, conditional growth examples and breeding potential. Breed remains unconfirmed; no claims of measured resilience or guaranteed herd multiplication.
 - Sources linked directly on the page: FAO pig housing, reproduction and tropical adaptation; ILRI Uganda heat-stress research.
 - Review the illustration and explanatory copy locally before release.
+
+## User acceptance — 19 September 2026
+
+User approved proceeding after reviewing the piglet visual and counters, with the requested label change from “Further reading” to “External links.” Recorded as local content/design approval only; no push or deployment.
