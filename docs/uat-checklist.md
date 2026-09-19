@@ -59,3 +59,9 @@ Both pages passed checks at 320, 375, 768 and 1280 pixels, automated accessibili
 ## User acceptance — 19 September 2026
 
 User approved proceeding after reviewing the piglet visual and counters, with the requested label change from “Further reading” to “External links.” Recorded as local content/design approval only; no push or deployment.
+
+## Follow-up regression results — 19 September 2026
+
+All 12 content/legal/calendar pages passed automated Chromium WCAG A/AA checks. The existing 40 responsive checks passed, together with budget sums, bank/crypto QR decoding, keyboard navigation/gallery and enhancement failure fallbacks. Clipboard success/denial and CSS-disabled plus JavaScript-disabled content were verified. The current project reference heading reads “External links.”
+
+Firefox/WebKit automation remains unverified: browser installation reports Ubuntu 26.04 unsupported. Docker/Podman is still unavailable. Release remains local-only.

@@ -36,7 +36,7 @@ Local commit `5ddc41b` adds the project overview and initial Updates destination
 ### 1. Establish the review baseline
 
 - [x] Preserve the existing changes on a local review branch and record their baseline.
-- [ ] Split existing work into the following coherent commits, keeping each intermediate state usable; combine inseparable changes rather than creating broken commits.
+- [x] Split existing work into the following coherent commits, keeping each intermediate state usable; combine inseparable changes rather than creating broken commits.
 - [ ] Record the checks and remaining issues for each batch below.
 
 Suggested commit: `docs: record feedback burn-down and local review process`.
@@ -54,7 +54,7 @@ Suggested commit: `privacy: remove X conversion tracking`.
 
 - [x] Commit the arithmetic corrections and clear per-family versus project totals.
 - [x] Keep the existing 60 feed bags as the calculation basis, explicitly pending confirmation of the intended quantity.
-- [ ] Verify UGX and EUR column sums separately. The current estimates imply UGX 50,000,000 and approximately EUR 13,366; do not imply one verified current exchange rate.
+- [x] Verify UGX and EUR column sums separately. The current estimates imply UGX 50,000,000 and approximately EUR 13,366; do not imply one verified current exchange rate.
 - [x] Create a dated facts register with source, owner, status and last verification date for every numerical or historical public claim.
 - [x] Flag unit prices, feed quantities, veterinary costs, training/supervision costs, education coverage, target status and actual delivery counts for Fr. Emmanuel's confirmation.
 - [ ] Distinguish planned activities, ongoing work and documented outcomes consistently.
@@ -66,9 +66,9 @@ Suggested commits: `fix: correct the 60-family planning budget`; `docs: track so
 - [x] Put the current 60-family need and contribution impact before payment details.
 - [x] Review the IBAN/European flag, EURC/Ethereum and PayPal tiles on desktop and mobile.
 - [x] Preserve all recipient details and clear token/network labels in plain HTML.
-- [ ] Verify native disclosure behavior, keyboard focus, touch targets, narrow-screen wrapping and text labels without icons.
-- [ ] Decode both bank QR modes and the crypto QR; check clipboard success and failure behavior.
-- [ ] Show unavailable totals honestly, preserve the public ledger link without JavaScript, and avoid reporting a capped or failed transaction response as a complete total.
+- [x] Verify native disclosure behavior, keyboard focus, touch targets, narrow-screen wrapping and text labels without icons.
+- [x] Decode both bank QR modes and the crypto QR; check clipboard success and failure behavior.
+- [x] Show unavailable totals honestly, preserve the public ledger link without JavaScript, and avoid reporting a capped or failed transaction response as a complete total.
 - [x] Keep PayPal's current email-based instructions accurate; do not invent a checkout destination.
 - [ ] Add an accurate explanation of how progress is reported once that reporting process is agreed; do not publish an unsupported promise.
 
@@ -89,8 +89,8 @@ Suggested commits: `fix: preserve navigation and gallery access across browsers`
 
 - [ ] Review the current 60-family homepage emphasis and primary action.
 - [x] Draft a coherent project overview covering Binzi, the families, practical challenges, the operating model, family responsibilities and intended outcomes.
-- [ ] Retain useful detailed information and preserve existing URLs; use redirects if an approved navigation change needs new URLs.
-- [ ] Keep education, agriculture, water and housing visible without obscuring the primary 60-family objective.
+- [x] Retain useful detailed information and preserve existing URLs; use redirects if an approved navigation change needs new URLs.
+- [x] Keep education, agriculture, water and housing visible without obscuring the primary 60-family objective.
 - [ ] Replace unsupported certainty with sourced, accurate wording; distinguish aspiration from evidence.
 
 Suggested commit: `content: clarify the 60-family project and visitor journey`.
@@ -99,7 +99,7 @@ Suggested commit: `content: clarify the 60-family project and visitor journey`.
 
 - [ ] Prepare the two-page canonical narrative as a draft with unresolved claims marked.
 - [ ] Assemble a chronology and focused questions on Sister Dolores, Fr. Emmanuel, Binzi and the Foundation's origins.
-- [ ] Separate documented history, first-person recollection and interpretation.
+- [x] Separate documented history, first-person recollection and interpretation.
 - [ ] Clarify Pretiola's technical/advisory role and the locally led operation.
 - [ ] Revise Who We Are only using verified material; do not imply Sister Dolores worked in Binzi without evidence.
 
@@ -121,8 +121,8 @@ Dependency: approved facts and real evidence for populated public entries.
 
 ### 9. Prepare financial reconciliation
 
-- [ ] Draft a lightweight template for contribution date/channel/currency, fees, transfer or bank receipt, local expenditure, evidence reference and outcome/status.
-- [ ] Explain the distinction between incoming funds, funds available locally, expenditure and results.
+- [x] Draft a lightweight template for contribution date/channel/currency, fees, transfer or bank receipt, local expenditure, evidence reference and outcome/status.
+- [x] Explain the distinction between incoming funds, funds available locally, expenditure and results.
 - [x] Prepare a redacted public-summary format.
 - [ ] Reconcile one real contribution end to end once authorized records are supplied. Keep private financial records outside the public repository.
 
@@ -132,11 +132,11 @@ Dependency: transaction and expenditure records, plus confirmation of the actual
 
 ### 10. Prepare December field capture and intake
 
-- [ ] Produce a minimum capture checklist: Fr. Emmanuel interview, one consenting adult/household case study, operational evidence, community/pastoral context and useful horizontal/vertical coverage.
+- [x] Produce a minimum capture checklist: Fr. Emmanuel interview, one consenting adult/household case study, operational evidence, community/pastoral context and useful horizontal/vertical coverage.
 - [x] Prepare interview prompts and the unresolved factual questions the trip should answer.
 - [ ] Create blank metadata and consent-record templates covering date, location, activity, creator, identification permission, reuse restrictions and appropriate child/guardian requirements.
 - [x] Define naming, original-file preservation, backup and intake-folder conventions.
-- [ ] Document intake → metadata → selection → editorial → factual approval → publication → archive, with proposed responsibilities awaiting confirmation.
+- [x] Document intake → metadata → selection → editorial → factual approval → publication → archive, with proposed responsibilities awaiting confirmation.
 - [x] Prepare the one-page phone-friendly field checklist and November readiness scorecard.
 
 Suggested commit: `docs: prepare December capture and publishing workflow`.
@@ -182,3 +182,13 @@ Sources read:
 - September–December planning brief: https://docs.google.com/document/d/1QkFk3PpoJGVLGWfbqgwUh7P1XZLpoRrLtgDFWu4SrM0/edit
 
 The user's two latest links duplicate the June–August report; that report itself references the earlier report. Public summaries omit unverified settlement guarantees, analytics claims, biographical draft details, and unsupported delivery totals. Historical reporting preparation is attributed to its reporting period, rather than an invented exact event date.
+
+### Post-UAT verification — 19 September 2026
+
+User accepted the project visual/counters batch with “Further reading” renamed to “External links” (commit `46f4f34`). Local approval only.
+
+Completed follow-up: automated WCAG A/AA checks on all 12 rendered content/legal/calendar pages; existing 40 responsive checks; payment budget sums, decoded bank/crypto QR payloads, unavailable total, keyboard gallery/menu, no-JavaScript and blocked-enhancement fallback. Explicit clipboard success and permission-denied states were checked, plus content/reading links without CSS and JavaScript. Rust integration suite and QR freshness checks passed.
+
+Remaining verification limits: Firefox/WebKit installation was attempted, but the QA tool reports this Ubuntu 26.04 platform unsupported. Docker/Podman is absent. These checks are not marked passed. Automated accessibility checks are not a substitute for assistive-technology UAT.
+
+Remaining factual work: confirmed breed, current costs/feed quantity, actual delivery/outcome counts, heritage review, operational owners/itinerary, and authorized financial records. December capture and later publishing depend on real material arriving. Existing public heritage text has not been expanded with unapproved draft research. No pushes or deployments.
