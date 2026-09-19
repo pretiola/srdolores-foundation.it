@@ -65,3 +65,7 @@ User approved proceeding after reviewing the piglet visual and counters, with th
 All 12 content/legal/calendar pages passed automated Chromium WCAG A/AA checks. The existing 40 responsive checks passed, together with budget sums, bank/crypto QR decoding, keyboard navigation/gallery and enhancement failure fallbacks. Clipboard success/denial and CSS-disabled plus JavaScript-disabled content were verified. The current project reference heading reads “External links.”
 
 Firefox/WebKit automation remains unverified: browser installation reports Ubuntu 26.04 unsupported. Docker/Podman is still unavailable. Release remains local-only.
+
+## Homepage photo height — 19 September 2026
+
+Removed fixed 128px/176px heights and cover cropping from the four opening photos. Each now displays its full natural aspect ratio at the available column width, with top-aligned grid items. Verified all four image proportions at 320, 375, 768 and 1280px without horizontal overflow; inspected desktop rendering with photo rotation enabled.
