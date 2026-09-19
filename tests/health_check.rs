@@ -40,6 +40,8 @@ async fn all_pages_return_200() {
         "/benificiaries.html",
         "/challenges.html",
         "/goals.html",
+        "/project.html",
+        "/updates.html",
         "/holy_mass.html",
         "/get_involved.html",
         "/privacy_policy.html",
@@ -103,6 +105,8 @@ async fn sitemap_returns_valid_xml() {
     assert!(body.contains("index.html"));
     assert!(body.contains("who_we_are.html"));
     assert!(body.contains("get_involved.html"));
+    assert!(body.contains("project.html"));
+    assert!(body.contains("updates.html"));
     // Should NOT include partials
     assert!(!body.contains("navbar.html"));
     assert!(!body.contains("footer.html"));
