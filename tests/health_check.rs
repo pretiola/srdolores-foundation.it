@@ -129,3 +129,17 @@ async fn head_requests_work() {
         );
     }
 }
+
+#[actix_web::test]
+async fn x_tracking_is_not_exposed() {
+    let address = spawn_app();
+    let client = reqwest::Client::new();
+    let body = client.get(format!("{}/get_involved.html", address))
+        .send().await.unwrap().text().await.unwrap();
+    for beacon in ["ads-twitter.com", "twq(", "/api/track/get_involved"] {
+        assert!(!body.contains(beacon), "X tracking must not return in rendered HTML");
+    }
+    let response = client.post(format!("{}/api/track/get_involved", address))
+        .send().await.unwrap();
+    assert!(response.status().is_client_error());
+}

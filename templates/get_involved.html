@@ -554,24 +554,7 @@
   <footer>
     {% include "footer.html" %}
 
-<!-- Server-side interaction tracking -->
-<script>
-(function() {
-  let converted = false;
-  function trackServerConversion() {
-    if (converted) return;
-    converted = true;
-    fetch('/api/track/get_involved', { method: 'POST' }).catch(function(e) {
-      console.error('Failed to trigger server conversion tracking', e);
-    });
-    window.removeEventListener('scroll', trackServerConversion);
-    document.removeEventListener('click', trackServerConversion);
-  }
-  
-  window.addEventListener('scroll', trackServerConversion, { passive: true, once: true });
-  document.addEventListener('click', trackServerConversion, { once: true });
-})();
-</script>
+
 
   </footer>
 </body>

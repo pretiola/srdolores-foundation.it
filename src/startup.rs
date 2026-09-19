@@ -1,4 +1,4 @@
-use crate::routes::{dynamic_page, index, liturgy, sitemap, track_get_involved, crypto_total};
+use crate::routes::{dynamic_page, index, liturgy, sitemap, crypto_total};
 use actix_web::dev::Server;
 use actix_web::{web, App, HttpServer, HttpResponse};
 use chrono::Datelike;
@@ -42,11 +42,6 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
                 web::resource("/sitemap.xml")
                     .route(web::get().to(sitemap))
                     .route(web::head().to(sitemap)),
-            )
-            // Conversion tracking
-            .service(
-                web::resource("/api/track/get_involved")
-                    .route(web::post().to(track_get_involved)),
             )
             // Crypto total tracking
             .service(
