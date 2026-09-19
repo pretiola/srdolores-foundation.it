@@ -222,3 +222,13 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 @media (max-width: 639px) { .payment-options { grid-template-columns: 1fr; } }
 
 .payment-indicator::after { content: "+"; }
+
+/* Ease into the album layout, then retain smooth scroll-driven rotation. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .photo-album-picture {
+    display: block;
+    transform: rotate(0deg);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    transition: transform 700ms cubic-bezier(.22, .61, .36, 1), filter 700ms ease-out;
+  }
+}
