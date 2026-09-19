@@ -11,11 +11,11 @@
   <title>Mass intentions | Sr. Dolores Foundation</title>
   <link href="/css/tailwind.css" rel="stylesheet">
 </head>
-<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal">
   <header>
     {% include "navbar.html" %}
   </header>
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+  <main id="main-content" class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
     
     <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Mass Intentions</h1>
 
@@ -78,11 +78,13 @@
           <ul class="splide__list">
             {% for img in mass_images %}
             <li class="splide__slide">
+              <a class="gallery-image-link" href="/pictures/optimized/{{ img }}_1200w.jpg">
               <picture>
                 <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="After the Holy Mass with our children" loading="lazy" />
               </picture>
+              </a>
             </li>
             {% endfor %}
           </ul>

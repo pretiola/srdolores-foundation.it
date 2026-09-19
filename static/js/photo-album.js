@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!window.matchMedia || !window.matchMedia("(min-width: 1024px)").matches) return;
   var pics = [];
   document.querySelectorAll("picture").forEach(function (pic) {
     // Skip pictures inside gallery carousels
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pics.forEach(function(pic) {
           var baseAngle = parseFloat(pic.dataset.baseAngle);
           var shiftSpeed = parseFloat(pic.dataset.shiftSpeed);
-          var currentAngle = baseAngle + (scrollY * shiftSpeed);
+          var currentAngle = Math.max(-3, Math.min(3, baseAngle + (scrollY * shiftSpeed)));
           pic.style.transform = "rotate(" + currentAngle.toFixed(3) + "deg)";
         });
         ticking = false;

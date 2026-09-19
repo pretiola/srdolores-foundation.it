@@ -11,14 +11,14 @@
   <title>Get Involved | Piglet Project - Sr. Dolores Foundation</title>
   <link href="/css/tailwind.css" rel="stylesheet">
 </head>
-<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal">
   <header>
     {% include "navbar.html" %}
   </header>
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
-    
-    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Get Involved Today</h1>
-    
+  <main id="main-content" class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-900 px-4 md:px-0">Help 60 families in Binzi</h1>
+
     <div class="text-center mb-8">
       <picture class="block w-full mx-auto">
         <source type="image/webp" srcset="/pictures/optimized/kids_infrontof_house_1200w.webp 1200w, /pictures/optimized/kids_infrontof_house_800w.webp 800w, /pictures/optimized/kids_infrontof_house_400w.webp 400w" sizes="(max-width: 768px) 100vw, 896px">
@@ -29,37 +29,97 @@
 
     <article class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto text-left leading-relaxed text-gray-800">
       <p class="mb-4 text-center text-lg font-medium text-green-900">
-        The current project we have is to buy 300 piglets for the 60 poor families as a kick start for those families to be self-reliant. You can buy a piglet; you can buy two or three or more. Give your love in acts of kindness, give your food, drink.
+        Our goal is to help 60 families in Binzi, Uganda build more secure livelihoods. The Piglet Project plans to provide five piglets per family — 300 piglets in total — alongside start-up feed, care and training. Every contribution helps us work towards that goal.
       </p>
     </article>
 
+    <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 mx-4 md:mx-auto border-t-4 border-green-800">
+      <h2 id="donation-information" class="text-3xl font-bold mb-3 text-center text-green-900">Choose how to contribute</h2>
+      <p class="text-center mb-6">Choose a payment method to see its details. Every contribution helps us work towards supporting 60 families.</p>
+      <div class="payment-options">
+        <details class="payment-option" name="payment-method" id="pay-bank">
+          <summary><img src="/pictures/europe.svg" alt="" width="48" height="48"><span><strong>Bank transfer</strong> <span class="payment-subtitle">— IBAN · Europe</span></span><span class="payment-indicator" aria-hidden="true"></span></summary>
+          <div class="payment-content">
+
+
+          <!-- SEPA Bank Transfer Details Card with QR Code -->
+          <div class="bank-transfer-card">
+            <div id="bank-qr-controls"></div>
+            <div id="bank-qr" class="bank-qr-wrapper"></div>
+
+            <!-- Payment Details metadata -->
+            <div class="bank-details-box text-base">
+              <p><span>Beneficiary:</span> <strong>Kasibante Emmanuel</strong></p>
+              <p><span>IBAN:</span> <strong>IT41T3608105138265553265858</strong></p>
+              <p><span>BIC:</span> <strong>BPPIITRRXXX</strong></p>
+              <p><span>Remittance:</span> <strong>Sr. Dolores Foundation</strong></p>
+              <p><span>Amount:</span> <strong id="amount-label">Custom / Enter in App</strong></p>
+            </div>
+          </div>
+        </div>
+        </details>
+        <details class="payment-option" name="payment-method" id="pay-crypto">
+          <summary><img src="/pictures/ethereum.svg" alt="" width="48" height="48"><span><strong>Crypto</strong> <span class="payment-subtitle">— EURC on Ethereum</span></span><span class="payment-indicator" aria-hidden="true"></span></summary>
+          <div class="payment-content">
+
+          <p class="text-gray-700 mb-4">Funds are automatically deposited into the IBAN account shown in the bank-transfer details via SEPA using Keeta payment rails.</p>
+
+          <div class="bank-transfer-card mt-2 mb-4">
+            <div class="bank-qr-wrapper">
+              <div id="crypto-qr"></div>
+              <p class="mt-3"><strong>Ethereum address</strong></p>
+              <p class="payment-address">0x344d169735f17D25E0d3AE8aa00b47F88D613017</p>
+              <div id="crypto-copy-controls"></div>
+            </div>
+
+            <div class="bank-details-box text-base">
+              <p><span>Network:</span> <strong>Ethereum Mainnet</strong></p>
+              <p><span>Token:</span> <strong>EURC</strong></p>
+              <p><span>Recorded incoming EURC:</span> <strong id="crypto-counter" aria-live="polite">Total unavailable</strong></p>
+              <p><a href="https://etherscan.io/address/0x344d169735f17D25E0d3AE8aa00b47F88D613017#tokentxns" target="_blank" rel="noopener noreferrer" class="text-green-800 underline">View EURC transfers on the public ledger</a></p>
+            </div>
+          </div>
+
+          <p class="text-gray-800 mt-6 mb-4"><strong>Crypto IBAN payments:</strong> Instantly register for a Keeta wallet to pay using various crypto currencies:</p>
+
+          <div class="flex justify-center mt-3 mb-2">
+            <a href="https://wallet.keeta.com" class="keeta-donate-button">
+              <img src="/pictures/keeta.svg" alt="Keeta Cheetah" class="keeta-logo">
+              <span>Donate with Keeta Wallet</span>
+            </a>
+          </div>
+
+
+	</div>
+        </details>
+        <details class="payment-option" name="payment-method" id="pay-paypal">
+          <summary><img src="/pictures/paypal.svg" alt="" width="48" height="48"><span><strong>PayPal</strong> <span class="payment-subtitle">— Use the recipient email</span></span><span class="payment-indicator" aria-hidden="true"></span></summary>
+          <div class="payment-content"><strong>PayPal account:</strong> <a href="mailto:vitalimmanuel@gmail.com" class="text-blue-600 hover:underline">vitalimmanuel@gmail.com</a><p class="text-sm mt-2">Use this recipient email in PayPal. The email link opens your mail app, not a payment checkout.</p></div>
+        </details>
+      </div>
+    </section>
+
     <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[800px] mx-4 md:mx-auto">
-      <h2 class="text-2xl font-bold text-center mb-6 text-green-800 border-b pb-2">A brief budget for the piglets</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse border border-gray-300 mb-8 mx-auto table-auto">
-          <thead class="bg-gray-100">
-            <tr>
-              <th class="border border-gray-300 p-3">Piglets</th>
-              <th class="border border-gray-300 p-3">Cost in local currency</th>
-              <th class="border border-gray-300 p-3">Cost in Euros</th>
-            </tr>
-          </thead>
+      <h2 class="text-2xl font-bold text-center mb-6 text-green-800 border-b pb-2">Planning budget for 60 families</h2>
+      <p class="mb-4">At the existing estimate of €40 per piglet, five piglets for one family cost approximately €200. Feed and veterinary supplies are additional costs.</p>
+      <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Project budget">
+        <table class="w-full text-left border-collapse border border-gray-300 mb-4">
+          <caption class="text-left mb-3">300 piglets: 60 families × 5 piglets each</caption>
+          <thead class="bg-gray-100"><tr>
+            <th scope="col" class="border border-gray-300 p-3">Item and calculation</th>
+            <th scope="col" class="border border-gray-300 p-3">Budget (UGX)</th>
+            <th scope="col" class="border border-gray-300 p-3">Estimate (EUR)</th>
+          </tr></thead>
           <tbody>
-            <tr class="hover:bg-gray-50"><td class="border border-gray-300 p-3">1 @</td><td class="border border-gray-300 p-3">UGX 150,000</td><td class="border border-gray-300 p-3">EUR 40</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border border-gray-300 p-3">60 Families, 5 each</td><td class="border border-gray-300 p-3">UGX 750,000</td><td class="border border-gray-300 p-3">EUR 200</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border border-gray-300 p-3">300 piglets needed</td><td class="border border-gray-300 p-3">UGX 45,000,000</td><td class="border border-gray-300 p-3">EURO 12,000</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border border-gray-300 p-3">Start-up-Feeds</td><td class="border border-gray-300 p-3">60 bags each @ 50,000</td><td class="border border-gray-300 p-3">EUR 14</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border border-gray-300 p-3"></td><td class="border border-gray-300 p-3">60x50,000 = 6,000,000</td><td class="border border-gray-300 p-3">EUR 1680</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border border-gray-300 p-3">Drugs and vitamins</td><td class="border border-gray-300 p-3">UGX 2,000,000</td><td class="border border-gray-300 p-3">EURO 526</td></tr>
-            <tr class="bg-green-50 font-bold"><td class="border border-gray-300 p-3">Total</td><td class="border border-gray-300 p-3">UGX 53,000,000</td><td class="border border-gray-300 p-3">EUR 14,206</td></tr>
+            <tr><th scope="row" class="border border-gray-300 p-3">300 piglets × UGX 150,000 / €40</th><td class="border border-gray-300 p-3">45,000,000</td><td class="border border-gray-300 p-3">12,000</td></tr>
+            <tr><th scope="row" class="border border-gray-300 p-3">60 feed bags × UGX 50,000 / €14</th><td class="border border-gray-300 p-3">3,000,000</td><td class="border border-gray-300 p-3">840</td></tr>
+            <tr><th scope="row" class="border border-gray-300 p-3">Drugs and vitamins</th><td class="border border-gray-300 p-3">2,000,000</td><td class="border border-gray-300 p-3">526</td></tr>
           </tbody>
+          <tfoot><tr class="bg-green-50 font-bold"><th scope="row" class="border border-gray-300 p-3">Total of listed costs</th><td class="border border-gray-300 p-3">50,000,000</td><td class="border border-gray-300 p-3">13,366</td></tr></tfoot>
         </table>
       </div>
-      
-      <p class="text-center text-lg mt-4 text-gray-800">
-        With you buying us one piglet <span class="font-bold text-green-700">@ 40 Euros</span> we can meet our target and you will have extended a helping hand. God bless you as you consider helping us.<br>
-        <span class="block mt-2 italic text-gray-600">Our timeframe is between nine months and a year.</span>
-      </p>
+      <p class="text-sm text-gray-700">These planning estimates use the previously listed unit costs. Euro amounts are approximate estimates, not conversions at a single current exchange rate. Prices, feed quantities and any additional training or supervision costs still need confirmation before the full budget is finalized.</p>
+      <p class="mt-4"><a href="#donation-information" class="text-green-800 underline">Choose how to contribute</a></p>
     </section>
 
     <div class="text-center mb-12 px-0">
@@ -107,7 +167,7 @@
         <img class="w-full h-auto object-cover border-y border-black md:border md:rounded shadow" src="/pictures/optimized/group_of_kids_2_800w.jpg" alt="Another group of children" loading="lazy" />
       </picture>
     </div>
-        
+
     <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-6 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
       <h2 class="text-3xl font-bold mb-6 text-center text-green-900">Contact information</h2>
       <ul class="flex flex-col space-y-4 text-gray-800 text-lg">
@@ -121,435 +181,10 @@
       </ul>
     </section>
 
-    <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-12 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
-      <h2 class="text-3xl font-bold mb-6 text-center text-green-900">Donation information</h2>
-      <ul class="flex flex-col space-y-4 text-gray-800 text-lg">
-        <li class="border-b pb-2"><strong>Paypal:</strong> <a href="mailto:vitalimmanuel@gmail.com" class="text-blue-600 hover:underline">vitalimmanuel@gmail.com</a></li>
-        <li class="border-b pb-4">
-          <strong class="block mb-2 text-gray-900 text-lg">Bank transfer (Europe):</strong>
-          
-          <!-- SEPA Bank Transfer Details Card with QR Code -->
-          <div class="bank-transfer-card">
-            <!-- Mode Toggles -->
-            <div class="bank-toggle-container">
-              <button class="bank-btn active" id="btn-open" onclick="setMode('open')">Custom Amount</button>
-              <button class="bank-btn" id="btn-preset" onclick="setMode('preset')">€40.00 Preset</button>
-            </div>
 
-            <!-- QR Canvas Frame -->
-            <div class="bank-qr-wrapper">
-              <canvas id="qr-canvas"></canvas>
-            </div>
 
-            <!-- Payment Details metadata -->
-            <div class="bank-details-box text-base">
-              <p><span>Beneficiary:</span> <strong>Kasibante Emmanuel</strong></p>
-              <p><span>IBAN:</span> <strong>IT41T3608105138265553265858</strong></p>
-              <p><span>BIC:</span> <strong>BPPIITRRXXX</strong></p>
-              <p><span>Remittance:</span> <strong>Sr. Dolores Foundation</strong></p>
-              <p><span>Amount:</span> <strong id="amount-label">Custom / Enter in App</strong></p>
-            </div>
-          </div>
-        </li>
-        <li class="border-b pb-4">
-          <strong class="block mb-2 text-gray-900 text-lg">Crypto payments (EURC on Ethereum):</strong>
-          <p class="text-gray-700 mb-4">Funds are automatically deposited into the IBAN account listed above via SEPA using Keeta payment rails.</p>
-          
-          <div class="bank-transfer-card mt-2 mb-4">
-            <div class="bank-qr-wrapper">
-              <canvas id="crypto-qr-canvas"></canvas>
-              <div class="mt-3 flex flex-col items-center w-full px-2">
-                <span class="font-bold text-gray-900 mb-1 text-sm">Ethereum Address</span>
-                <div class="flex items-center justify-center w-full">
-                  <span class="text-[11px] sm:text-xs text-gray-800 font-mono tracking-tight mr-3" style="word-break: break-all;">0x344d169735f17D25E0d3AE8aa00b47F88D613017</span>
-                  <button onclick="copyAddressToClipboard()" class="text-gray-500 hover:text-green-800 transition-colors focus:outline-none shrink-0" title="Copy to clipboard">
-                    <svg id="crypto-copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
-                    </svg>
-                    <svg id="crypto-check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-green-600" style="display: none;" viewBox="0 0 16 16">
-                      <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bank-details-box text-base">
-              <p><span>Network:</span> <strong>Ethereum Mainnet</strong></p>
-              <p><span>Token:</span> <strong>EURC</strong></p>
-              <p id="crypto-counter-container" style="display: none;"><span>Total raised via EURC:</span> <a href="https://etherscan.io/address/0x344d169735f17D25E0d3AE8aa00b47F88D613017#tokentxns" target="_blank" rel="noopener noreferrer" class="hover:underline text-green-800 transition-colors" title="View transparent ledger"><strong><span id="crypto-counter">0.00</span> EUR</strong></a></p>
-            </div>
-          </div>
-          
-          <p class="text-gray-800 mt-6 mb-4"><strong>Crypto IBAN payments:</strong> Instantly register for a Keeta wallet to pay using various crypto currencies:</p>
-
-          <div class="flex justify-center mt-3 mb-2">
-            <a href="https://wallet.keeta.com" class="keeta-donate-button">
-              <img src="/pictures/keeta.svg" alt="Keeta Cheetah" class="keeta-logo">
-              <span>Donate with Keeta Wallet</span>
-            </a>
-          </div>
-<style>
-        .bank-transfer-card {
-            background-color: #ffffff;
-            border: 1px solid #e5e5ea;
-            border-radius: 12px;
-            padding: 1.5rem;
-            max-width: 100%;
-            width: 100%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            text-align: center;
-            margin-top: 0.5rem;
-        }
-
-        .bank-qr-wrapper {
-            position: relative;
-            display: block;
-            width: 100%;
-            margin: 0 auto 1rem auto;
-            max-width: 380px;
-        }
-
-        #qr-canvas, #crypto-qr-canvas {
-            display: block;
-            width: 100% !important;
-            max-width: 100% !important;
-            height: auto !important;
-            aspect-ratio: 1 / 1 !important;
-            margin: 0 auto;
-        }
-
-        .bank-details-box {
-            text-align: left;
-            background-color: #fafafa;
-            border: 1px solid #e5e5ea;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-
-        .bank-details-box p {
-            margin-bottom: 0.4rem;
-            color: #666666;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-
-        .bank-details-box p strong {
-            color: #111111;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 0.8rem;
-            letter-spacing: -0.2px;
-            word-break: break-all;
-            text-align: right;
-        }
-
-        .bank-details-box p:last-child {
-            margin-bottom: 0;
-            border-top: 1px dashed #e5e5ea;
-            padding-top: 0.4rem;
-            margin-top: 0.4rem;
-        }
-
-        .bank-toggle-container {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .bank-btn {
-            flex: 1;
-            background-color: #ffffff;
-            border: 1px solid #e5e5ea;
-            padding: 0.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #666666;
-        }
-
-        .bank-btn:hover {
-            border-color: #166534;
-            color: #166534;
-        }
-
-        .bank-btn.active {
-            background-color: #166534;
-            border-color: #166534;
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(22, 101, 52, 0.2);
-        }
-
-.keeta-donate-button {
-  /* Layout & Alignment */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  /* Matches the Dark Green Button Style */
-  background-color: #166534; /* Darker Green */
-  color: #ffffff; /* White text */
-
-  /* Typography */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-
-  /* Rectangular Shape with slight modern rounding */
-  padding: 14px 28px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-
-  /* Smooth Hover Effects */
-  box-shadow: 0 4px 6px rgba(22, 101, 52, 0.2);
-  transition: all 0.2s ease-in-out;
-}
-
-.keeta-donate-button:hover {
-  background-color: #14532d; /* Even darker green */
-  color: #ffffff;
-  box-shadow: 0 6px 12px rgba(22, 101, 52, 0.3);
-  transform: translateY(-1px);
-}
-
-.keeta-logo {
-  /* Scales the cheetah logo perfectly to match the text */
-  height: 24px;
-  width: auto;
-  display: block;
-}
-</style>
-
-	</li>
-      </ul>
-    </section>
-
-    <!-- EPC SEPA QR Code Generator Scripts -->
-    <script src="/static/js/qrcode.min.js"></script>
-    <script>
-      (function() {
-          let currentMode = 'open'; // Default mode is Custom/Open Amount
-
-          window.setMode = function(mode) {
-              currentMode = mode;
-              
-              // Toggle active button styles
-              document.getElementById('btn-open').classList.toggle('active', mode === 'open');
-              document.getElementById('btn-preset').classList.toggle('active', mode === 'preset');
-              
-              // Toggle details label
-              document.getElementById('amount-label').innerText = mode === 'open' ? 'Custom / Enter in App' : '€40.00';
-              
-              // Re-render
-              generateQrCode();
-          };
-
-          window.generateQrCode = async function() {
-              // Build Amount string for the EPC format (now €40.00)
-              const amountField = currentMode === 'preset' ? 'EUR40.00' : '';
-
-              // Construct exact line-break-delimited EPC payload array
-              const epcLines = [
-                  'BCD',                       // 1. Service Tag
-                  '002',                       // 2. Version
-                  '1',                         // 3. Character Set (UTF-8)
-                  'SCT',                       // 4. SEPA Credit Transfer Ident
-                  'BPPIITRRXXX',               // 5. Beneficiary Bank BIC
-                  'Kasibante Emmanuel',        // 6. Beneficiary Account Owner Name
-                  'IT41T3608105138265553265858',// 7. Beneficiary Account IBAN
-                  amountField,                 // 8. Amount (EURxx.xx or empty)
-                  '',                          // 9. Purpose Code (empty)
-                  '',                          // 10. Structured Reference (empty)
-                  'Sr. Dolores Foundation',    // 11. Unstructured Reference / Remittance Text
-                  ''                           // 12. Beneficiary Information (empty)
-              ];
-
-              const epcPayload = epcLines.join('\n');
-              const canvas = document.getElementById('qr-canvas');
-              if (!canvas) return;
-
-              try {
-                  // Step 1: Render the clean QR code onto the canvas using standard library
-                  // We use Error Correction Level 'Q' (25%) to ensure the QR code remains fully scannable
-                  // even when we overlay the central logo.
-                  await QRCode.toCanvas(canvas, epcPayload, {
-                      errorCorrectionLevel: 'Q',
-                      margin: 2,
-                      scale: 8, // high density canvas resolution
-                      color: {
-                          dark: '#8b0000',
-                          light: '#ffffff'
-                      }
-                  });
-
-                  const ctx = canvas.getContext('2d');
-                  const size = canvas.width;
-
-                  // Step 2: Overlay the locally stored "Sr Dolores" SVG on top of the canvas center
-                  const img = new Image();
-                  img.src = '/pictures/sr-dolores-qr.svg'; // Loaded relatively
-
-                  img.onload = function() {
-                      const logoSize = size * 0.22; // Logo scales beautifully at 22% of total QR size
-                      const x = (size - logoSize) / 2;
-                      const y = (size - logoSize) / 2;
-
-                      // Step 2a: Draw a white circular shielding background so the QR pixels do not bleed into the logo
-                      ctx.fillStyle = '#ffffff';
-                      ctx.beginPath();
-                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
-                      ctx.fill();
-
-                      // Step 2b: Draw a thin subtle border around the shield to give it contrast
-                      ctx.strokeStyle = '#e5e5ea';
-                      ctx.lineWidth = 1.5;
-                      ctx.beginPath();
-                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
-                      ctx.stroke();
-
-                      // Step 2c: Clip a circle inside the logo area so the SVG background matches the circle
-                      ctx.save();
-                      ctx.beginPath();
-                      ctx.arc(size / 2, size / 2, logoSize / 2, 0, Math.PI * 2);
-                      ctx.clip();
-
-                      // Step 2d: Render the SVG image
-                      ctx.drawImage(img, x, y, logoSize, logoSize);
-                      ctx.restore();
-                  };
-
-                  img.onerror = function(err) {
-                      console.error('Failed to load SVG Image source:', err);
-                  };
-
-              } catch (err) {
-                  console.error('Failed to generate or overlay QR Code:', err);
-              }
-          };
-
-          window.generateCryptoQrCode = async function() {
-              const epcPayload = 'ethereum:0x344d169735f17D25E0d3AE8aa00b47F88D613017';
-              const canvas = document.getElementById('crypto-qr-canvas');
-              if (!canvas) return;
-
-              try {
-                  await QRCode.toCanvas(canvas, epcPayload, {
-                      errorCorrectionLevel: 'Q',
-                      margin: 2,
-                      scale: 8,
-                      color: {
-                          dark: '#8b0000', // Matches IBAN maroon color
-                          light: '#ffffff'
-                      }
-                  });
-
-                  const ctx = canvas.getContext('2d');
-                  const size = canvas.width;
-
-                  const img = new Image();
-                  img.src = '/pictures/sr-dolores-qr.svg';
-
-                  img.onload = function() {
-                      const logoSize = size * 0.22;
-                      const x = (size - logoSize) / 2;
-                      const y = (size - logoSize) / 2;
-
-                      ctx.fillStyle = '#ffffff';
-                      ctx.beginPath();
-                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
-                      ctx.fill();
-
-                      ctx.strokeStyle = '#e5e5ea';
-                      ctx.lineWidth = 1.5;
-                      ctx.beginPath();
-                      ctx.arc(size / 2, size / 2, (logoSize / 2) + 4, 0, Math.PI * 2);
-                      ctx.stroke();
-
-                      ctx.save();
-                      ctx.beginPath();
-                      ctx.arc(size / 2, size / 2, logoSize / 2, 0, Math.PI * 2);
-                      ctx.clip();
-
-                      ctx.drawImage(img, x, y, logoSize, logoSize);
-                      ctx.restore();
-                  };
-              } catch (err) {
-                  console.error('Failed to generate Crypto QR Code:', err);
-              }
-          };
-
-          // Run initial generation on page load/DOM readiness
-          if (document.readyState === 'loading') {
-              document.addEventListener('DOMContentLoaded', () => { generateQrCode(); generateCryptoQrCode(); });
-          } else {
-              generateQrCode();
-              generateCryptoQrCode();
-          }
-
-          let cryptoCounted = false;
-          const cryptoCounterContainer = document.getElementById('crypto-counter-container');
-          const cryptoCounter = document.getElementById('crypto-counter');
-          
-          if (cryptoCounterContainer && window.IntersectionObserver) {
-              const observer = new IntersectionObserver((entries) => {
-                  if (entries[0].isIntersecting && !cryptoCounted) {
-                      cryptoCounted = true;
-                      fetch('/api/crypto/total-donated')
-                          .then(res => res.json())
-                          .then(data => {
-                              if (data.total_eurc > 0) {
-                                  cryptoCounterContainer.style.display = '';
-                                  animateValue(cryptoCounter, 0, data.total_eurc, 1500);
-                              }
-                          })
-                          .catch(console.error);
-                      observer.disconnect();
-                  }
-              });
-              observer.observe(cryptoCounterContainer.parentElement);
-          }
-
-          function animateValue(obj, start, end, duration) {
-              let startTimestamp = null;
-              const step = (timestamp) => {
-                  if (!startTimestamp) startTimestamp = timestamp;
-                  const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                  obj.innerHTML = (progress * (end - start) + start).toFixed(2);
-                  if (progress < 1) {
-                      window.requestAnimationFrame(step);
-                  }
-              };
-              window.requestAnimationFrame(step);
-          }
-
-          window.copyAddressToClipboard = function() {
-              const address = '0x344d169735f17D25E0d3AE8aa00b47F88D613017';
-              if (navigator.clipboard && window.isSecureContext) {
-                  navigator.clipboard.writeText(address).then(() => {
-                      const icon = document.getElementById('crypto-copy-icon');
-                      const check = document.getElementById('crypto-check-icon');
-                      if (icon && check) {
-                          icon.style.display = 'none';
-                          check.style.display = 'inline';
-                          setTimeout(() => { 
-                              icon.style.display = 'inline';
-                              check.style.display = 'none';
-                          }, 2000);
-                      }
-                  }).catch(console.error);
-              }
-          };
-      })();
-    </script>
+    <script src="/static/js/qrcode.min.js" defer></script>
+    <script src="/static/js/donations.js" defer></script>
   </main>
   <footer>
     {% include "footer.html" %}

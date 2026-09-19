@@ -255,7 +255,7 @@ struct EtherscanResponse {
 pub async fn crypto_total(client: web::Data<reqwest::Client>) -> impl Responder {
     let api_key = std::env::var("ETHERSCAN_API_KEY").unwrap_or_default();
     if api_key.is_empty() {
-        return HttpResponse::Ok().json(json!({"total_eurc": 0.0}));
+        return HttpResponse::Ok().json(json!({"total_eurc": null}));
     }
 
     // Use V2 API and limit offset to 1000
@@ -271,6 +271,10 @@ pub async fn crypto_total(client: web::Data<reqwest::Client>) -> impl Responder 
                     if data.status == "1" {
                         let mut total_value: f64 = 0.0;
                         if let Some(serde_json::Value::Array(txs)) = data.result {
+                            // A capped first page cannot establish an all-time total.
+                            if txs.len() >= 1000 {
+                                return HttpResponse::Ok().json(json!({"total_eurc": null}));
+                            }
                             for tx in txs {
                                 let to = tx.get("to").and_then(|v| v.as_str()).unwrap_or("").to_lowercase();
                                 if to == "0x344d169735f17d25e0d3ae8aa00b47f88d613017" {
@@ -280,6 +284,8 @@ pub async fn crypto_total(client: web::Data<reqwest::Client>) -> impl Responder 
                                     }
                                 }
                             }
+                        } else {
+                            return HttpResponse::Ok().json(json!({"total_eurc": null}));
                         }
                         let total_eurc = total_value / 1_000_000.0;
                         return HttpResponse::Ok().json(json!({"total_eurc": total_eurc}));
@@ -298,5 +304,5 @@ pub async fn crypto_total(client: web::Data<reqwest::Client>) -> impl Responder 
         }
     }
 
-    HttpResponse::Ok().json(json!({"total_eurc": 0.0}))
+    HttpResponse::Ok().json(json!({"total_eurc": null}))
 }

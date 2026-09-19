@@ -37,52 +37,188 @@
   background: #7a9a14 !important;
 }
 
-/* Lightbox */
-#gallery-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
+/* Keyboard-accessible native image dialog. */
+#gallery-lightbox { margin: auto; padding: 1rem; border: 0; border-radius: .5rem; max-width: 94vw; max-height: 94vh; }
+#gallery-lightbox:not([open]) { display: none; }
+#gallery-lightbox::backdrop { background: rgba(0, 0, 0, .85); }
+#gallery-lightbox img { display: block; max-width: 85vw; max-height: 78vh; object-fit: contain; }
+.lightbox-close { display: block; margin: 0 0 .75rem auto; padding: .5rem 1rem; background: #166534; color: white; border-radius: .25rem; cursor: pointer; }
+
+/* Plain CSS fallback: essential interactions do not depend on Tailwind support. */
+html { overflow-wrap: break-word; }
+img { max-width: 100%; }
+main { min-width: 0; }
+.payment-address { overflow-wrap: anywhere; word-break: break-all; font-family: monospace; }
+a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid #166534;
+  outline-offset: 4px;
+}
+nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-offset: -3px; }
+.skip-link { position: absolute; left: .5rem; top: .5rem; padding: .75rem; background: white; color: #111; z-index: 200; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+.project-menu summary { list-style: none; }
+.project-menu summary::-webkit-details-marker { display: none; }
+.project-menu[open] summary { background: gold; color: darkred; }
+/* Splide's stylesheet hides uninitialized galleries, including when JS fails. */
+.splide:not(.is-initialized) { visibility: visible !important; }
+.splide:not(.is-initialized) .splide__list { display: block !important; }
+.splide:not(.is-initialized) .splide__slide { margin-bottom: 1rem; }
+.splide:not(.is-initialized) .splide__slide img { height: auto; cursor: default; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Donation cards */
+
+        .bank-transfer-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 100%;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .bank-qr-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+            margin: 0 auto 1rem auto;
+            max-width: 380px;
+        }
+
+        #qr-canvas, #crypto-qr-canvas {
+            display: block;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 1 / 1 !important;
+            margin: 0 auto;
+        }
+
+        .bank-details-box {
+            text-align: left;
+            background-color: #fafafa;
+            border: 1px solid #e5e5ea;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .bank-details-box p {
+            margin-bottom: 0.4rem;
+            color: #666666;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .bank-details-box p strong {
+            color: #111111;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.8rem;
+            letter-spacing: -0.2px;
+            word-break: break-all;
+            text-align: right;
+        }
+
+        .bank-details-box p:last-child {
+            margin-bottom: 0;
+            border-top: 1px dashed #e5e5ea;
+            padding-top: 0.4rem;
+            margin-top: 0.4rem;
+        }
+
+        .bank-toggle-container {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .bank-btn {
+            flex: 1;
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #666666;
+        }
+
+        .bank-btn:hover {
+            border-color: #166534;
+            color: #166534;
+        }
+
+        .bank-btn.active {
+            background-color: #166534;
+            border-color: #166534;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(22, 101, 52, 0.2);
+        }
+
+.keeta-donate-button {
+  /* Layout & Alignment */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-#gallery-lightbox.active {
-  visibility: visible;
-  opacity: 1;
-}
-.lightbox-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-}
-.lightbox-content {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-}
-.lightbox-content img {
-  max-width: 90vw;
-  max-height: 85vh;
-  object-fit: contain;
-  border-radius: 0.5rem;
-}
-.lightbox-close {
-  position: absolute;
-  top: -1rem;
-  right: -1rem;
-  background: white;
-  color: #333;
+  gap: 12px;
+
+  /* Matches the Dark Green Button Style */
+  background-color: #166534; /* Darker Green */
+  color: #ffffff; /* White text */
+
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+
+  /* Rectangular Shape with slight modern rounding */
+  padding: 14px 28px;
+  border-radius: 6px;
   border: none;
-  border-radius: 9999px;
-  width: 2.2rem;
-  height: 2.2rem;
-  font-size: 1.4rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+
+  /* Smooth Hover Effects */
+  box-shadow: 0 4px 6px rgba(22, 101, 52, 0.2);
+  transition: all 0.2s ease-in-out;
 }
+
+.keeta-donate-button:hover {
+  background-color: #14532d; /* Even darker green */
+  color: #ffffff;
+  box-shadow: 0 6px 12px rgba(22, 101, 52, 0.3);
+  transform: translateY(-1px);
+}
+
+.keeta-logo {
+  /* Scales the cheetah logo perfectly to match the text */
+  height: 24px;
+  width: auto;
+  display: block;
+}
+.payment-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.payment-option { border: 1px solid #d3ddd0; border-radius: .75rem; min-width: 0; background: #fafcf8; }
+.payment-option summary { display: grid; grid-template-columns: 3rem minmax(0, 1fr) 1rem; align-items: center; gap: .5rem; padding: 1rem; min-height: 112px; cursor: pointer; list-style: none; color: #14532d; }
+.payment-option summary::-webkit-details-marker { display: none; }
+.payment-option summary img { width: 3rem; height: 3rem; object-fit: contain; }
+.payment-option summary strong { display: block; font-size: 1.2rem; }
+.payment-subtitle { display: block; font-size: .9rem; color: #374151; }
+.payment-indicator { margin-left: auto; font-size: 1.5rem; }
+.payment-option[open] { grid-column: 1 / -1; background: white; }
+.payment-option[open] .payment-indicator { transform: rotate(45deg); }
+.payment-content { max-width: 600px; margin: auto; padding: 0 1.25rem 1.25rem; overflow-wrap: anywhere; }
+.payment-content .bank-transfer-card { padding: 1rem; }
+@media (max-width: 639px) { .payment-options { grid-template-columns: 1fr; } }
+
+.payment-indicator::after { content: "+"; }

@@ -14,19 +14,19 @@
   <link href="/css/tailwind.css" rel="stylesheet">
 </head>
 
-<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal">
 
   <header>
     {% include "navbar.html" %}
   </header>
 
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+  <main id="main-content" class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
     <!-- Welcome Banner / Hero -->
     <section id="welcome" class="mb-12">
       <article id="home-text" class="text-center md:text-left mb-8">
         <h1 class="text-4xl md:text-5xl font-bold text-green-900 mb-4 px-4 md:px-0">Sr. Dolores Foundation for children in poor families</h1>
         <h2 class="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed px-4 md:px-0">
-          Reaching out to the poor families and children through productive and educative farming. Be part of this wonderful project by buying one piglet.
+          Help 60 families in Binzi, Uganda build more secure livelihoods through the Piglet Project.
         </h2>
       </article>
 
@@ -46,32 +46,9 @@
             </picture>
           </div>
 
-          <h2 class="text-3xl sm:text-4xl font-bold text-[#7a9a14] mb-1">DONATE</h2>
-          <p class="text-lg sm:text-xl font-semibold text-gray-700 mb-4">Support a child if you can.</p>
-
-          <p class="text-gray-700 leading-relaxed mb-6">
-            Please <strong>DONATE</strong> for back to school. Support underprivileged children from poor families to return to class by donating basic scholastic materials. Donations needed are pens, pencils, exercise books, sanitary pads (girls suffer in this regard), mathematical sets, rubbers, calculators, rulers, sharpeners, reading books and backpacks.
-          </p>
-
-          <div class="overflow-x-auto mb-6">
-            <table class="w-full text-sm sm:text-base border-collapse border border-gray-300">
-              <tbody>
-                <tr>
-                  <td class="border border-gray-300 p-2 sm:p-3 font-medium">Child in primary school</td>
-                  <td class="border border-gray-300 p-2 sm:p-3">3 terms @200,000 UGX</td>
-                  <td class="border border-gray-300 p-2 sm:p-3">600,000 UGX p.a.</td>
-                  <td class="border border-gray-300 p-2 sm:p-3 font-bold text-green-800">150€ p.a.</td>
-                </tr>
-                <tr>
-                  <td class="border border-gray-300 p-2 sm:p-3 font-medium">Child in secondary school</td>
-                  <td class="border border-gray-300 p-2 sm:p-3">3 terms @500,000 UGX</td>
-                  <td class="border border-gray-300 p-2 sm:p-3">1,500,000 UGX p.a.</td>
-                  <td class="border border-gray-300 p-2 sm:p-3 font-bold text-green-800">375€ p.a.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+          <h2 class="text-3xl sm:text-4xl font-bold text-green-800 mb-1">60 families. Five piglets each.</h2>
+          <p class="text-lg sm:text-xl font-semibold text-gray-700 mb-4">One shared goal: stronger family livelihoods.</p>
+          <p class="text-gray-700 leading-relaxed mb-6">Our target is 300 piglets for 60 families, with start-up feed, care and training. Based on our existing planning estimates, €40 helps fund one piglet and €200 helps fund five piglets for one family. Feed and care are additional costs.</p>
           <div class="grid grid-cols-2 gap-2 sm:gap-4 mb-6">
             <picture>
               <source type="image/webp" srcset="/pictures/optimized/sau-mit-ferkeln_800w.webp 800w, /pictures/optimized/sau-mit-ferkeln_400w.webp 400w" sizes="50vw">
@@ -116,6 +93,35 @@
       <h2 class="text-2xl font-bold text-green-900">Other Ways Your Support Helps the Community</h2>
     </section>
 
+    <section class="mb-12 bg-white rounded-lg shadow-md p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-green-900 mb-4">Support a child at school</h2>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            You can also help children return to school. Support underprivileged children from poor families to return to class by donating basic scholastic materials. Donations needed are pens, pencils, exercise books, sanitary pads (girls suffer in this regard), mathematical sets, rubbers, calculators, rulers, sharpeners, reading books and backpacks.
+          </p>
+
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full text-sm sm:text-base border-collapse border border-gray-300">
+              <caption class="text-left mb-3">Existing annual education-support estimates; current costs and coverage need confirmation.</caption>
+              <thead><tr><th scope="col">School level</th><th scope="col">Cost per term</th><th scope="col">Annual cost (UGX)</th><th scope="col">Annual estimate (EUR)</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="border border-gray-300 p-2 sm:p-3 font-medium">Child in primary school</td>
+                  <td class="border border-gray-300 p-2 sm:p-3">3 terms @200,000 UGX</td>
+                  <td class="border border-gray-300 p-2 sm:p-3">600,000 UGX p.a.</td>
+                  <td class="border border-gray-300 p-2 sm:p-3 font-bold text-green-800">150€ p.a.</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-300 p-2 sm:p-3 font-medium">Child in secondary school</td>
+                  <td class="border border-gray-300 p-2 sm:p-3">3 terms @500,000 UGX</td>
+                  <td class="border border-gray-300 p-2 sm:p-3">1,500,000 UGX p.a.</td>
+                  <td class="border border-gray-300 p-2 sm:p-3 font-bold text-green-800">375€ p.a.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    </section>
+
     <!-- Community Gardens and Plantations -->
     <section class="mb-12 bg-white rounded-lg shadow-md p-6 md:p-8">
       <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Community Gardens and Plantations</h2>
@@ -133,11 +139,13 @@
           <ul class="splide__list">
             {% for img in agriculture_images %}
             <li class="splide__slide">
+              <a class="gallery-image-link" href="/pictures/optimized/{{ img }}_1200w.jpg">
               <picture>
                 <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="Community agriculture in Binzi, Uganda" loading="lazy" />
               </picture>
+              </a>
             </li>
             {% endfor %}
           </ul>
@@ -162,11 +170,13 @@
           <ul class="splide__list">
             {% for img in housing_images %}
             <li class="splide__slide">
+              <a class="gallery-image-link" href="/pictures/optimized/{{ img }}_1200w.jpg">
               <picture>
                 <source type="image/webp" srcset="/pictures/optimized/{{ img }}_800w.webp 800w, /pictures/optimized/{{ img }}_400w.webp 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <source type="image/jpeg" srcset="/pictures/optimized/{{ img }}_800w.jpg 800w, /pictures/optimized/{{ img }}_400w.jpg 400w" sizes="(max-width: 768px) 100vw, 800px">
                 <img src="/pictures/optimized/{{ img }}_800w.jpg" alt="Restoring homes and providing shelter" loading="lazy" />
               </picture>
+              </a>
             </li>
             {% endfor %}
           </ul>

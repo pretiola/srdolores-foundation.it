@@ -131,6 +131,21 @@ async fn head_requests_work() {
 }
 
 #[actix_web::test]
+async fn donation_instructions_do_not_require_javascript() {
+    let address = spawn_app();
+    let body = reqwest::get(format!("{}/get_involved.html", address))
+        .await.unwrap().text().await.unwrap();
+    for instruction in ["60 families", "300 piglets", "IT41T3608105138265553265858",
+        "BPPIITRRXXX", "0x344d169735f17D25E0d3AE8aa00b47F88D613017",
+        "Ethereum Mainnet", "vitalimmanuel@gmail.com", "View EURC transfers on the public ledger"] {
+        assert!(body.contains(instruction), "Missing non-JavaScript instruction: {}", instruction);
+    }
+    assert!(!body.contains("0.00</span>"), "Unknown totals must not render as zero");
+    assert!(!body.contains("onclick="), "Payment actions must be added only when supported");
+    assert!(!body.contains("<canvas"), "No blank QR canvas in the plain HTML fallback");
+}
+
+#[actix_web::test]
 async fn x_tracking_is_not_exposed() {
     let address = spawn_app();
     let client = reqwest::Client::new();

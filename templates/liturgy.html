@@ -6,18 +6,18 @@
     <title>Daily Celebrations - Sr. Dolores Foundation</title>
     <link href="/css/tailwind.css" rel="stylesheet">
 </head>
-<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal overflow-x-hidden">
+<body class="bg-[#fcf3cf] text-gray-900 font-serif leading-normal tracking-normal">
   <header>
     {% include "navbar.html" %}
   </header>
-  <main class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
-    <div class="flex items-center justify-between mb-12 px-4 md:px-0">
+  <main id="main-content" class="container mx-auto px-0 md:px-4 py-8 max-w-4xl">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-12 px-4 md:px-0">
         <a href="{{ prev_url }}" class="text-[darkred] hover:text-[gold] transition-colors flex items-center gap-2 font-bold uppercase text-[10px] tracking-widest min-w-[80px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             {{ prev_month_name }}
         </a>
         
-        <h1 class="text-4xl font-bold text-center text-green-900 leading-tight">
+        <h1 class="text-2xl sm:text-4xl font-bold text-center text-green-900 leading-tight">
             {{ view_month_name }} {{ view_year }}
         </h1>
 
@@ -33,20 +33,15 @@
             {% set day_num = date | split(pat="-") | last %}
             {% set liturgical_info = entry.1 %}
 
-            <div class="relative group pr-8 md:pr-12">
+            <section aria-labelledby="date-{{ date }}">
+                <h2 id="date-{{ date }}" class="text-xl font-bold text-green-900 px-4 mb-2"><time datetime="{{ date }}">{{ day_num }} {{ view_month_name }} {{ view_year }}</time></h2>
                 {# Liturgical Content #}
                 <div class="z-10 relative">
                     {% set show_details = true %}
                     {% include "liturgical_bar.html" %}
                 </div>
 
-                {# Subtle Day Number (Right) #}
-                <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none pr-2">
-                    <div class="text-3xl md:text-5xl font-serif font-bold text-gray-400/20 group-hover:text-[gold]/40 transition-colors tracking-tighter">
-                        {{ day_num }}
-                    </div>
-                </div>
-            </div>
+            </section>
         {% endfor %}
     </div>
 

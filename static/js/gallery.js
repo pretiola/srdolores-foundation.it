@@ -1,53 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize all Splide carousels
-  document.querySelectorAll(".splide").forEach(function (el) {
-    var splide = new Splide(el, {
-      type: "loop",
-      autoplay: true,
-      interval: 4000,
-      pauseOnHover: true,
-      pauseOnFocus: true,
-      speed: 500,
-      rewind: false,
-    }).mount();
-
-    // Lightbox on image click
-    splide.on("click", function (slide) {
-      var img = slide.slide.querySelector("img");
-      if (img) openLightbox(img.src, img.alt);
+document.addEventListener('DOMContentLoaded', function () {
+  // Keep the server-rendered image links usable if the carousel cannot load.
+  if (typeof window.Splide === 'function') {
+    document.querySelectorAll('.splide').forEach(function (el) {
+      try {
+        new Splide(el, { type: 'loop', autoplay: false, speed: 500 }).mount();
+      } catch (error) {
+        el.classList.remove('is-initialized');
+      }
     });
-  });
+  }
 
-  // Lightbox
-  var lightbox = document.createElement("div");
-  lightbox.id = "gallery-lightbox";
-  lightbox.innerHTML =
-    '<div class="lightbox-backdrop"></div>' +
-    '<div class="lightbox-content">' +
-    '<button class="lightbox-close" aria-label="Close">&times;</button>' +
-    '<img src="" alt="" />' +
-    '</div>';
+  // Native dialogs manage keyboard focus and Escape. Older browsers retain
+  // ordinary image links instead of receiving an inaccessible overlay.
+  var lightbox = document.createElement('dialog');
+  if (typeof lightbox.showModal !== 'function') return;
+  lightbox.id = 'gallery-lightbox';
+  lightbox.setAttribute('aria-label', 'Enlarged photograph');
+  lightbox.innerHTML = '<button type="button" class="lightbox-close">Close photograph</button><img alt="" />';
   document.body.appendChild(lightbox);
-
-  var lbImg = lightbox.querySelector("img");
-  var lbClose = lightbox.querySelector(".lightbox-close");
-  var lbBackdrop = lightbox.querySelector(".lightbox-backdrop");
-
-  function openLightbox(src, alt) {
-    lbImg.src = src.replace(/_400w\.|_800w\./, "_1200w.");
-    lbImg.alt = alt || "";
-    lightbox.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
-  }
-
-  lbClose.addEventListener("click", closeLightbox);
-  lbBackdrop.addEventListener("click", closeLightbox);
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeLightbox();
+  var image = lightbox.querySelector('img');
+  var trigger;
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('.gallery-image-link');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    trigger = link;
+    image.src = link.href;
+    image.alt = link.querySelector('img').alt;
+    lightbox.showModal();
+  });
+  lightbox.querySelector('button').addEventListener('click', function () { lightbox.close(); });
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox) lightbox.close();
+  });
+  lightbox.addEventListener('close', function () {
+    if (trigger) trigger.focus();
   });
 });
