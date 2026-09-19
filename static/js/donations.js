@@ -1,6 +1,8 @@
 (function () {
   'use strict';
-  var address = '0x344d169735f17D25E0d3AE8aa00b47F88D613017';
+  var details = window.PaymentDetails;
+  if (!details) return;
+  var address = details.ethereumAddress;
   var counter = document.getElementById('crypto-counter');
 
   // Plain payment instructions are already in the HTML. Add controls only
@@ -22,9 +24,7 @@
     var buttons = [];
 
     function renderBank(preset) {
-      var payload = ['BCD', '002', '1', 'SCT', 'BPPIITRRXXX',
-        'Kasibante Emmanuel', 'IT41T3608105138265553265858',
-        preset ? 'EUR40.00' : '', '', '', 'Sr. Dolores Foundation', ''].join('\n');
+      var payload = details.bankPayload(preset);
       return QRCode.toCanvas(bankCanvas, payload, options).then(function () {
         bankHost.appendChild(bankCanvas);
         document.getElementById('amount-label').textContent = preset ? '€40.00' : 'Custom / Enter in App';
@@ -51,7 +51,7 @@
     });
     controls.className = 'bank-toggle-container';
     renderBank(false);
-    QRCode.toCanvas(cryptoCanvas, 'ethereum:' + address, options).then(function () {
+    QRCode.toCanvas(cryptoCanvas, details.ethereumUri, options).then(function () {
       cryptoHost.appendChild(cryptoCanvas);
     }).catch(function () {
       cryptoHost.textContent = 'QR code unavailable. Use the Ethereum address below.';

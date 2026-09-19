@@ -1,0 +1,36 @@
+EURC on Ethereum Mainnet
+
+Text QR (UTF-8 block characters).
+Keep the diagram unwrapped: at least 45 columns.
+Use a fixed-width font with dark text on a light background.
+Scanning depends on your terminal font, zoom and payment app.
+The written payment details below remain available.
+
+                                             
+                                             
+    █▀▀▀▀▀█ ▄▄▀▄ █▄▀▄█ ▄ █ ▀▀███  █▀▀▀▀▀█    
+    █ ███ █ ▄█▄▄▄▀  █▀█▀▄█▄ █  ██ █ ███ █    
+    █ ▀▀▀ █ ▀█▄ ▄▀ ▀▄ ▀██▀▀ ▄ ▀ ▀ █ ▀▀▀ █    
+    ▀▀▀▀▀▀▀ █ █▄▀▄█▄▀ █▄█ █▄█▄▀ █ ▀▀▀▀▀▀▀    
+    ▄▀ ▀▀█▀ █ ███▀ █ ▄▄▄▄█▀  █ ▀▀▀█ ██ ▀▄    
+     ▀██▀▄▀▀ ██ ██▀▀▀▀▄▄ ▀▀▄█ ▄▄  █ ▀▀█▄▄    
+    █▀██▄█▀▀ ▀▄█ ▄ █ █▄ ▄█▄▄▄▄▀ █▄▀▀ █ ██    
+    ▀█▄█▀▄▀█▄ ▀▄▄██▀▀██▀▀▄▄ ███ ▀█▀█▄▄█ █    
+    ▄██ ██▀▄▀▄▀█ ▀▄  ▀ ▄█▀█▄▀ ▄▀█ ▄▀▄ █▄▀    
+    ██▄ ▄▄▀▀▄▄▄▀▄▄ ▀▀███▄▀ ▄▀▀▀  ██▄▀▀▀▄▀    
+    ▀█ █▄▀▀▄▀█▄▀█ █▀ ▄▀▀  ▀▀██▄▄  ▄██▄▀█▄    
+      ▀▄▄ ▀▀▄ ▄ ▄▀▀█ █▀▄▀██▄▄█ ▀▀▄  █ ▄█▀    
+    █▀█▀██▀▄ █▄▀█▄ ▀  ▄█▄▀ ▀▀▀▄▀  ▄█ ▀▀██    
+    █▀ █▀▀▀▀ ▄██▄█  █▄██▀█ ▀█ ▄▀▄ ▀ ▄▄▀▄▄    
+    ▀  ▀▀▀▀ █▀▀▄ █▄▀▄█▀▄▄▀ ▀ ██▀█▀▀▀██▄█▀    
+    █▀▀▀▀▀█ ▄ █ ▄███▀▀  ▄▀█▀██ ▀█ ▀ ██▀ █    
+    █ ███ █ █▀▀▄██▄▀█ ▄▀ ▀▀ ▄█ ▄█████▀ ▀█    
+    █ ▀▀▀ █ ▄▄█▄▄▀ ▄██▄██ ▀█▄▄▀ ▄█▄▄▀▀ ██    
+    ▀▀▀▀▀▀▀       ▀▀ ▀▀  ▀ ▀▀▀▀ ▀▀▀ ▀▀  ▀    
+                                             
+                                             
+
+Token: EURC
+Network: Ethereum Mainnet
+Address: 0x344d169735f17D25E0d3AE8aa00b47F88D613017
+This QR encodes the recipient address; select EURC in your wallet.

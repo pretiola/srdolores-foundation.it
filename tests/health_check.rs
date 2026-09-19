@@ -158,3 +158,28 @@ async fn x_tracking_is_not_exposed() {
         .send().await.unwrap();
     assert!(response.status().is_client_error());
 }
+
+#[actix_web::test]
+async fn contact_and_text_qrs_are_available_without_javascript() {
+    let address = spawn_app();
+    let client = reqwest::Client::new();
+    let body = client.get(format!("{}/get_involved.html", address))
+        .send().await.unwrap().text().await.unwrap();
+    let contact = body.split("Contact information</h2>").nth(1).unwrap();
+    assert!(contact.contains("Fr. Emmanuel Kasibante"));
+    for name in ["bank-custom", "bank-40", "ethereum-eurc"] {
+        for suffix in ["", "-ascii"] {
+            let path = format!("/static/qr/{}{}.txt", name, suffix);
+            assert!(body.contains(&path));
+            let response = client.get(format!("{}{}", address, path)).send().await.unwrap();
+            assert!(response.status().is_success());
+            assert!(response.headers()["content-type"].to_str().unwrap().starts_with("text/plain"));
+            let text = response.text().await.unwrap();
+            if name.starts_with("bank") {
+                assert!(text.contains("IT41T3608105138265553265858"));
+            } else {
+                assert!(text.contains("EURC") && text.contains("Ethereum Mainnet"));
+            }
+        }
+    }
+}
