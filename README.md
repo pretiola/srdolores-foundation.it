@@ -92,6 +92,6 @@ All pages use Tera's `{% include %}` for `navbar.html` and `footer.html`. Templa
 
 ## Text-browser payment QR codes
 
-Donation details remain readable without JavaScript. Get Involved links to UTF-8 block-character QR codes and wider ASCII alternatives in `static/qr/`. Compact codes are intended for a fixed-width terminal; ASCII versions use two characters per module. Font, zoom and terminal color settings affect phone scanning, so the payment details are also included as text.
+Donation details remain readable without JavaScript. Get Involved links to compact UTF-8 block-character QR codes in `static/qr/`. Each view fits within 80 columns and 24 content rows (bank: 45 × 24; Ethereum: 37 × 20, including the title). Old ASCII URLs now serve the same compact view. Text codes use level L error correction without an overlay; the four-module quiet zone remains intact. Font, zoom and terminal color settings affect phone scanning, so the payment details are also included as text.
 
 `static/js/payment-details.js` provides the shared bank and Ethereum payloads used by browser QR codes and `scripts/generate-text-qrs.js`. After changing payment details, update the visible HTML, run `npm run build:qr`, and verify the generated recipients before committing. `npm run check:qr` checks the committed text files against the shared payloads; CI runs this check without additional packages.

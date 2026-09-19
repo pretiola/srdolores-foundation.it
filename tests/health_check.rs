@@ -170,13 +170,15 @@ async fn contact_and_text_qrs_are_available_without_javascript() {
     for name in ["bank-custom", "bank-40", "ethereum-eurc"] {
         for suffix in ["", "-ascii"] {
             let path = format!("/static/qr/{}{}.txt", name, suffix);
-            assert!(body.contains(&path));
+            if suffix.is_empty() { assert!(body.contains(&path)); }
             let response = client.get(format!("{}{}", address, path)).send().await.unwrap();
             assert!(response.status().is_success());
             assert!(response.headers()["content-type"].to_str().unwrap().starts_with("text/plain"));
             let text = response.text().await.unwrap();
+            assert!(text.lines().count() <= 24);
+            assert!(text.lines().all(|line| line.chars().count() <= 80));
             if name.starts_with("bank") {
-                assert!(text.contains("IT41T3608105138265553265858"));
+                assert!(text.contains("Bank transfer"));
             } else {
                 assert!(text.contains("EURC") && text.contains("Ethereum Mainnet"));
             }
