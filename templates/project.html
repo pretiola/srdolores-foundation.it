@@ -16,11 +16,29 @@
       <h2 class="text-2xl font-bold text-green-900 mb-4">Our goal: 60 families</h2>
       <p class="mb-6 leading-relaxed">The project aims to support 60 families in Binzi, Uganda with five piglets each. That is a target of 300 piglets, alongside planned start-up feed, care and training.</p>
       <dl class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
-        <div><dt class="text-gray-700">Families in the target</dt><dd class="text-3xl font-bold text-green-900">60</dd></div>
-        <div><dt class="text-gray-700">Piglets per family</dt><dd class="text-3xl font-bold text-green-900">5</dd></div>
-        <div><dt class="text-gray-700">Total piglet target</dt><dd class="text-3xl font-bold text-green-900">300</dd></div>
+        <div><dt class="text-gray-700">Families in the target</dt><dd class="text-3xl font-bold text-green-900"><span data-count-up>60</span></dd></div>
+        <div><dt class="text-gray-700">Piglets per family</dt><dd class="text-3xl font-bold text-green-900"><span data-count-up>5</span></dd></div>
+        <div><dt class="text-gray-700">Total piglet target</dt><dd class="text-3xl font-bold text-green-900"><span data-count-up>300</span></dd></div>
       </dl>
       <p class="text-gray-700 leading-relaxed">These figures describe the project goal. They are not a count of families already supported or piglets already distributed.</p>
+    </section>
+    <section class="px-4 md:px-0 mb-8" aria-labelledby="meet-piglets">
+      <h2 id="meet-piglets" class="text-3xl font-bold text-green-900 mb-4">Small beginnings. Room to grow.</h2>
+      <p class="leading-relaxed mb-4">The black piglets in our project photograph are domestic pigs. Their exact breed or cross needs confirmation from the local team; coat colour alone cannot identify it.</p>
+      <figure class="mb-6">
+        <picture>
+          <source type="image/webp" srcset="/pictures/optimized/piglet-growth_400w.webp 400w, /pictures/optimized/piglet-growth_800w.webp 800w, /pictures/optimized/piglet-growth_1200w.webp 1200w" sizes="(max-width: 896px) 100vw, 896px">
+          <img src="/pictures/optimized/piglet-growth_800w.jpg" alt="Illustration of black piglets and an adult sow beside a shaded timber shelter and banana plants." width="1536" height="1024" class="w-full h-auto" loading="lazy">
+        </picture>
+        <figcaption class="text-sm text-gray-700 mt-2">Illustration inspired by the project photograph, showing young and adult pigs. It is not a record of animals delivered.</figcaption>
+      </figure>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+        <article><h3 class="text-xl font-bold text-green-900 mb-3">Care for a warm climate</h3><p class="leading-relaxed">Some local pig populations have adaptations to tropical conditions, but these piglets' resilience has not been measured. All pigs are vulnerable to heat stress. Shade, fresh water and good ventilation help them cope with hot weather.</p></article>
+        <article><h3 class="text-xl font-bold text-green-900 mb-3">Growth over months</h3><p class="leading-relaxed">FAO gives an intensive-production example of growth from 25 kg at 12 weeks to 90 kg at 27 weeks. This illustrates potential, not a forecast for Binzi: breed, feed, health and local conditions determine actual growth.</p></article>
+        <article><h3 class="text-xl font-bold text-green-900 mb-3">A new generation</h3><p class="leading-relaxed">Pregnancy lasts about 114 days. A well-fed sow can have around 10 piglets in a litter and may have two litters a year. Litter size and survival vary; breeding requires suitable adult animals, enough feed, space and veterinary support.</p></article>
+      </div>
+      <p class="leading-relaxed mb-4">With the right care, young pigs can grow into saleable livestock or suitable breeding animals. That potential is why practical training and ongoing care matter as much as providing the first piglets.</p>
+      <p class="text-sm leading-relaxed">Further reading: <a class="text-green-800 underline" href="https://www.fao.org/4/s1250e/S1250E13.htm">FAO: growth and housing</a>; <a class="text-green-800 underline" href="https://www.fao.org/4/T0690E/t0690e06.htm">FAO: pig reproduction</a>; <a class="text-green-800 underline" href="https://www.ilri.org/knowledge/publications/pig-production-uganda-adapting-climate-change-0">ILRI: heat stress in Uganda</a>; <a class="text-green-800 underline" href="https://www.fao.org/4/T0582E/T0582E27.htm">FAO: local breeds and adaptation</a>.</p>
     </section>
     <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-8 mx-4 md:mx-auto">
       <h2 class="text-2xl font-bold text-green-900 mb-4">Why this work matters</h2>
@@ -49,6 +67,7 @@
       <p class="leading-relaxed">The Foundation also describes support for education, agriculture, water and housing. <a class="text-green-800 underline" href="/#community-support">Explore the other areas of work</a>, or <a class="text-green-800 underline" href="/get_involved.html#contact-information">contact Fr. Emmanuel Kasibante</a> for more information.</p>
     </section>
   </main>
+  <script src="/static/js/project-counters.js" defer></script>
   <footer>{% include "footer.html" %}</footer>
 </body>
 </html>

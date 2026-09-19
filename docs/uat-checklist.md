@@ -47,3 +47,11 @@ Both pages passed checks at 320, 375, 768 and 1280 pixels, automated accessibili
 - Calendar and legal pages offer a route into Project overview, without replacing calendar month controls.
 - Verified: 10 Rust integration tests; project/updates at 320, 375, 768, 1280px; automated WCAG checks, keyboard submenu, JavaScript-disabled content; Lynx text output.
 - Awaiting user UAT. No push or deployment authorized.
+
+## Piglet visual and counters — 19 September 2026
+
+- Project overview: 60 / 5 / 300 count up once when visible; no JavaScript and reduced motion retain final totals. Screen readers receive stable totals.
+- Generated illustration inspired by the supplied photograph, with responsive WebP/JPEG assets and descriptive alternative text.
+- HTML facts explain climate care, conditional growth examples and breeding potential. Breed remains unconfirmed; no claims of measured resilience or guaranteed herd multiplication.
+- Sources linked directly on the page: FAO pig housing, reproduction and tropical adaptation; ILRI Uganda heat-stress research.
+- Review the illustration and explanatory copy locally before release.
