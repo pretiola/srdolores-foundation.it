@@ -283,7 +283,15 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 .mobile-menu-toggle { display: none; }
 @media (max-width: 639px) {
   #navbar.mobile-menu-ready { position: relative; z-index: 60; }
-  .mobile-menu-ready .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; margin: .5rem auto; padding: .5rem 1rem; color: gold; background: darkred; border: 1px solid gold; border-radius: .35rem; cursor: pointer; }
+  .mobile-menu-ready .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; flex: 0 0 44px; min-height: 44px; margin-left: auto; padding: .5rem; color: gold; background: transparent; border: 0; cursor: pointer; }
   .mobile-menu-ready #site-navigation { display: none; position: absolute; top: 100%; left: 0; right: 0; max-height: 70vh; overflow-y: auto; background: darkred; box-shadow: 0 10px 20px #0004; }
   .mobile-menu-ready.mobile-menu-open #site-navigation { display: flex; }
+}
+
+@media (max-width: 639px) {
+  .mobile-menu-ready .nav-branding { justify-content: flex-start; gap: .5rem; padding: .4rem .75rem; }
+  .mobile-menu-ready .nav-branding > img { width: 40px; height: 40px; flex-shrink: 0; }
+  .mobile-menu-ready .nav-brand-text { min-width: 0; }
+  .mobile-menu-ready .nav-brand-text > span:first-child { font-size: 1rem; line-height: 1.25; }
+  .mobile-menu-ready .nav-brand-text > span:last-child { font-size: .8rem; }
 }
