@@ -240,3 +240,11 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 .reading-navigation strong { font-size: 1.25rem; text-decoration: underline; text-underline-offset: .2em; }
 .reading-next { grid-column: 2; text-align: right; }
 @media (max-width: 479px) { .reading-navigation { grid-template-columns: 1fr; } .reading-next { grid-column: 1; } }
+
+.paypal-copy-field { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; margin-top: .5rem; padding: .85rem 1rem; border: 1px solid #8b9983; border-radius: 6px; background: #fff; color: #14532d; text-align: left; cursor: pointer; }
+.paypal-copy-field span { min-width: 0; overflow-wrap: anywhere; }
+.paypal-copy-field svg { flex-shrink: 0; }
+.paypal-copy-field:hover { background: #f0f5eb; border-color: #14532d; }
+.crypto-actions { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center; gap: .75rem; margin-top: .75rem; }
+.crypto-actions > * { flex: 1 1 auto; display: flex; }
+.crypto-actions .bank-btn { display: flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }

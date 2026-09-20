@@ -76,11 +76,26 @@
     var email = document.getElementById('paypal-email');
     var paypalCopy = document.createElement('button');
     paypalCopy.type = 'button';
-    paypalCopy.className = 'text-green-800 underline payment-address cursor-pointer';
-    paypalCopy.textContent = email.textContent;
+    paypalCopy.className = 'paypal-copy-field';
+    var paypalAddress = email.textContent;
+    var emailLabel = document.createElement('span');
+    emailLabel.textContent = paypalAddress;
+    paypalCopy.appendChild(emailLabel);
+    var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    icon.setAttribute('viewBox', '0 0 24 24');
+    icon.setAttribute('width', '20');
+    icon.setAttribute('height', '20');
+    icon.setAttribute('fill', 'none');
+    icon.setAttribute('stroke', 'currentColor');
+    icon.setAttribute('stroke-width', '2');
+    icon.setAttribute('aria-hidden', 'true');
+    var outline = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    outline.setAttribute('d', 'M8 8h12v12H8z M16 8V4H4v12h4');
+    icon.appendChild(outline);
+    paypalCopy.appendChild(icon);
     paypalCopy.setAttribute('aria-label', 'Copy PayPal email ' + email.textContent);
     paypalCopy.addEventListener('click', function () {
-      navigator.clipboard.writeText(email.textContent).then(function () {
+      navigator.clipboard.writeText(paypalAddress).then(function () {
         document.getElementById('paypal-copy-status').textContent = 'Email copied. Paste it into the PayPal app.';
       }).catch(function () {
         document.getElementById('paypal-copy-status').textContent = 'Could not copy. Select and copy the email above for use in PayPal.';

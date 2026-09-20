@@ -48,9 +48,7 @@
 
           <!-- SEPA Bank Transfer Details Card with QR Code -->
           <div class="bank-transfer-card">
-            <p class="mb-4">Text QR codes for Lynx:
-              <a class="text-green-800 underline" href="/static/qr/bank-custom.txt">custom amount</a> or
-              <a class="text-green-800 underline" href="/static/qr/bank-40.txt">EUR 40</a>.</p>
+
             <div id="bank-qr-controls"></div>
             <div id="bank-qr" class="bank-qr-wrapper"></div>
 
@@ -62,6 +60,9 @@
               <p><span>Remittance:</span> <strong>Sr. Dolores Foundation</strong></p>
               <p><span>Amount:</span> <strong id="amount-label">Custom / Enter in App</strong></p>
             </div>
+            <p class="mt-4">Text only QR codes:
+              <a class="text-green-800 underline" href="/static/qr/bank-custom.txt">custom amount</a> or
+              <a class="text-green-800 underline" href="/static/qr/bank-40.txt">EUR 40</a>.</p>
           </div>
         </div>
         </details>
@@ -76,7 +77,7 @@
               <div id="crypto-qr"></div>
               <p class="mt-3"><strong>Ethereum address</strong></p>
               <p class="payment-address">0x344d169735f17D25E0d3AE8aa00b47F88D613017</p>
-              <div class="flex flex-wrap items-center justify-center gap-3"><span id="crypto-copy-controls"></span><a class="text-green-800 underline" href="/static/qr/ethereum-eurc.txt">Text only QR</a></div><p id="crypto-copy-status" role="status"></p>
+              <div class="crypto-actions"><span id="crypto-copy-controls"></span><a class="bank-btn" href="/static/qr/ethereum-eurc.txt">Text only QR</a></div><p id="crypto-copy-status" role="status"></p>
             </div>
 
             <div class="bank-details-box text-base">
