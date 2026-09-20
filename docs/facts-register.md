@@ -36,3 +36,8 @@ For every confirmed change, record the approving person, confirmation date, sour
 User supplied ILRI, *Pig breed factsheet for Uganda: Local (Ugandese) breed of pig*, June 2022, CC BY 4.0: https://cgspace.cgiar.org/server/api/core/bitstreams/15a75f7d-d994-4b02-9080-d001c3d5e18c/content
 
 Read the complete one-page factsheet. Overview now reflects its physical description, hardiness, slow-growing piglets, maternal ability, mature sow weights of 70–120 kg and boar weights of 100–150 kg. Fifteen-piglet litters are an intensive-management example, not an average. Removed the generic intensive growth timeline and generic ten-piglet/two-litter expectation from the overview. Breed use is user-confirmed; factsheet describes the population, not measured outcomes for these particular animals.
+
+
+## Heritage expansion — 20 September 2026
+
+User requested expansion using the “Documenting The Heritage of Sister Dolores Engelhardt” section of https://docs.google.com/document/d/1FRjoWVdgC5fNoGfKcQcr932mw0nxGuwa3BbVXJG_Kh0/edit . Core biographical dates, early family responsibilities and music teaching corroborated against the congregation’s memorial: https://www.oberzell.de/verstorbene-schweste/musiklehrerin-mit-leib-und-seele/ and its 2022 magazine: https://www.oberzell.de/wp-content/uploads/2023/11/LUPE_Magazin_Digital.pdf . Little Flower/Sunnydale details attributed to supplied heritage research. Retained Fr. Emmanuel’s existing account of support towards his priesthood; no invented quotations or claim she worked in Binzi. Omitted the research’s “first group” claim and ambiguous diploma description.
