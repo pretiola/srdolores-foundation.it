@@ -29,3 +29,10 @@ Sources: the existing website/templates at baseline 185fe27; the user's confirma
 | O02 | Single next locally selected milestone | Briefing | Await confirmation; do not invent a deadline or outcome target |
 
 For every confirmed change, record the approving person, confirmation date, source reference, public wording and any expiry/review date. Keep the supporting private records in an access-controlled location outside this repository.
+
+
+## Local Ugandese pigs — source correction, 20 September 2026
+
+User supplied ILRI, *Pig breed factsheet for Uganda: Local (Ugandese) breed of pig*, June 2022, CC BY 4.0: https://cgspace.cgiar.org/server/api/core/bitstreams/15a75f7d-d994-4b02-9080-d001c3d5e18c/content
+
+Read the complete one-page factsheet. Overview now reflects its physical description, hardiness, slow-growing piglets, maternal ability, mature sow weights of 70–120 kg and boar weights of 100–150 kg. Fifteen-piglet litters are an intensive-management example, not an average. Removed the generic intensive growth timeline and generic ten-piglet/two-litter expectation from the overview. Breed use is user-confirmed; factsheet describes the population, not measured outcomes for these particular animals.
