@@ -189,3 +189,21 @@ async fn contact_and_text_qrs_are_available_without_javascript() {
         }
     }
 }
+
+#[test]
+fn navbar_omits_liturgy_link_when_data_is_unavailable() {
+    let tera = tera::Tera::new("templates/**/*").unwrap();
+    for data in [serde_json::Value::Null, serde_json::json!({}), serde_json::json!({"celebrations": []})] {
+        let mut context = tera::Context::new();
+        context.insert("liturgical_info", &data);
+        let html = tera.render("navbar.html", &context).unwrap();
+        assert!(!html.contains("href=\"/liturgy.html\""));
+        assert!(!html.contains("Liturgical information is currently unavailable"));
+        assert!(html.contains("What we do"));
+    }
+    let mut context = tera::Context::new();
+    context.insert("liturgical_info", &serde_json::json!({"celebrations": [{"name": "Test celebration", "grade": 1, "color": ["green"]}]}));
+    let html = tera.render("navbar.html", &context).unwrap();
+    assert!(html.contains("href=\"/liturgy.html\""));
+    assert!(html.contains("Test celebration"));
+}

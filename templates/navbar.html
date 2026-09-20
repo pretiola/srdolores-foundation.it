@@ -71,7 +71,9 @@
   </ul>
 </nav>
 
+{% if liturgical_info and liturgical_info.celebrations and liturgical_info.celebrations | length > 0 %}
 <a href="/liturgy.html" class="block hover:opacity-90 transition-opacity">
   {% set show_details = false %}
   {% include "liturgical_bar.html" %}
 </a>
+{% endif %}
