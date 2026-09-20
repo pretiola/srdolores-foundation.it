@@ -108,10 +108,10 @@
     paypalCopy.setAttribute('aria-label', 'Copy PayPal email ' + email.textContent);
     paypalCopy.addEventListener('click', function () {
       copyText(paypalAddress).then(function () {
-        document.getElementById('paypal-copy-status').textContent = 'Email copied. Paste it into the PayPal app.';
+        document.getElementById('paypal-copy-help').textContent = 'Email copied. Paste it into the PayPal app.';
       }).catch(function () {
         selectText(emailLabel);
-        document.getElementById('paypal-copy-status').textContent = 'Email selected. Copy it using your browser or keyboard, then paste it into PayPal.';
+        document.getElementById('paypal-copy-help').textContent = 'Email selected. Copy it using your browser or keyboard, then paste it into PayPal.';
       });
     });
     email.textContent = '';
