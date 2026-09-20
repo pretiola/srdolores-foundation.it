@@ -73,11 +73,10 @@
 
           <div class="bank-transfer-card mt-2 mb-4">
             <div class="bank-qr-wrapper">
-              <p class="mb-4"><a class="text-green-800 underline" href="/static/qr/ethereum-eurc.txt">Compact text QR for Lynx</a></p>
               <div id="crypto-qr"></div>
               <p class="mt-3"><strong>Ethereum address</strong></p>
               <p class="payment-address">0x344d169735f17D25E0d3AE8aa00b47F88D613017</p>
-              <div id="crypto-copy-controls"></div>
+              <div class="flex flex-wrap items-center justify-center gap-3"><span id="crypto-copy-controls"></span><a class="text-green-800 underline" href="/static/qr/ethereum-eurc.txt">Text only QR</a></div><p id="crypto-copy-status" role="status"></p>
             </div>
 
             <div class="bank-details-box text-base">
@@ -102,7 +101,7 @@
         </details>
         <details class="payment-option" name="payment-method" id="pay-paypal">
           <summary><img src="/pictures/paypal.svg" alt="" width="48" height="48"><span><strong>PayPal</strong> <span class="payment-subtitle">— Use the recipient email</span></span><span class="payment-indicator" aria-hidden="true"></span></summary>
-          <div class="payment-content"><strong>PayPal account:</strong> <a href="mailto:vitalimmanuel@gmail.com" class="text-blue-600 hover:underline">vitalimmanuel@gmail.com</a><p class="text-sm mt-2">Use this recipient email in PayPal. The email link opens your mail app, not a payment checkout.</p></div>
+          <div class="payment-content"><strong>PayPal account:</strong> <span id="paypal-email">vitalimmanuel@gmail.com</span><p id="paypal-copy-help" class="text-sm mt-2">Copy this recipient email for use in the PayPal app.</p><p id="paypal-copy-status" role="status"></p></div>
         </details>
       </div>
     </section>
@@ -176,12 +175,13 @@
       </picture>
     </div>
 
-    <p class="text-center mb-8 px-4"><a class="text-green-800 underline" href="/updates.html">Follow project updates and understand the evidence</a></p>
+    <p class="text-center mb-8 px-4"><a class="text-green-800 underline" href="/updates.html">Follow project updates and understand the reported progress</a></p>
 
     <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-6 max-w-[600px] mx-4 md:mx-auto border-t-4 border-green-800">
       <h2 id="contact-information" class="text-3xl font-bold mb-6 text-center text-green-900">Contact information</h2>
       <p class="text-xl font-bold text-center mb-4">Fr. Emmanuel Kasibante</p>
       <ul class="flex flex-col space-y-4 text-gray-800 text-lg">
+        <li class="border-b pb-4"><strong>Email:</strong> <a class="text-green-800 underline payment-address" href="mailto:vitalimmanuel@gmail.com">vitalimmanuel@gmail.com</a></li>
         <li class="border-b pb-4"><strong>Telephone/WhatsApp:</strong> +39 377 097 5371</li>
         <li class="leading-relaxed">
           <strong>Postal address:</strong><br>

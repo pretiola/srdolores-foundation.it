@@ -63,7 +63,7 @@
     copy.type = 'button';
     copy.className = 'bank-btn';
     copy.textContent = 'Copy Ethereum address';
-    var status = document.createElement('span');
+    var status = document.getElementById('crypto-copy-status');
     status.setAttribute('role', 'status');
     copy.addEventListener('click', function () {
       navigator.clipboard.writeText(address).then(function () {
@@ -73,7 +73,22 @@
       });
     });
     document.getElementById('crypto-copy-controls').appendChild(copy);
-    document.getElementById('crypto-copy-controls').appendChild(status);
+    var email = document.getElementById('paypal-email');
+    var paypalCopy = document.createElement('button');
+    paypalCopy.type = 'button';
+    paypalCopy.className = 'text-green-800 underline payment-address cursor-pointer';
+    paypalCopy.textContent = email.textContent;
+    paypalCopy.setAttribute('aria-label', 'Copy PayPal email ' + email.textContent);
+    paypalCopy.addEventListener('click', function () {
+      navigator.clipboard.writeText(email.textContent).then(function () {
+        document.getElementById('paypal-copy-status').textContent = 'Email copied. Paste it into the PayPal app.';
+      }).catch(function () {
+        document.getElementById('paypal-copy-status').textContent = 'Could not copy. Select and copy the email above for use in PayPal.';
+      });
+    });
+    email.textContent = '';
+    email.appendChild(paypalCopy);
+    document.getElementById('paypal-copy-help').textContent = 'Click the email to copy it to the clipboard for use in the PayPal app.';
   }
 
   if (window.fetch && counter) {
