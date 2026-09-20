@@ -251,3 +251,14 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 
 .paypal-email-host { display: block; margin-top: .5rem; padding: .85rem 1rem; border: 1px solid #8b9983; border-radius: 6px; background: white; overflow-wrap: anywhere; }
 .paypal-email-host.is-enhanced { margin: 0; padding: 0; border: 0; background: none; }
+
+@font-face { font-family: 'Foundation Handwriting'; src: url('/static/fonts/caveat.ttf') format('truetype'); font-weight: 400 700; font-style: normal; font-display: swap; }
+.appreciation-note { position: relative; max-width: 760px; margin: 2rem auto 3rem; padding: 2.5rem 3rem; background: linear-gradient(120deg, #fffdf5, #fbf6e7); border: 1px solid #dfd5bc; border-top: 5px solid #8b0000; border-radius: 3px; box-shadow: 0 12px 28px #49351818, 4px 5px 0 -1px #f6efdd, 4px 5px 0 0 #dfd5bc; }
+.note-letterhead { display: flex; gap: 1rem; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid #bda264; }
+.note-letterhead img { flex-shrink: 0; }
+.note-foundation { font-size: 1.4rem; font-weight: bold; color: #8b0000; line-height: 1.25; }
+.note-location { margin-top: .3rem; font-size: .9rem; color: #525849; letter-spacing: .08em; }
+.note-title { margin: 1.4rem 0 1.7rem; font-size: .9rem; font-weight: bold; text-transform: uppercase; letter-spacing: .12em; color: #525849; }
+.note-handwriting { font-family: 'Foundation Handwriting', 'Segoe Print', 'Bradley Hand', cursive; font-size: 1.9rem; font-weight: 500; line-height: 1.5; color: #203e51; }
+.note-handwriting p + p { margin-top: 1.1rem; }
+@media (max-width: 639px) { .appreciation-note { margin-left: 1rem; margin-right: 1rem; padding: 1.5rem; } .note-foundation { font-size: 1.1rem; } .note-letterhead img { width: 48px; height: 48px; } .note-handwriting { font-size: 1.65rem; } }
