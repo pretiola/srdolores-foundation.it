@@ -58,7 +58,18 @@
     });
   }
 
-  if (navigator.clipboard && window.isSecureContext) {
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return Promise.reject(new Error('Clipboard unavailable'));
+  }
+  function selectText(element) {
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(element);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+  {
     var copy = document.createElement('button');
     copy.type = 'button';
     copy.className = 'bank-btn';
@@ -66,10 +77,11 @@
     var status = document.getElementById('crypto-copy-status');
     status.setAttribute('role', 'status');
     copy.addEventListener('click', function () {
-      navigator.clipboard.writeText(address).then(function () {
+      copyText(address).then(function () {
         status.textContent = ' Address copied.';
       }).catch(function () {
-        status.textContent = ' Could not copy. Select and copy the address above.';
+        selectText(document.querySelector('#pay-crypto .payment-address'));
+        status.textContent = ' Address selected. Copy it using your browser or keyboard.';
       });
     });
     document.getElementById('crypto-copy-controls').appendChild(copy);
@@ -95,14 +107,16 @@
     paypalCopy.appendChild(icon);
     paypalCopy.setAttribute('aria-label', 'Copy PayPal email ' + email.textContent);
     paypalCopy.addEventListener('click', function () {
-      navigator.clipboard.writeText(paypalAddress).then(function () {
+      copyText(paypalAddress).then(function () {
         document.getElementById('paypal-copy-status').textContent = 'Email copied. Paste it into the PayPal app.';
       }).catch(function () {
-        document.getElementById('paypal-copy-status').textContent = 'Could not copy. Select and copy the email above for use in PayPal.';
+        selectText(emailLabel);
+        document.getElementById('paypal-copy-status').textContent = 'Email selected. Copy it using your browser or keyboard, then paste it into PayPal.';
       });
     });
     email.textContent = '';
     email.appendChild(paypalCopy);
+    email.classList.add('is-enhanced');
     document.getElementById('paypal-copy-help').textContent = 'Click the email to copy it to the clipboard for use in the PayPal app.';
   }
 

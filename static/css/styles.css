@@ -248,3 +248,6 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 .crypto-actions { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center; gap: .75rem; margin-top: .75rem; }
 .crypto-actions > * { flex: 1 1 auto; display: flex; }
 .crypto-actions .bank-btn { display: flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+
+.paypal-email-host { display: block; margin-top: .5rem; padding: .85rem 1rem; border: 1px solid #8b9983; border-radius: 6px; background: white; overflow-wrap: anywhere; }
+.paypal-email-host.is-enhanced { margin: 0; padding: 0; border: 0; background: none; }
