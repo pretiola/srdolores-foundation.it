@@ -278,3 +278,12 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 .school-budget tbody tr:nth-child(even) { background: #f8faf5; }
 .school-budget td:last-child { color: #14532d; font-weight: bold; }
 @media (max-width: 639px) { .project-link-grid { grid-template-columns: 1fr; } .school-budget { font-size: .8rem; } .school-budget th, .school-budget td { padding: .7rem .4rem; } }
+
+/* Mobile enhancement: without JavaScript the navigation remains available. */
+.mobile-menu-toggle { display: none; }
+@media (max-width: 639px) {
+  #navbar.mobile-menu-ready { position: relative; z-index: 60; }
+  .mobile-menu-ready .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; margin: .5rem auto; padding: .5rem 1rem; color: gold; background: darkred; border: 1px solid gold; border-radius: .35rem; cursor: pointer; }
+  .mobile-menu-ready #site-navigation { display: none; position: absolute; top: 100%; left: 0; right: 0; max-height: 70vh; overflow-y: auto; background: darkred; box-shadow: 0 10px 20px #0004; }
+  .mobile-menu-ready.mobile-menu-open #site-navigation { display: flex; }
+}

@@ -9,8 +9,12 @@
     </div>
   </div>
 
+  <button type="button" class="mobile-menu-toggle" aria-expanded="false" aria-controls="site-navigation" hidden>
+    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <span>Menu</span>
+  </button>
   <!-- Consolidated Navigation List -->
-  <ul class="flex flex-col sm:flex-row flex-wrap w-full sm:justify-center bg-[darkred]">
+  <ul id="site-navigation" class="flex flex-col sm:flex-row flex-wrap w-full sm:justify-center bg-[darkred]">
     <li class="group relative w-full sm:w-auto">
       <a class="flex items-center gap-3 p-4 sm:p-3 border-b sm:border-b-0 sm:border-r border-black/30 sm:border-black font-bold bg-[darkred] text-[gold] hover:bg-[gold] hover:text-[darkred] transition-all justify-start sm:justify-center whitespace-nowrap" href="/">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -70,6 +74,7 @@
     </li>
   </ul>
 </nav>
+<script src="/static/js/navigation.js?v=1"></script>
 
 {% if liturgical_info and liturgical_info.celebrations and liturgical_info.celebrations | length > 0 %}
 <a href="/liturgy.html" class="block hover:opacity-90 transition-opacity">
