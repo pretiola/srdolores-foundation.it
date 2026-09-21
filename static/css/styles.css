@@ -315,3 +315,8 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 
 #privacy-ads { display: inline-block; background: #166534; color: white; font-weight: bold; padding: .5rem 2rem; border-radius: .25rem; border-color: transparent; transition: background-color .15s, color .15s; }
 #privacy-ads:hover, #privacy-ads:focus-visible { background: #14532d; color: white; }
+
+@media (max-width: 639px) {
+  .dolores-emmanuel-photo { display: block; aspect-ratio: 1600 / 1433; overflow: hidden; }
+  .dolores-emmanuel-photo img { width: 100%; height: auto; }
+}
