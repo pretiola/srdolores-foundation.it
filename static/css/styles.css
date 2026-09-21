@@ -295,3 +295,16 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
   .mobile-menu-ready .nav-brand-text > span:first-child { font-size: 1rem; line-height: 1.25; }
   .mobile-menu-ready .nav-brand-text > span:last-child { font-size: .8rem; }
 }
+
+/* Consent is an optional enhancement; hidden controls stay absent in no-JS browsers. */
+#privacy-choices[hidden], #privacy-settings[hidden] { display: none; }
+#privacy-choices { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: #fffdf5; color: #172d20; border-top: 3px solid #800000; padding: 1rem max(1rem, calc((100vw - 64rem) / 2)); max-height: 70vh; overflow: auto; box-shadow: 0 -4px 20px #0002; }
+#privacy-choices h2 { font-weight: bold; font-size: 1.2rem; }
+#privacy-choices p { margin: .5rem 0; }
+#privacy-choices a, #privacy-settings { text-decoration: underline; }
+.privacy-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .75rem; }
+.privacy-actions button { border: 2px solid #16452c; border-radius: .35rem; padding: .6rem 1rem; background: #fff; color: #16452c; font-weight: bold; cursor: pointer; min-height: 44px; }
+.privacy-actions button:hover, .privacy-actions button:focus-visible { background: #e9f3e9; }
+.privacy-controls { text-align: center; margin: 1rem; }
+#privacy-settings { cursor: pointer; padding: .6rem; }
+#privacy-status { font-size: .85rem; }

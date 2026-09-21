@@ -27,6 +27,10 @@
     <li><a class="block text-sm font-medium p-2 hover:bg-[gold] focus:bg-[gold] text-black underline underline-offset-4" href="/terms_of_use.html">Terms of use</a></li>
     <li><a class="block text-sm font-medium p-2 hover:bg-[gold] focus:bg-[gold] text-black underline underline-offset-4" href="/privacy_policy.html">Privacy policy</a></li>
   </ul>
+  <div class="privacy-controls">
+    <button type="button" id="privacy-settings" hidden>Privacy settings</button>
+    <p id="privacy-status" role="status">Optional tracking is off unless you enable it. Without JavaScript, it stays off.</p>
+  </div>
   <div class="text-xs text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 text-center">
     <p class="mb-2 font-bold text-gray-800 text-sm">&copy; 2023-{{ current_year }} Sr. Dolores Foundation.</p>
     <p>
@@ -39,12 +43,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
 <script src="/static/js/gallery.js"></script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBE2Y1QGNN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DBE2Y1QGNN');
-</script>
+<section id="privacy-choices" aria-labelledby="privacy-heading" hidden>
+  <h2 id="privacy-heading">Your privacy choices</h2>
+  <p>You can use every page without optional tracking. Analytics uses Google cookies to measure visits and interactions, including city-level location and device details. With separate advertising permission, Google signals may associate visits with your signed-in Google account and activity on other sites for audience measurement and personalized advertising through linked Google advertising services. Change or withdraw your choice using Privacy settings in the footer.</p>
+  <p><a href="/privacy_policy.html">Read our privacy policy</a></p>
+  <div class="privacy-actions">
+    <button type="button" id="privacy-decline">Decline all</button>
+    <button type="button" id="privacy-accept">Analytics only</button>
+    <button type="button" id="privacy-ads">Allow analytics and advertising</button>
+  </div>
+</section>
+<script src="/static/js/privacy.js?v=1"></script>
