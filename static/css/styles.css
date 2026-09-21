@@ -290,7 +290,7 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 
 @media (max-width: 639px) {
   .mobile-menu-ready .nav-branding { justify-content: flex-start; gap: .5rem; padding: .4rem .75rem; }
-  .mobile-menu-ready .nav-branding > img { width: 40px; height: 40px; flex-shrink: 0; }
+  .mobile-menu-ready .nav-home-link > img { width: 40px; height: 40px; flex-shrink: 0; }
   .mobile-menu-ready .nav-brand-text { min-width: 0; }
   .mobile-menu-ready .nav-brand-text > span:first-child { font-size: 1rem; line-height: 1.25; }
   .mobile-menu-ready .nav-brand-text > span:last-child { font-size: .8rem; }
@@ -298,8 +298,8 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 
 /* Consent is an optional enhancement; hidden controls stay absent in no-JS browsers. */
 #privacy-choices[hidden], #privacy-settings[hidden] { display: none; }
-#privacy-choices { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: #fffdf5; color: #172d20; border-top: 3px solid #800000; padding: 1rem max(1rem, calc((100vw - 64rem) / 2)); max-height: 70vh; overflow: auto; box-shadow: 0 -4px 20px #0002; }
-#privacy-choices h2 { font-weight: bold; font-size: 1.2rem; }
+#privacy-choices { font-size: 8.5pt; line-height: 1.4; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: #fffdf5; color: #172d20; border-top: 3px solid #800000; padding: 1rem max(1rem, calc((100vw - 64rem) / 2)); max-height: 70vh; overflow: auto; box-shadow: 0 -4px 20px #0002; }
+#privacy-choices h2 { font-weight: bold; font-size: inherit; }
 #privacy-choices p { margin: .5rem 0; }
 #privacy-choices a, #privacy-settings { text-decoration: underline; }
 .privacy-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .75rem; }
@@ -308,3 +308,7 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 .privacy-controls { text-align: center; margin: 1rem; }
 #privacy-settings { cursor: pointer; padding: .6rem; }
 #privacy-status { font-size: .85rem; }
+
+.nav-home-link { display: flex; align-items: center; gap: .75rem; min-width: 0; color: inherit; text-decoration: none; }
+.nav-home-link:focus-visible { outline: 2px solid gold; outline-offset: 3px; }
+@media (max-width: 639px) { .nav-home-link { gap: .5rem; } }
