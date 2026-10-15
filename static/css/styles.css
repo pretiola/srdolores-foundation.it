@@ -323,4 +323,4 @@ nav a:focus-visible, nav summary:focus-visible { outline-color: gold; outline-of
 
 .planning-budget td, .planning-budget thead th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
 .planning-budget td { white-space: nowrap; }
-.budget-euro { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.budget-euro { white-space: nowrap; }
