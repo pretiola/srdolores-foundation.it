@@ -66,7 +66,11 @@
     var wasLoaded = loaded;
     apply(allowed, advertising);
     panel.hidden = true;
-    settings.focus();
+    var scrollX = window.pageXOffset;
+    var scrollY = window.pageYOffset;
+    try { settings.focus({ preventScroll: true }); } catch (error) { settings.focus(); }
+    // Older browsers may ignore preventScroll. Preserve the reading position.
+    window.scrollTo(scrollX, scrollY);
     // Unload Google's library after withdrawal, including its event listeners.
     if (wasLoaded) { window['ga-disable-' + id] = true; clearCookies(); location.reload(); }
   }
