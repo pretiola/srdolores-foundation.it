@@ -27,7 +27,7 @@
       var payload = details.bankPayload(preset);
       return QRCode.toCanvas(bankCanvas, payload, options).then(function () {
         bankHost.appendChild(bankCanvas);
-        document.getElementById('amount-label').textContent = preset ? '€40.00' : 'Custom / Enter in App';
+        document.getElementById('amount-label').textContent = preset ? '€ 40.00' : 'Custom / Enter in App';
         buttons.forEach(function (button, index) {
           var selected = preset === (index === 1);
           button.classList.toggle('active', selected);
@@ -40,7 +40,7 @@
       });
     }
 
-    ['Custom amount', '€40.00 preset'].forEach(function (label, index) {
+    ['Custom amount', '€ 40.00 preset'].forEach(function (label, index) {
       var button = document.createElement('button');
       button.type = 'button';
       button.className = 'bank-btn';
